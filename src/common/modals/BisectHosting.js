@@ -15,7 +15,7 @@ const BisectHosting = () => {
         font-size: 10px;
         line-height: 1.8;
       `}
-      title="We teamed up with BisectHosting"
+      title="TeamFelNull Discord"
     >
       <Container>
         <BisectHostingLogo size={70} hover />
@@ -24,41 +24,40 @@ const BisectHosting = () => {
             margin-top: 20px;
           `}
         >
-          Grab a server from our official partner{' '}
+          季節ごとの特別なModサーバー{' '}
           <span
             css={`
               font-weight: 800;
             `}
           >
-            BisectHosting
+            『Season Mod Server』
           </span>{' '}
-          <span>for effortless modded server installs and updates.</span> New
-          customers can save{' '}
+          <span>を立てたりして楽しく遊んでいます。</span> FelNullが出してる{' '}
           <span
             css={`
               color: ${props => props.theme.palette.colors.green};
             `}
           >
-            25%
+            ModPack
           </span>{' '}
-          off their first month using the promo code{' '}
+          などの質問は{' '}
           <span
             css={`
               color: ${props => props.theme.palette.colors.green};
             `}
           >
-            GDL
+            Discord
           </span>{' '}
-          at checkout.
+          でのみ受け付けております。
         </h2>
-        <a href="https://bisecthosting.com/gdl">
+        <a href="https://discord.gg/vsFrsgY">
           <Button
             type="primary"
             css={`
               margin-top: 25px;
             `}
           >
-            Go to BisectHosting.com &nbsp;
+            FelNullDiscord &nbsp;
             <FontAwesomeIcon icon={faExternalLinkAlt} />
           </Button>
         </a>

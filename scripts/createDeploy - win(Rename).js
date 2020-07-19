@@ -103,13 +103,13 @@ const commonConfig = {
   config: {
     publish: {
       owner: 'gorilla-devs',
-      repo: 'GDLauncher',
+      repo: 'FelNullGDLauncher',
       provider: 'github',
       private: false
     },
     generateUpdatesFilesForAllChannels: true,
-    productName: 'GDLauncher',
-    appId: 'org.gorilladevs.GDLauncher',
+    productName: 'FelNullGDLauncher',
+    appId: 'org.gorilladevs.FelNullGDLauncher',
     files: [
       '!node_modules/**/*',
       'node_modules/7zip-bin/linux/x64/7za',
@@ -131,6 +131,20 @@ const commonConfig = {
         : [],
     asar: {
       smartUnpack: false
+    },
+    dmg: {
+      contents: [
+        {
+          x: 130,
+          y: 220
+        },
+        {
+          x: 410,
+          y: 220,
+          type: 'link',
+          path: '/Applications'
+        }
+      ]
     },
     nsisWeb: {
       oneClick: true,
