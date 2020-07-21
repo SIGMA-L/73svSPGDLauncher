@@ -8,6 +8,7 @@ import fsa from 'fs-extra';
 import { promises as fs } from 'fs';
 import {
   faCopy,
+  // eslint-disable-next-line no-unused-vars
   faDownload,
   faTachometerAlt,
   faTrash,
@@ -113,6 +114,7 @@ const Hr = styled.div`
   height: 25px;
 `;
 
+// eslint-disable-next-line no-unused-vars
 const ReleaseChannel = styled.div`
   display: flex;
   flex-direction: column;
@@ -211,6 +213,7 @@ function dashUuid(UUID) {
 
 const General = () => {
   const [version, setVersion] = useState(null);
+  // eslint-disable-next-line no-unused-vars
   const [releaseChannel, setReleaseChannel] = useState(null);
   const currentAccount = useSelector(_getCurrentAccount);
   const hideWindowOnGameLaunch = useSelector(
@@ -370,36 +373,36 @@ const General = () => {
         </PersonalDataContainer>
       </PersonalData>
       <Hr />
-      <ReleaseChannel>
-        <Title>Release Channel</Title>
-        <div>
-          <div
-            css={`
-              width: 400px;
-            `}
-          >
-            Stable updates once a month, beta does update more often but it may
-            have more bugs.
-          </div>
-          <Select
-            css={`
-              width: 100px;
-            `}
-            onChange={async e => {
-              const appData = await ipcRenderer.invoke('getAppdataPath');
-              setReleaseChannel(e);
-              await fsa.writeFile(
-                path.join(appData, 'gdlauncher_next', 'rChannel'),
-                e
-              );
-            }}
-            value={releaseChannel}
-          >
-            <Select.Option value={0}>Stable</Select.Option>
-            <Select.Option value={1}>Beta</Select.Option>
-          </Select>
-        </div>
-      </ReleaseChannel>
+      {/*      <ReleaseChannel> */}
+      {/*        <Title>Release Channel</Title> */}
+      {/*        <div> */}
+      {/*          <div */}
+      {/*            css={` */}
+      {/*              width: 400px; */}
+      {/*            `} */}
+      {/*          > */}
+      {/*            Stable updates once a month, beta does update more often but it may */}
+      {/*            have more bugs. */}
+      {/*          </div> */}
+      {/*          <Select */}
+      {/*            css={` */}
+      {/*              width: 100px; */}
+      {/*            `} */}
+      {/*            onChange={async e => { */}
+      {/*              const appData = await ipcRenderer.invoke('getAppdataPath'); */}
+      {/*              setReleaseChannel(e); */}
+      {/*              await fsa.writeFile( */}
+      {/*                path.join(appData, 'gdlauncher_next', 'rChannel'), */}
+      {/*                e */}
+      {/*              ); */}
+      {/*            }} */}
+      {/*            value={releaseChannel} */}
+      {/*          > */}
+      {/*            <Select.Option value={0}>Stable</Select.Option> */}
+      {/*            <Select.Option value={1}>Beta</Select.Option> */}
+      {/*          </Select> */}
+      {/*        </div> */}
+      {/*      </ReleaseChannel> */}
       <Hr />
       <Title>
         Concurrent Downloads &nbsp; <FontAwesomeIcon icon={faTachometerAlt} />
@@ -411,8 +414,7 @@ const General = () => {
             width: 400px;
           `}
         >
-          Select the number of concurrent downloads. If you have a slow
-          connection, select max 3
+          同時にダウンロードやインストールをできる最大値を設定します。「推奨：３」
         </p>
 
         <Select
@@ -443,8 +445,7 @@ const General = () => {
             width: 400px;
           `}
         >
-          Select the preferred release channel for downloading Curse projects.
-          This also applies for mods update.
+          Twitch・Curseのプロジェクトをダウンロードするときに優先するリリースを設定します。これはModPackの更新にも適用されます。
         </p>
         <Select
           css={`
@@ -465,7 +466,7 @@ const General = () => {
           margin-top: 0px;
         `}
       >
-        Discord Integration &nbsp; <FontAwesomeIcon icon={faDiscord} />
+        Discord Game Active &nbsp; <FontAwesomeIcon icon={faDiscord} />
       </Title>
       <DiscordRpc>
         <p
@@ -473,8 +474,7 @@ const General = () => {
             width: 350px;
           `}
         >
-          Enable / disable Discord Integration. This displays what you are
-          playing in Discord.
+          有効にするとDiscordで～～～プレイ中の表示をすることができます。
         </p>
         <Switch
           onChange={e => {
@@ -502,7 +502,7 @@ const General = () => {
             width: 350px;
           `}
         >
-          Enable / disable Minecraft news.
+          有効にするとMinecraft公式の最新のニュースをホームに表示します。
         </p>
         <Switch
           onChange={e => {
@@ -529,8 +529,7 @@ const General = () => {
             width: 500px;
           `}
         >
-          Automatically hide the launcher when launching an instance. You will
-          still be able to open it from the icon tray
+          有効にしてマインクラフトを起動するとランチャーを自動的に非表示にします。タスクバーのトレイから再度開くことができます。
         </p>
         <Switch
           onChange={e => {
@@ -557,8 +556,7 @@ const General = () => {
             width: 500px;
           `}
         >
-          You got a potato PC? Don&apos;t worry! We got you covered. Enable this
-          and all animations and special effects will be disabled
+          あなたのパソコンはそんなに性能が低いのですか？これを有効にするとすべてのアニメーションと特殊効果が無効になります。
         </p>
         <Switch
           onChange={e => {
@@ -595,8 +593,7 @@ const General = () => {
             width: 500px;
           `}
         >
-          Deletes all the shared files between instances. Doing this will result
-          in the complete loss of the instances data
+          今までのマイクラのデータをすべて削除します。
         </p>
         <Button
           onClick={clearSharedData}
@@ -690,7 +687,7 @@ const General = () => {
               setMoveUserData(e.target.checked);
             }}
           >
-            Copy current data to the new directory
+            データを古いフォルダから新しいフォルダへ移動する
           </Checkbox>
         </div>
       </CustomDataPathContainer>
@@ -719,42 +716,42 @@ const General = () => {
         </div>
         <p>
           {updateAvailable
-            ? 'There is an update available to be installed. Click on update to install it and restart the launcher'
-            : 'You’re currently on the latest version. We automatically check for updates and we will inform you whenever one is available'}
+            ? 'アップデートがあります。アップデートサービスはまだ構築されていません'
+            : 'アップデートはありません。アップデートサービスはまだ構築されていません'}
         </p>
-        <div
-          css={`
-            margin-top: 20px;
-            height: 36px;
-            display: flex;
-            flex-direction: row;
-          `}
-        >
-          {updateAvailable ? (
-            <Button
-              onClick={() =>
-                ipcRenderer.invoke('installUpdateAndQuitOrRestart')
-              }
-              css={`
-                margin-right: 10px;
-              `}
-              type="primary"
-            >
-              Update &nbsp;
-              <FontAwesomeIcon icon={faDownload} />
-            </Button>
-          ) : (
-            <div
-              css={`
-                width: 96px;
-                height: 36px;
-                padding: 6px 8px;
-              `}
-            >
-              Up to date
-            </div>
-          )}
-        </div>
+        {/* <div */}
+        {/*  css={` */}
+        {/*    margin-top: 20px; */}
+        {/*    height: 36px; */}
+        {/*    display: flex; */}
+        {/*    flex-direction: row; */}
+        {/*  `} */}
+        {/* > */}
+        {/*  {updateAvailable ? ( */}
+        {/*    <Button */}
+        {/*      onClick={() => */}
+        {/*        ipcRenderer.invoke('installUpdateAndQuitOrRestart') */}
+        {/*      } */}
+        {/*      css={` */}
+        {/*        margin-right: 10px; */}
+        {/*      `} */}
+        {/*      type="primary" */}
+        {/*    > */}
+        {/*      Update &nbsp; */}
+        {/*      <FontAwesomeIcon icon={faDownload} /> */}
+        {/*    </Button> */}
+        {/*  ) : ( */}
+        {/*    <div */}
+        {/*      css={` */}
+        {/*        width: 96px; */}
+        {/*        height: 36px; */}
+        {/*        padding: 6px 8px; */}
+        {/*      `} */}
+        {/*    > */}
+        {/*      Up to date */}
+        {/*    </div> */}
+        {/*  )} */}
+        {/* </div> */}
       </LauncherVersion>
     </MyAccountPrf>
   );

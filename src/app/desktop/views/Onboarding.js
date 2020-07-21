@@ -124,7 +124,7 @@ const Home = () => {
             padding: 0 120px;
           `}
         >
-          {account.selectedProfile.name}, welcome to GDLauncher!
+          {account.selectedProfile.name}, welcome to FelNullGDLauncher!
         </div>
       </div>
       <div
@@ -147,9 +147,11 @@ const Home = () => {
             margin: 20% 10%;
           `}
         >
-          GDlauncher is completely free and open source. <br />
-          If you want to support us, consider renting a server on BisectHosting,
-          our official partner!
+          このLauncherはGDLauncherをもとに製作されています。
+          <br />
+          サポートが必要であれば
+          <br />
+          次のページのDiscordにてお願いします。
           <br />
           <br />
           <div
@@ -185,7 +187,12 @@ const Home = () => {
             margin: 20%;
           `}
         >
-          Or you can also support us through Patreon.
+          Licensed under GNU General Public License, version 3.
+          <br />
+          You are using GDLauncher,an open-source customizable launcher platform
+          that anyone can use.
+          <br />
+          FelNullGDLauncherはGDLauncherをベースに作成されています。
           <div
             css={`
               margin: 40px;
@@ -227,18 +234,12 @@ const Home = () => {
             margin: 20%;
           `}
         >
-          Also, don&apos;t forget to join us on Discord! This is where our
-          community is!
+          [Open Discord App]をクリック！
+          {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
           <iframe
-            css={`
-              margin-top: 40px;
-            `}
-            src="https://discordapp.com/widget?id=398091532881756161&theme=dark"
-            width="350"
+            src="https://e.widgetbot.io/channels/600929948529590272/608914022883917824"
             height="410"
-            allowTransparency="true"
-            frameBorder="0"
-            title="discordFrame"
+            width="800"
           />
         </div>
       </div>

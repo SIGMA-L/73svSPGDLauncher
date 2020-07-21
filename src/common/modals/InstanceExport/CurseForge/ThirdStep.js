@@ -228,7 +228,7 @@ export default function ThirdStep({
                   {isCompleted ? (
                     <div>
                       <h1>
-                        All Done!{' '}
+                        完了!{' '}
                         <FontAwesomeIcon
                           icon={faCheck}
                           css={`

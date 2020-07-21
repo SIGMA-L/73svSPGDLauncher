@@ -128,7 +128,7 @@ const ProfileSettings = () => {
         </AccountsContainer>
         <AccountContainer>
           <AccountItem onClick={() => dispatch(openModal('AddAccount'))}>
-            Add Account
+            アカウント追加
           </AccountItem>
         </AccountContainer>
       </Container>

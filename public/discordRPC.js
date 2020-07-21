@@ -8,16 +8,16 @@ exports.initRPC = () => {
   client = new Client({ transport: 'ipc' });
 
   activity = {
-    details: 'Playing GDLauncher',
+    details: 'Playing FelNullGDLauncher',
     state: 'Idle',
     startTimestamp: Math.floor(Date.now() / 1000),
     largeImageKey: 'default_big',
-    largeImageText: 'GDLauncher - A Custom Minecraft Launcher',
+    largeImageText: 'FelNullGDLauncher - TeamFelNull Minecraft Launcher',
     instance: false
   };
 
   client.on('ready', () => {
-    log.log('Discord RPC Connected');
+    log.log('602032140078809119');
     client.setActivity(activity);
   });
 

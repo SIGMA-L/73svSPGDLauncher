@@ -12,6 +12,7 @@ const Logo = ({ size, pointerCursor }) => {
     >
       <g>
         <polygon
+          // 左上のロゴ
           css={{ fill: '#365076', cursor: pointerCursor ? 'pointer' : '' }}
           points="874.343,259.5 437,7 -0.343,259.5 -0.343,764.5 437,1017 874.343,764.5 	"
         />

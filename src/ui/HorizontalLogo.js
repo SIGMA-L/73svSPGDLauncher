@@ -30,6 +30,7 @@ const HorizontalLogo = ({ size, pointer, onClick }) => {
     >
       <g>
         <polygon
+          // 設定内のLOGO
           css={{ fill: '#365076' }}
           points="270.028,78.05 135.014,0.099 0,78.05 0,233.95 135.014,311.901 270.028,233.95 	"
         />

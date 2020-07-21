@@ -341,13 +341,13 @@ const Overview = ({ instanceName, background, manifest }) => {
         <RenameRow>
           <Input value={newName} onChange={e => setNewName(e.target.value)} />
           <RenameButton onClick={() => renameInstance()} type="primary">
-            Rename&nbsp;
+            リネーム&nbsp;
             <FontAwesomeIcon icon={faSave} />
           </RenameButton>
         </RenameRow>
         <OverviewCard>
           <JavaManagerRow>
-            <div>Override Game Resolution</div>
+            <div>Custom Game Resolution</div>
             <Switch
               checked={height && width}
               onChange={v => {
@@ -440,7 +440,7 @@ const Overview = ({ instanceName, background, manifest }) => {
             </ResolutionInputContainer>
           )}
           <JavaManagerRow>
-            <div>Override Java Memory</div>
+            <div>Custom Java Memory</div>
             <Switch
               checked={JavaMemorySwitch}
               onChange={v => {
@@ -474,7 +474,7 @@ const Overview = ({ instanceName, background, manifest }) => {
             </div>
           )}
           <JavaManagerRow>
-            <div>Override Java Arguments</div>
+            <div>Custom Java Arguments</div>
             <Switch
               checked={JavaArgumentsSwitch}
               onChange={v => {

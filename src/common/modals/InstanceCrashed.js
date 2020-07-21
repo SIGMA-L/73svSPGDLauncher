@@ -53,14 +53,14 @@ const InstanceCrashed = ({ code, errorLogs }) => {
         height: 450px;
         width: 500px;
       `}
-      title="The instance could not be launched"
+      title="クラッシュ！？"
     >
       <Container>
         <InnerContainer>
           <Logo size={100} />
           <h3>
-            OOPSIE WOOPSIE!!
-            <br /> A creeper blew this instance up!
+            おっと...なんてこった！？
+            <br /> インスタンスがクラッシュしました。エラーログを見てください！
           </h3>
         </InnerContainer>
         <Card

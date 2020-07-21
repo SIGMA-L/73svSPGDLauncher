@@ -213,7 +213,7 @@ const Screenshots = ({ instanceName }) => {
           onClick={() => {
             dispatch(
               openModal('ActionConfirmation', {
-                message: 'Are you sure you want to delete this images?',
+                message: '選んだ画像を削除してもよろしいですか？',
                 confirmCallback: deleteFile,
                 title: 'Confirm'
               })
@@ -434,7 +434,7 @@ const Screenshots = ({ instanceName }) => {
             );
           })
         ) : (
-          <NoScreenAvailable>No Screenshots Available</NoScreenAvailable>
+          <NoScreenAvailable>画像はありません</NoScreenAvailable>
         )}
       </Container>
     </ExternalContainer>

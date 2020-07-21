@@ -141,8 +141,7 @@ const ModOverview = ({
                   font-weight: 700;
                 `}
               >
-                The installed version of this mod has been removed from twitch,
-                so you will only be able to get it as part of legacy modpacks.
+                このmodのバージョンはすでにTwitchから削除されているため、LegacyModPackの一部としてのみ取得できます。
               </div>
             )}
           <StyledSelect

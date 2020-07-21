@@ -36,7 +36,7 @@ const AddAccount = ({ username }) => {
               height: 80px;
             `}
           >
-            Mojang login
+            Mojang Account login
           </h1>
           <StyledInput
             disabled={!!username}
@@ -52,7 +52,7 @@ const AddAccount = ({ username }) => {
           />
         </FormContainer>
         <FormContainer>
-          <StyledButton onClick={addAccount}>Add Account</StyledButton>
+          <StyledButton onClick={addAccount}>ログイン</StyledButton>
         </FormContainer>
       </Container>
     </Modal>

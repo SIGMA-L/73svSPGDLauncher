@@ -11,6 +11,7 @@ const Logo = ({ size, pointerCursor }) => {
     >
       <g>
         <polygon
+          // クラッシュ時？よくわからん
           css={{ fill: '#365076', cursor: pointerCursor ? 'pointer' : '' }}
           points="989,280.77 540,21.54 91,280.77 91,799.23 540,1058.46 989,799.23 	"
         />
