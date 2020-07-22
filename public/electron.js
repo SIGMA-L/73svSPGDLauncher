@@ -54,7 +54,10 @@ try {
   // Do nothing
 }
 
-app.setPath('userData', path.join(app.getPath('appData'), 'gdlauncher_next'));
+app.setPath(
+  'userData',
+  path.join(app.getPath('appData'), 'felnullgdlauncher_next')
+);
 
 let allowUnstableReleases = false;
 const releaseChannelExists = fss.existsSync(

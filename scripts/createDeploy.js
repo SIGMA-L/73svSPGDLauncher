@@ -102,14 +102,14 @@ const createDeployFiles = async () => {
 const commonConfig = {
   config: {
     publish: {
-      owner: 'gorilla-devs',
-      repo: 'GDLauncher',
+      owner: 'TeamFelNull',
+      repo: 'FelNullGDLauncher',
       provider: 'github',
       private: false
     },
     generateUpdatesFilesForAllChannels: true,
-    productName: 'GDLauncher',
-    appId: 'org.gorilladevs.GDLauncher',
+    productName: 'FelNullGDLauncher',
+    appId: 'org.TeamFelNull.FelNullGDLauncher',
     files: [
       '!node_modules/**/*',
       'node_modules/7zip-bin/linux/x64/7za',

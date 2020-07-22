@@ -255,7 +255,7 @@ const General = () => {
       .invoke('getAppdataPath')
       .then(appData =>
         fsa
-          .readFile(path.join(appData, 'gdlauncher_next', 'rChannel'))
+          .readFile(path.join(appData, 'felnullgdlauncher_next', 'rChannel'))
           .then(v => setReleaseChannel(parseInt(v.toString(), 10)))
           .catch(() => setReleaseChannel(0))
       )
@@ -277,7 +277,7 @@ const General = () => {
   const changeDataPath = async () => {
     setLoadingMoveUserData(true);
     const appData = await ipcRenderer.invoke('getAppdataPath');
-    const appDataPath = path.join(appData, 'gdlauncher_next');
+    const appDataPath = path.join(appData, 'felnullgdlauncher_next');
 
     const notCopiedFiles = [
       'Cache',
@@ -392,7 +392,7 @@ const General = () => {
       {/*              const appData = await ipcRenderer.invoke('getAppdataPath'); */}
       {/*              setReleaseChannel(e); */}
       {/*              await fsa.writeFile( */}
-      {/*                path.join(appData, 'gdlauncher_next', 'rChannel'), */}
+      {/*                path.join(appData, 'felnullgdlauncher_next', 'rChannel'), */}
       {/*                e */}
       {/*              ); */}
       {/*            }} */}
@@ -619,7 +619,7 @@ const General = () => {
             `}
             onClick={async () => {
               const appData = await ipcRenderer.invoke('getAppdataPath');
-              const appDataPath = path.join(appData, 'gdlauncher_next');
+              const appDataPath = path.join(appData, 'felnullgdlauncher_next');
               setDataPath(appDataPath);
             }}
           >

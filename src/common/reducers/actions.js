@@ -2309,7 +2309,7 @@ export const initLatestMods = instanceName => {
 export const getAppLatestVersion = () => {
   return async () => {
     const { data: latestReleases } = await axios.get(
-      'https://api.github.com/repos/gorilla-devs/GDLauncher/releases'
+      'https://api.github.com/repos/TeamFelNull/FelNullGDLauncher/releases'
     );
 
     const latestPrerelease = latestReleases.find(v => v.prerelease);
@@ -2320,7 +2320,7 @@ export const getAppLatestVersion = () => {
 
     try {
       const rChannel = await fs.readFile(
-        path.join(appData, 'gdlauncher_next', 'rChannel')
+        path.join(appData, 'felnullgdlauncher_next', 'rChannel')
       );
       releaseChannel = rChannel.toString();
     } catch {
