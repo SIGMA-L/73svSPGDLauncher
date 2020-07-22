@@ -1,7 +1,7 @@
 {
-  "name": "gdlauncher",
-  "version": "1.0.8",
-  "description": "GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience",
+  "name": "felnullgdlauncher",
+  "version": "1.0.84",
+  "description": "FelNullGDlauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience",
   "keywords": [
     "minecraft",
     "launcher",
@@ -14,17 +14,17 @@
     "webpack"
   ],
   "bugs": {
-    "url": "https://github.com/gorilla-devs/GDLauncher/issues"
+    "url": "https://github.com/TeamFelnull/FelNullGDLauncher/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gorilla-devs/GDLauncher.git"
+    "url": "git+https://github.com/TeamFelnull/FelNullGDLauncher.git"
   },
   "license": "GPL-3.0",
   "author": {
-    "name": "GorillaDevs",
-    "email": "davide@gdevs.io",
-    "url": "https://gdevs.io"
+    "name": "FelNullDevs",
+    "email": "teamfelnull@m.servg.red",
+    "url": "https://www.servg.red"
   },
   "private": false,
   "homepage": "./",

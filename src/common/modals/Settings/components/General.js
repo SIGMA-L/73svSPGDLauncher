@@ -716,42 +716,42 @@ const General = () => {
         </div>
         <p>
           {updateAvailable
-            ? 'アップデートがあります。アップデートサービスはまだ構築されていません'
-            : 'アップデートはありません。アップデートサービスはまだ構築されていません'}
+            ? 'アップデートがあります。今すぐ更新しましょう！'
+            : 'アップデートはありません。'}
         </p>
-        {/* <div */}
-        {/*  css={` */}
-        {/*    margin-top: 20px; */}
-        {/*    height: 36px; */}
-        {/*    display: flex; */}
-        {/*    flex-direction: row; */}
-        {/*  `} */}
-        {/* > */}
-        {/*  {updateAvailable ? ( */}
-        {/*    <Button */}
-        {/*      onClick={() => */}
-        {/*        ipcRenderer.invoke('installUpdateAndQuitOrRestart') */}
-        {/*      } */}
-        {/*      css={` */}
-        {/*        margin-right: 10px; */}
-        {/*      `} */}
-        {/*      type="primary" */}
-        {/*    > */}
-        {/*      Update &nbsp; */}
-        {/*      <FontAwesomeIcon icon={faDownload} /> */}
-        {/*    </Button> */}
-        {/*  ) : ( */}
-        {/*    <div */}
-        {/*      css={` */}
-        {/*        width: 96px; */}
-        {/*        height: 36px; */}
-        {/*        padding: 6px 8px; */}
-        {/*      `} */}
-        {/*    > */}
-        {/*      Up to date */}
-        {/*    </div> */}
-        {/*  )} */}
-        {/* </div> */}
+        <div
+          css={`
+            margin-top: 20px;
+            height: 36px;
+            display: flex;
+            flex-direction: row;
+          `}
+        >
+          {updateAvailable ? (
+            <Button
+              onClick={() =>
+                ipcRenderer.invoke('installUpdateAndQuitOrRestart')
+              }
+              css={`
+                margin-right: 10px;
+              `}
+              type="primary"
+            >
+              アップデート！ &nbsp;
+              <FontAwesomeIcon icon={faDownload} />
+            </Button>
+          ) : (
+            <div
+              css={`
+                width: 96px;
+                height: 36px;
+                padding: 6px 8px;
+              `}
+            >
+              最新
+            </div>
+          )}
+        </div>
       </LauncherVersion>
     </MyAccountPrf>
   );
