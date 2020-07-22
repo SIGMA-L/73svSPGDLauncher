@@ -193,21 +193,6 @@ const Home = () => {
           that anyone can use.
           <br />
           FelNullGDLauncherはGDLauncherをベースに作成されています。
-          <div
-            css={`
-              margin: 40px;
-            `}
-          >
-            <a href="https://www.patreon.com/gorilladevs">
-              <img
-                css={`
-                  cursor: pointer;
-                `}
-                alt="Become a Patron"
-                src="https://gdevs.io/img/become_a_patron_button.png"
-              />
-            </a>
-          </div>
         </div>
       </div>
       <div
