@@ -172,7 +172,7 @@ const Login = () => {
             <Header>
               <HorizontalLogo size={200} />
             </Header>
-            <p>Sign in with your Mojang Account</p>
+            <p>Minecraft.net Mojang アカウントサインイン</p>
             <Form>
               <div>
                 <Input
@@ -206,12 +206,12 @@ const Login = () => {
               <FooterLinks>
                 <div>
                   <a href="https://my.minecraft.net/en-us/store/minecraft/#register">
-                    CREATE AN ACCOUNT
+                    アカウントを作成
                   </a>
                 </div>
                 <div>
                   <a href="https://my.minecraft.net/en-us/password/forgot/">
-                    FORGOT PASSWORD
+                    パスワードを忘れた
                   </a>
                 </div>
               </FooterLinks>
