@@ -1,6 +1,6 @@
 {
   "name": "felnullgdlauncher",
-  "version": "1.0.88",
+  "version": "1.0.89",
   "description": "FelNullGDlauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience",
   "keywords": [
     "minecraft",
@@ -46,10 +46,22 @@
     "postinstall": "yarn rebuild",
     "rebuild": "node ./scripts/buildNativeDeps.js",
     "deploy": "node ./scripts/createDeploy.js",
+    "deploy-win": "node ./scripts/createDeploy-win.js",
+    "deploy-mac": "node scripts/createDeploy-mac.js.txt",
+    "deploy-ubu": "node scripts/createDeploy-ubu.js.txt",
     "release:setup": "cross-env-shell NODE_ENV=production APP_TYPE=electron REACT_APP_RELEASE_TYPE=setup \"yarn build\" && yarn build-electron:setup && yarn deploy setup",
+    "release-win:setup": "cross-env-shell NODE_ENV=production APP_TYPE=electron REACT_APP_RELEASE_TYPE=setup \"yarn build\" && yarn build-electron:setup && yarn deploy-win setup",
+    "release-mac:setup": "cross-env-shell NODE_ENV=production APP_TYPE=electron REACT_APP_RELEASE_TYPE=setup \"yarn build\" && yarn build-electron:setup && yarn deploy-mac setup",
+    "release-ubu:setup": "cross-env-shell NODE_ENV=production APP_TYPE=electron REACT_APP_RELEASE_TYPE=setup \"yarn build\" && yarn build-electron:setup && yarn deploy-ubu setup",
     "release:portable": "cross-env-shell NODE_ENV=production APP_TYPE=electron REACT_APP_RELEASE_TYPE=portable \"yarn build\" && yarn build-electron:portable && yarn deploy portable",
+    "release-win:portable": "cross-env-shell NODE_ENV=production APP_TYPE=electron REACT_APP_RELEASE_TYPE=portable \"yarn build\" && yarn build-electron:portable && yarn deploy-win portable",
+    "release-mac:portable": "cross-env-shell NODE_ENV=production APP_TYPE=electron REACT_APP_RELEASE_TYPE=portable \"yarn build\" && yarn build-electron:portable && yarn deploy-mac portable",
+    "release-ubu:portable": "cross-env-shell NODE_ENV=production APP_TYPE=electron REACT_APP_RELEASE_TYPE=portable \"yarn build\" && yarn build-electron:portable && yarn deploy-ubu portable",
     "upload": "node ./scripts/uploadRelease.js",
-    "release": "rimraf ./deploy && yarn release:setup && yarn release:portable"
+    "release": "rimraf ./deploy && yarn release:setup && yarn release:portable",
+    "release-win": "rimraf ./deploy-win && yarn release-win:setup && yarn release-win:portable",
+    "release-mac": "rimraf ./deploy-mac && yarn release-mac:setup && yarn release-mac:portable",
+    "release-ubu": "rimraf ./deploy-ubu && yarn release-ubu:setup && yarn release-ubu:portable"
   },
   "husky": {
     "hooks": {
