@@ -102,14 +102,14 @@ const createDeployFiles = async () => {
 const commonConfig = {
   config: {
     publish: {
-      owner: 'TeamFelNull',
-      repo: 'FelNullGDLauncher',
+      owner: 'gorilla-devs',
+      repo: 'GDLauncher',
       provider: 'github',
       private: false
     },
     generateUpdatesFilesForAllChannels: true,
-    productName: 'FelNullGDLauncher',
-    appId: 'org.TeamFelNull.FelNullGDLauncher',
+    productName: 'GDLauncher',
+    appId: 'org.gorilladevs.GDLauncher',
     files: [
       '!node_modules/**/*',
       'node_modules/7zip-bin/linux/x64/7za',
@@ -132,6 +132,20 @@ const commonConfig = {
     asar: {
       smartUnpack: false
     },
+    dmg: {
+      contents: [
+        {
+          x: 130,
+          y: 220
+        },
+        {
+          x: 410,
+          y: 220,
+          type: 'link',
+          path: '/Applications'
+        }
+      ]
+    },
     nsisWeb: {
       oneClick: true,
       installerIcon: './public/icon.ico',
@@ -147,7 +161,7 @@ const commonConfig = {
     },
     /* eslint-disable */
     artifactName: `${'${productName}'}-${'${os}'}-${
-      process.argv[2]
+        process.argv[2]
     }.${'${ext}'}`,
     /* eslint-enable */
     linux: {
@@ -166,6 +180,9 @@ const commonConfig = {
   }),
   ...((!process.env.RELEASE_TESTING || process.platform === 'win32') && {
     win: [type === 'setup' ? 'nsis-web:x64' : 'zip:x64']
+  }),
+  ...((!process.env.RELEASE_TESTING || process.platform === 'darwin') && {
+    mac: type === 'setup' ? ['dmg:x64'] : []
   })
 };
 
@@ -193,6 +210,11 @@ const main = async () => {
 
   const allFiles = {
     setup: {
+      darwin: [
+        `${productName}-mac-${type}.dmg`,
+        `${productName}-mac-${type}.dmg.blockmap`,
+        'latest-mac.yml'
+      ],
       win32: [
         path.join('nsis-web', `${productName}-win-${type}.exe`),
         path.join('nsis-web', nsisWeb7z),
@@ -207,6 +229,7 @@ const main = async () => {
       ]
     },
     portable: {
+      darwin: [],
       win32: [`${productName}-win-${type}.zip`],
       linux: [`${productName}-linux-${type}.snap`]
     }
