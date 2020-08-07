@@ -56,8 +56,6 @@ jobs:
           BITRISE_GIT_TAG: ''
           CI_BUILD_TAG: ''
           RELEASE_TESTING: true
-          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
-          CSC_LINK: ${{ secrets.CSC_LINK }}
         run: |
           yarn release-win -o --watch
       - name: upload release to gh releases
