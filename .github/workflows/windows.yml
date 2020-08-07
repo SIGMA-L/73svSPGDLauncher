@@ -46,7 +46,7 @@ jobs:
       - name: yarn lint
         run: |
           yarn lint
-      - name: yarn release for mac and linux
+      - name: yarn release
         if: matrix.os != 'windows-latest' || github.event_name != 'push'
         env:
           CI: ''
@@ -59,7 +59,7 @@ jobs:
           CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
           CSC_LINK: ${{ secrets.CSC_LINK }}
         run: |
-          yarn release-win -o --watch
+          yarn release -o --watch
       - name: upload release to gh releases
         if: github.event_name == 'push' && github.ref == 'refs/heads/releases'
         env:
@@ -70,16 +70,16 @@ jobs:
         uses: papeloto/action-zip@v1
         with:
           # Files or directories to zip
-          files: deploy
+          files: ./
           # Name of output zip file
-          dest: win.zip
+          dest: deploy-win/win.zip
           # Whether to add subdirectories to simply zip all files to the root
           recursive: true
       - uses: actions/upload-artifact@v1
         if: matrix.os == 'windows-latest'
         with:
           name: Windows Release
-          path: deploy
+          path: deploy-win
       - uses: actions/setup-ruby@v1
       - name: Send Webhook Notification
         if: matrix.os == 'windows-latest'
