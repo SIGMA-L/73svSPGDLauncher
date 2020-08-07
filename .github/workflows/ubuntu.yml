@@ -1,4 +1,4 @@
-name: GDLauncher Next CI
+name: Launcher Ubuntu
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest]
+        os: [ubuntu-latest]
 
     steps:
       - name: Context
@@ -46,20 +46,6 @@ jobs:
       - name: yarn lint
         run: |
           yarn lint
-      - name: yarn release for windows
-        if: matrix.os == 'windows-latest' && github.event_name == 'push'
-        env:
-          CI: ''
-          TRAVIS_TAG: ''
-          APPVEYOR_REPO_TAG_NAME: ''
-          CIRCLE_TAG: ''
-          BITRISE_GIT_TAG: ''
-          CI_BUILD_TAG: ''
-          RELEASE_TESTING: true
-          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
-          CSC_LINK: ${{ secrets.CSC_LINK }}
-        run: |
-          yarn release
       - name: yarn release for mac and linux
         if: matrix.os != 'windows-latest' || github.event_name != 'push'
         env:
@@ -78,13 +64,6 @@ jobs:
           GH_ACCESS_TOKEN_RELEASES: ${{ secrets.GH_ACCESS_TOKEN_RELEASES }}
         run: |
           yarn upload
-
-      - uses: actions/upload-artifact@v1
-        if: matrix.os == 'windows-latest'
-        with:
-          name: Windows Release
-          path: deploy
-
       - uses: actions/upload-artifact@v1
         if: matrix.os == 'ubuntu-latest'
         with:
@@ -92,3 +71,14 @@ jobs:
           path: deploy
 
       - uses: actions/setup-ruby@v1
+      - name: Send Webhook Notification
+        if: matrix.os == 'ubuntu-latest'
+        env:
+          JOB_STATUS: ${{ job.status }}
+          WEBHOOK_URL: ${{ secrets.https://discordapp.com/api/webhooks/716532992142737438/TaoaiVJz6ECLBaPKYOhD9Fyd6R4nOgyRzS_by569PzvZFZSY4Zh2v5JL5pyb4pjSspuS }}
+          HOOK_OS_NAME: ${{ runner.os }}
+          WORKFLOW_NAME: ${{ github.workflow }}
+        run: |
+          git clone https://github.com/gorilla-devs/github-actions-discord-webhook.git webhook
+          bash webhook/send.sh $JOB_STATUS $WEBHOOK_URL
+        shell: bash
