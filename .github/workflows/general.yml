@@ -56,10 +56,8 @@ jobs:
           BITRISE_GIT_TAG: ''
           CI_BUILD_TAG: ''
           RELEASE_TESTING: true
-          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
-          CSC_LINK: ${{ secrets.CSC_LINK }}
         run: |
-          yarn release -o --watch
+          yarn release-win -o --watch
       - name: yarn release for mac and linux
         if: matrix.os != 'windows-latest' || github.event_name != 'push'
         env:
