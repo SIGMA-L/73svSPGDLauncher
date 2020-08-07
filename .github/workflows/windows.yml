@@ -46,8 +46,8 @@ jobs:
       - name: yarn lint
         run: |
           yarn lint
-      - name: yarn release for windows
-        if: matrix.os == 'windows-latest' && github.event_name == 'push'
+      - name: yarn release for mac and linux
+        if: matrix.os != 'windows-latest' || github.event_name != 'push'
         env:
           CI: ''
           TRAVIS_TAG: ''
@@ -56,8 +56,6 @@ jobs:
           BITRISE_GIT_TAG: ''
           CI_BUILD_TAG: ''
           RELEASE_TESTING: true
-          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
-          CSC_LINK: ${{ secrets.CSC_LINK }}
         run: |
           yarn release-win
       - name: upload release to gh releases
