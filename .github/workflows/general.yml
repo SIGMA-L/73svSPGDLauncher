@@ -101,9 +101,7 @@ jobs:
         if: matrix.os == 'macos-latest'
         env:
           JOB_STATUS: ${{ job.status }}
-          WEBHOOK_URL: ${{ https://discordapp.com/api/webhooks/716532992142737438/TaoaiVJz6ECLBaPKYOhD9Fyd6R4nOgyRzS_by569PzvZFZSY4Zh2v5JL5pyb4pjSspuS }}
-          HOOK_OS_NAME: ${{ runner.os }}
-          WORKFLOW_NAME: ${{ github.workflow }}
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
         run: |
           git clone https://github.com/gorilla-devs/github-actions-discord-webhook.git webhook
           bash webhook/send.sh $JOB_STATUS $WEBHOOK_URL
