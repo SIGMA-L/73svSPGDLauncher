@@ -46,8 +46,8 @@ jobs:
       - name: yarn lint
         run: |
           yarn lint
-      - name: yarn release
-        if: matrix.os != 'windows-latest' || github.event_name != 'push'
+      - name: yarn release for windows
+        if: matrix.os == 'windows-latest' && github.event_name == 'push'
         env:
           CI: ''
           TRAVIS_TAG: ''
@@ -59,27 +59,18 @@ jobs:
           CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
           CSC_LINK: ${{ secrets.CSC_LINK }}
         run: |
-          yarn release -o --watch
+          yarn release-win -o --watch
       - name: upload release to gh releases
         if: github.event_name == 'push' && github.ref == 'refs/heads/releases'
         env:
           GH_ACCESS_TOKEN_RELEASES: ${{ secrets.GH_ACCESS_TOKEN_RELEASES }}
         run: |
           yarn upload -o --watch
-      - name: Easy Zip Files
-        uses: papeloto/action-zip@v1
-        with:
-          # Files or directories to zip
-          files: ./
-          # Name of output zip file
-          dest: deploy-win/win.zip
-          # Whether to add subdirectories to simply zip all files to the root
-          recursive: true
       - uses: actions/upload-artifact@v1
         if: matrix.os == 'windows-latest'
         with:
           name: Windows Release
-          path: deploy-win
+          path: deploy
       - uses: actions/setup-ruby@v1
       - name: Send Webhook Notification
         if: matrix.os == 'windows-latest'
