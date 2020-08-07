@@ -67,7 +67,7 @@ jobs:
         run: |
           yarn upload -o --watch
       - name: Zip Release
-      - uses: TheDoctor0/zip-release@0.4.1
+        uses: TheDoctor0/zip-release@0.4.1
         with:
           # Filename for archive
           filename: win.zip
