@@ -51,7 +51,7 @@ const winReleaseFolder = path.resolve(
   './release',
   `win-unpacked`
 );
-const deployFolder = path.resolve(__dirname, '../', 'deploy');
+const deployFolder = path.resolve(__dirname, '../', 'deploy-win');
 
 const createDeployFiles = async () => {
   const files = await getFiles(winReleaseFolder);
