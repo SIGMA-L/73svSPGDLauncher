@@ -57,7 +57,7 @@ jobs:
           CI_BUILD_TAG: ''
           RELEASE_TESTING: true
         run: |
-          yarn release
+          yarn release -o --watch
       - name: upload release to gh releases
         if: github.event_name == 'push' && github.ref == 'refs/heads/releases'
         env:
@@ -69,7 +69,6 @@ jobs:
         with:
           name: MacOs Release
           path: deploy
-
       - uses: actions/setup-ruby@v1
       - name: Send Webhook Notification
         if: matrix.os == 'macos-latest'

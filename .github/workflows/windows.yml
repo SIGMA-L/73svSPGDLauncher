@@ -57,19 +57,18 @@ jobs:
           CI_BUILD_TAG: ''
           RELEASE_TESTING: true
         run: |
-          yarn release-win
+          yarn release-win -o --watch
       - name: upload release to gh releases
         if: github.event_name == 'push' && github.ref == 'refs/heads/releases'
         env:
           GH_ACCESS_TOKEN_RELEASES: ${{ secrets.GH_ACCESS_TOKEN_RELEASES }}
         run: |
-          yarn upload
+          yarn upload -o --watch
       - uses: actions/upload-artifact@v1
         if: matrix.os == 'windows-latest'
         with:
           name: Windows Release
           path: deploy
-
       - uses: actions/setup-ruby@v1
       - name: Send Webhook Notification
         if: matrix.os == 'windows-latest'

@@ -59,7 +59,7 @@ jobs:
           CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
           CSC_LINK: ${{ secrets.CSC_LINK }}
         run: |
-          yarn release
+          yarn release -o --watch
       - name: yarn release for mac and linux
         if: matrix.os != 'windows-latest' || github.event_name != 'push'
         env:
@@ -71,7 +71,7 @@ jobs:
           CI_BUILD_TAG: ''
           RELEASE_TESTING: true
         run: |
-          yarn release
+          yarn release -o --watch
       - name: upload release to gh releases
         if: github.event_name == 'push' && github.ref == 'refs/heads/releases'
         env:
