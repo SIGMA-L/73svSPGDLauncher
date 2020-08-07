@@ -66,15 +66,19 @@ jobs:
           GH_ACCESS_TOKEN_RELEASES: ${{ secrets.GH_ACCESS_TOKEN_RELEASES }}
         run: |
           yarn upload -o --watch
-      - name: Easy Zip Files
-          uses: papeloto/action-zip@v1
-          with:
-            # Files or directories to zip
-            files: deploy-win
-            # Name of output zip file
-            dest: deploy/win.zip
-            # Whether to add subdirectories to simply zip all files to the root
-            recursive: true
+      - name: Zip Release
+      - uses: TheDoctor0/zip-release@0.4.1
+        with:
+          # Filename for archive
+          filename: win.zip
+          # Base path for archive files
+          path: deploy
+          # Working directory before zipping
+          directory: deploy-win
+          # List of excluded files / directories
+          exclusions: # optional, default is
+          # Tool to use for archiving
+          type: zip
       - uses: actions/upload-artifact@v1
         if: matrix.os == 'windows-latest'
         with:
