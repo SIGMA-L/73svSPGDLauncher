@@ -1,6 +1,6 @@
 {
   "name": "felnullgdlauncher",
-  "version": "1.0.87",
+  "version": "1.0.88",
   "description": "FelNullGDlauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience",
   "keywords": [
     "minecraft",
@@ -22,8 +22,8 @@
   },
   "license": "GPL-3.0",
   "author": {
-    "name": "FelNullDevs",
-    "email": "teamfelnull@m.servg.red",
+    "name": "MG8853",
+    "email": "qq3082499405@icloud.com",
     "url": "https://www.servg.red"
   },
   "private": false,
