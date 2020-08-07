@@ -112,8 +112,6 @@ const commonConfig = {
     appId: 'org.TeamFelNull.FelNullGDLauncher',
     files: [
       '!node_modules/**/*',
-      'node_modules/7zip-bin/linux/x64/7za',
-      'node_modules/7zip-bin/mac/7za',
       'node_modules/7zip-bin/win/x64/7za.exe',
       'build/**/*',
       'package.json',
