@@ -100,7 +100,7 @@ const ChangeLogs = () => {
               height: 40px;
               font-size: 20px;
               padding: 4px !important;
-              margin-top: 10px;
+              margin-top: 3px;
               margin-bottom: 10px;
             `}
             type="primary"
@@ -131,7 +131,7 @@ const ChangeLogs = () => {
               height: 40px;
               font-size: 20px;
               padding: 4px !important;
-              margin-top: 10px;
+              margin-top: 3px;
               margin-bottom: 10px;
             `}
             type="primary"
