@@ -100,7 +100,8 @@ const ChangeLogs = () => {
               height: 40px;
               font-size: 20px;
               padding: 4px !important;
-              margin-top: 20px;
+              margin-top: 10px;
+              margin-bottom: 10px;
             `}
             type="primary"
             href="https://discord.gg/vsFrsgY"
@@ -130,7 +131,8 @@ const ChangeLogs = () => {
               height: 40px;
               font-size: 20px;
               padding: 4px !important;
-              margin-top: 20px;
+              margin-top: 10px;
+              margin-bottom: 10px;
             `}
             type="primary"
             href="https://github.com/TeamFelnull/FelNullGDLauncher/blob/master/LICENSE"
