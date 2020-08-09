@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Button } from 'antd';
 import { ipcRenderer } from 'electron';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
 import Modal from '../components/Modal';
 
 const ChangeLogs = () => {
@@ -19,7 +19,7 @@ const ChangeLogs = () => {
         height: 500px;
         width: 650px;
       `}
-      title={`What's new in ${version}`}
+      title={`Release v${version}`}
     >
       <Container>
         <Section>
@@ -28,20 +28,25 @@ const ChangeLogs = () => {
               color: ${props => props.theme.palette.colors.green};
             `}
           >
-            <span>New Features</span>
+            <span>新機能</span>
           </SectionTitle>
           <div>
             <ul>
-              <li>Mods name can now be copied by right clicking on it</li>
-              <li>Minor improvements to instance export</li>
-              <li>Prevented installing multiple mod dependencies</li>
-              <li>Minecraft version/modloader can now be changed</li>
-              <li>Added preferred curse release channel to the settings</li>
-              <li>You can now see the installed version of the modpack</li>
-              <li>Updated some dependencies</li>
+              <li>Modを右クリックでコピーできるようになりました</li>
+              <li>インスタンスのエクスポートへの対応</li>
               <li>
-                Added bundled vcredist, so you won't need to have them installed
-                on your computer for gdlauncher to work
+                複数のModの依存関係のModのインストールをできないようにしました
+              </li>
+              <li>
+                Minecraftのバージョン/Modローダーを変更できるようになりました
+              </li>
+              <li>
+                設定に優先するリリースチャンネル(Stable・Beta・Alpha)を追加
+              </li>
+              <li>ModPackのバージョンを表示</li>
+              <li>一部の依存関係を更新しました</li>
+              <li>
+                vcredistを追加したため、FelNullGDLauncherの前提でインストール必要なものをなくしました
               </li>
             </ul>
           </div>
@@ -52,13 +57,13 @@ const ChangeLogs = () => {
               color: ${props => props.theme.palette.colors.red};
             `}
           >
-            <span>Bug Fixes</span>
+            <span>修正</span>
           </SectionTitle>
           <div>
             <ul>
-              <li>Fixed curse links sometimes not working</li>
-              <li>Fixed the news loader</li>
-              <li>Fixed context menu sometimes going outside the window</li>
+              <li>CurseForgeのリンクを修正</li>
+              <li>Minecraft公式ニュースの表示を修正</li>
+              <li>DiscordRichPresenceの表示を修正</li>
             </ul>
           </div>
         </Section>
@@ -68,11 +73,26 @@ const ChangeLogs = () => {
               color: ${props => props.theme.palette.colors.lavander};
             `}
           >
-            <span>Join Our Community</span>
+            <span>Join Discord</span>
           </SectionTitle>
           <p>
-            We love our users, that's why we have a dedicated Discord server
-            just to talk with all of them!
+            FelNullが出してる{' '}
+            <span
+              css={`
+                color: ${props => props.theme.palette.colors.green};
+              `}
+            >
+              ModPack
+            </span>{' '}
+            などの質問は{' '}
+            <span
+              css={`
+                color: ${props => props.theme.palette.colors.green};
+              `}
+            >
+              Discord
+            </span>{' '}
+            でのみ受け付けております。
           </p>
           <Button
             css={`
@@ -83,10 +103,40 @@ const ChangeLogs = () => {
               margin-top: 20px;
             `}
             type="primary"
-            href="https://discord.gg/4cGYzen"
+            href="https://discord.gg/vsFrsgY"
           >
             <FontAwesomeIcon icon={faDiscord} />
             &nbsp; Discord
+          </Button>
+        </Section>
+        <Section>
+          <SectionTitle
+            css={`
+              color: ${props => props.theme.palette.colors.jungleGreen};
+            `}
+          >
+            <span>GDLauncher License</span>
+          </SectionTitle>
+          <p>
+            This project is licensed under the GNU GPL V3.0 - see the GitHub
+            LICENSE file for details. A simple way to keep in terms of the
+            license is by forking this repository and leaving it open source
+            under the same license.
+            FelNullGDLauncherはgorilla-devs/GDLauncherをベースに作成されています。
+          </p>
+          <Button
+            css={`
+              width: 200px;
+              height: 40px;
+              font-size: 20px;
+              padding: 4px !important;
+              margin-top: 20px;
+            `}
+            type="primary"
+            href="https://github.com/TeamFelnull/FelNullGDLauncher/blob/master/LICENSE"
+          >
+            <FontAwesomeIcon icon={faGithub} />
+            &nbsp; LICENSE
           </Button>
         </Section>
       </Container>
