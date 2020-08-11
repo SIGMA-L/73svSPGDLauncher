@@ -2,13 +2,8 @@ name: Launcher Next CI
 
 on:
   push:
-    branches:
-      - master
-      - releases
-  pull_request:
-    branches:
-      - master
-      - releases
+    tags:
+      - '1.0.8*'
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -46,6 +41,9 @@ jobs:
       - name: yarn lint
         run: |
           yarn lint
+          
+      
+      ##CreateAPP - yarn release
       - name: yarn release for windows
         if: matrix.os == 'windows-latest' && github.event_name == 'push'
         env:
@@ -76,6 +74,9 @@ jobs:
           GH_ACCESS_TOKEN_RELEASES: ${{ secrets.GH_ACCESS_TOKEN_RELEASES }}
         run: |
           yarn upload
+
+
+     ##ActionRelease - zip
       - uses: actions/upload-artifact@v1
         if: matrix.os == 'macos-latest'
         with:
@@ -93,6 +94,59 @@ jobs:
         with:
           name: Linux Release
           path: deploy
+ 
+ 
+      ##ReleaseChannel - go!
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: FelNullLauncher - version.${{ github.ref }}
+          body: |
+            felnullgdlauncher-${{ github.ref }}-x64.nsis.7z is network installer data. Do not download!
+            felnullgdlauncher-${{ github.ref }}-x64.nsis.7zはネットワークインストーラーのデータです。ダウンロードしないでください！
+
+            Linux : どれでもできればよし！
+            Mac OS X : [FelNullGDLauncher-mac-setup.dmg]を実行してアプリをアプリケーションにコピーしてください。
+            Windows : [FelNullGDLauncher-win-setup.exe]を実行すると自動的にインストールが開始し、ソフトが起動します。
+
+            ※データフォルダリンク例
+            Linuxわからん
+
+            Mac OS X
+            /Users/ [user] /Library/Application Support/felnullgdlaucher
+            /Users/ [user] /Library/Application Support/felnullgdlaucher_next
+
+            Windows
+            C:\Users\ [user] \AppData\Roaming\felnullgdlauncher
+            C:\Users\ [user] \AppData\Roaming\felnullgdlauncher_next
+            
+            Build by ${{ github.actor }}
+          draft: false
+          prerelease: false
+      
+
+      - uses: xresloader/upload-to-github-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          file: "*.exe"
+      - uses: xresloader/upload-to-github-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          file: "*.7z"
+
+
+
+
+
+
+
+
 
       - uses: actions/setup-ruby@v1
       - name: Send Webhook Notification
