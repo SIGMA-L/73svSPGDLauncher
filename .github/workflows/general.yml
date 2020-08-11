@@ -94,39 +94,40 @@ jobs:
         with:
           name: Linux Release
           path: deploy
- 
- 
+
+
+      ##Tag Number input
+      - name: Get latest release version number
+        id: get_version
+        uses: battila7/get-version-action@v2
+
+
+
+
       ##ReleaseChannel - go!
       - name: Create Release1
-        if: matrix.os == 'macos-latest'
+#        if: matrix.os == 'macos-latest'
         id: create_release1
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
-          tag_name: ${{ github.ref }}-macos
-          release_name: FelNullLauncher - MacOS - version.${{ github.ref }}
+          tag_name: ${{ steps.get_version.outputs.version }}
+          release_name: FelNullLauncher - MacOS - ${{ steps.get_version.outputs.version }}
           body: |
+            felnullgdlauncher-${{ steps.get_version.outputs.version-without-v }}-x64.nsis.7z is network installer data. Do not download!
+            felnullgdlauncher-${{ steps.get_version.outputs.version-without-v }}-x64.nsis.7zはネットワークインストーラーのデータです。ダウンロードしないでください！
+
+            Linux : どれでもできればよし！
             Mac OS X : [FelNullGDLauncher-mac-setup.dmg]を実行してアプリをアプリケーションにコピーしてください。
+            Windows : [FelNullGDLauncher-win-setup.exe]を実行すると自動的にインストールが開始し、ソフトが起動します。
+
+            ※データフォルダリンク例
+            Linuxわからん
 
             Mac OS X
             /Users/ [user] /Library/Application Support/felnullgdlaucher
             /Users/ [user] /Library/Application Support/felnullgdlaucher_next
-
-            Build by ${{ github.actor }}
-          draft: false
-          prerelease: false
-      - name: Create Release2
-        if: matrix.os == 'windows-latest'
-        id: create_release2
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
-        with:
-          tag_name: ${{ github.ref }}-windows
-          release_name: FelNullLauncher - Windows - version.${{ github.ref }}
-          body: |
-            Windows : [FelNullGDLauncher-win-setup.exe]を実行すると自動的にインストールが開始し、ソフトが起動します。
 
             Windows
             C:\Users\ [user] \AppData\Roaming\felnullgdlauncher
@@ -135,55 +136,74 @@ jobs:
             Build by ${{ github.actor }}
           draft: false
           prerelease: false
-      - name: Create Release3
-        if: matrix.os == 'ubuntu-latest'
-        id: create_release3
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
-        with:
-          tag_name: ${{ github.ref }}-ubuntu
-          release_name: FelNullLauncher - Ubuntu - version.${{ github.ref }}
-          body: |
-            Linux : どれでもできればよし！
-
-            ※データフォルダリンク例
-            Linuxわからん
-
-            Build by ${{ github.actor }}
-          draft: false
-          prerelease: false
+#      - name: Create Release2
+#        if: matrix.os == 'windows-latest'
+#        id: create_release2
+#        uses: actions/create-release@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+#        with:
+#          tag_name: ${{ github.ref }}-windows
+#          release_name: FelNullLauncher - Windows - version.${{ github.ref }}
+#          body: |
+#            Windows : [FelNullGDLauncher-win-setup.exe]を実行すると自動的にインストールが開始し、ソフトが起動します。
+#
+#            Windows
+#            C:\Users\ [user] \AppData\Roaming\felnullgdlauncher
+#            C:\Users\ [user] \AppData\Roaming\felnullgdlauncher_next
+#
+#            Build by ${{ github.actor }}
+#          draft: false
+#          prerelease: false
+#      - name: Create Release3
+#        if: matrix.os == 'ubuntu-latest'
+#        id: create_release3
+#        uses: actions/create-release@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+#        with:
+#          tag_name: ${{ github.ref }}-ubuntu
+#          release_name: FelNullLauncher - Ubuntu - version.${{ github.ref }}
+#          body: |
+#            Linux : どれでもできればよし！
+#
+#            ※データフォルダリンク例
+#            Linuxわからん
+#
+#            Build by ${{ github.actor }}
+#          draft: false
+#          prerelease: false
 
 
 
 
       - uses: xresloader/upload-to-github-release@v1
-        if: matrix.os == 'macos-latest'
+#        if: matrix.os == 'macos-latest'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
           file: "deploy"
           tags: true
           draft: false
-          tag_name: "${{ github.ref }}-macos"
-      - uses: xresloader/upload-to-github-release@v1
-        if: matrix.os == 'windows-latest'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
-        with:
-          file: "deploy"
-          tags: true
-          draft: false
-          tag_name: "${{ github.ref }}-windows"
-      - uses: xresloader/upload-to-github-release@v1
-        if: matrix.os == 'ubuntu-latest'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
-        with:
-          file: "deploy"
-          tags: true
-          draft: false
-          tag_name: "${{ github.ref }}-ubuntu"
+          tag_name: ${{ steps.get_version.outputs.version }}
+#      - uses: xresloader/upload-to-github-release@v1
+#        if: matrix.os == 'windows-latest'
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+#        with:
+#          file: "deploy"
+#          tags: true
+#          draft: false
+#          tag_name: ${{ github.ref.tags }}
+#      - uses: xresloader/upload-to-github-release@v1
+#        if: matrix.os == 'ubuntu-latest'
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+#        with:
+#          file: "deploy"
+#          tags: true
+#          draft: false
+#          tag_name: ${{ github.ref.tags }}
 
 
 
