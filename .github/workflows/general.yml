@@ -78,18 +78,21 @@ jobs:
 
      ##ActionRelease - zip
       - uses: actions/upload-artifact@v1
+        name: Action-Upload-MacOS
         if: matrix.os == 'macos-latest'
         with:
           name: MacOs Release
           path: deploy
 
       - uses: actions/upload-artifact@v1
+        name: Action-Upload-Windows
         if: matrix.os == 'windows-latest'
         with:
           name: Windows Release
           path: deploy
 
       - uses: actions/upload-artifact@v1
+        name: Action-Upload-Ubuntu
         if: matrix.os == 'ubuntu-latest'
         with:
           name: Linux Release
@@ -97,16 +100,15 @@ jobs:
 
 
       ##Tag Number input
-      - name: Get latest release version number
+      - name: Get latest release version tag number
         id: get_version
         uses: battila7/get-version-action@v2
 
 
-
-
       ##ReleaseChannel - go!
-      - name: Create Release1
-        id: create_release1
+      - name: Create Release
+        if: matrix.os == 'macos-latest'
+        id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
@@ -138,8 +140,8 @@ jobs:
 
 
 
-
       - uses: xresloader/upload-to-github-release@v1
+        name: Upload Release File
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
@@ -147,7 +149,6 @@ jobs:
           tags: true
           draft: false
           tag_name: ${{ steps.get_version.outputs.version }}
-
 
 
 
