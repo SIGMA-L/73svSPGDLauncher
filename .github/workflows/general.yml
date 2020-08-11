@@ -42,7 +42,43 @@ jobs:
         run: |
           yarn lint
           
-      
+
+      ##ReleaseChannel - go!
+      - name: Create Release
+        if: matrix.os == 'macos-latest'
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+        with:
+          tag_name: ${{ steps.get_version.outputs.version }}
+          release_name: FelNullLauncher - ${{ steps.get_version.outputs.version }}
+          body: |
+            felnullgdlauncher-${{ steps.get_version.outputs.version-without-v }}-x64.nsis.7z is network installer data. Do not download!
+            felnullgdlauncher-${{ steps.get_version.outputs.version-without-v }}-x64.nsis.7zはネットワークインストーラーのデータです。ダウンロードしないでください！
+
+            Linux : どれでもできればよし！
+            Mac OS X : [FelNullGDLauncher-mac-setup.dmg]を実行してアプリをアプリケーションにコピーしてください。
+            Windows : [FelNullGDLauncher-win-setup.exe]を実行すると自動的にインストールが開始し、ソフトが起動します。
+
+            ※データフォルダリンク例
+            Linuxわからん
+
+            Mac OS X
+            /Users/ [user] /Library/Application Support/felnullgdlaucher
+            /Users/ [user] /Library/Application Support/felnullgdlaucher_next
+
+            Windows
+            C:\Users\ [user] \AppData\Roaming\felnullgdlauncher
+            C:\Users\ [user] \AppData\Roaming\felnullgdlauncher_next
+
+            Build by ${{ github.actor }}
+          draft: false
+          prerelease: false
+
+
+
+
       ##CreateAPP - yarn release
       - name: yarn release for windows
         if: matrix.os == 'windows-latest' && github.event_name == 'push'
@@ -105,43 +141,31 @@ jobs:
         uses: battila7/get-version-action@v2
 
 
-      ##ReleaseChannel - go!
-      - name: Create Release
+
+      - uses: xresloader/upload-to-github-release@v1
+        name: Upload Release File - MacOS
         if: matrix.os == 'macos-latest'
-        id: create_release
-        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
-          tag_name: ${{ steps.get_version.outputs.version }}
-          release_name: FelNullLauncher - ${{ steps.get_version.outputs.version }}
-          body: |
-            felnullgdlauncher-${{ steps.get_version.outputs.version-without-v }}-x64.nsis.7z is network installer data. Do not download!
-            felnullgdlauncher-${{ steps.get_version.outputs.version-without-v }}-x64.nsis.7zはネットワークインストーラーのデータです。ダウンロードしないでください！
-
-            Linux : どれでもできればよし！
-            Mac OS X : [FelNullGDLauncher-mac-setup.dmg]を実行してアプリをアプリケーションにコピーしてください。
-            Windows : [FelNullGDLauncher-win-setup.exe]を実行すると自動的にインストールが開始し、ソフトが起動します。
-
-            ※データフォルダリンク例
-            Linuxわからん
-
-            Mac OS X
-            /Users/ [user] /Library/Application Support/felnullgdlaucher
-            /Users/ [user] /Library/Application Support/felnullgdlaucher_next
-
-            Windows
-            C:\Users\ [user] \AppData\Roaming\felnullgdlauncher
-            C:\Users\ [user] \AppData\Roaming\felnullgdlauncher_next
-
-            Build by ${{ github.actor }}
+          file: "deploy"
+          tags: true
           draft: false
-          prerelease: false
-
-
-
+          tag_name: ${{ steps.get_version.outputs.version }}
       - uses: xresloader/upload-to-github-release@v1
-        name: Upload Release File
+        name: Upload Release File - Windows
+        if: matrix.os == 'windows-latest'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+        with:
+          file: "deploy"
+          tags: true
+          draft: false
+          overwrite: true
+          tag_name: ${{ steps.get_version.outputs.version }}
+      - uses: xresloader/upload-to-github-release@v1
+        name: Upload Release File - Ubuntu
+        if: matrix.os == 'ubuntu-latest'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
@@ -152,9 +176,10 @@ jobs:
 
 
 
+
       - uses: actions/setup-ruby@v1
       - name: Send Webhook Notification
-        if: matrix.os == 'macos-latest'
+        if: matrix.os == 'windows-latest'
         env:
           JOB_STATUS: ${{ job.status }}
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
