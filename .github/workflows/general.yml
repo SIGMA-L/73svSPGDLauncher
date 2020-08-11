@@ -97,9 +97,9 @@ jobs:
  
  
       ##ReleaseChannel - go!
-      - name: Create Release
+      - name: Create Release1
         if: matrix.os == 'macos-latest'
-        id: create_release
+        id: create_release1
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
@@ -116,9 +116,9 @@ jobs:
             Build by ${{ github.actor }}
           draft: false
           prerelease: false
-      - name: Create Release
+      - name: Create Release2
         if: matrix.os == 'windows-latest'
-        id: create_release
+        id: create_release2
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
@@ -135,9 +135,9 @@ jobs:
             Build by ${{ github.actor }}
           draft: false
           prerelease: false
-      - name: Create Release
+      - name: Create Release3
         if: matrix.os == 'ubuntu-latest'
-        id: create_release
+        id: create_release3
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
