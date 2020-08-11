@@ -3,7 +3,7 @@ name: Launcher Next CI
 on:
   push:
     tags:
-      - '1.0.8*'
+      - 'v1.0.8*'
 jobs:
   build:
     runs-on: ${{ matrix.os }}
