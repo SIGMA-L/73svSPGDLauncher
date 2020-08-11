@@ -2,13 +2,8 @@ name: Launcher Windows
 
 on:
   push:
-    branches:
-      - master
-      - releases
-  pull_request:
-    branches:
-      - master
-      - releases
+    tags:
+      - 'windows1.0.8*'
 jobs:
   build:
     runs-on: ${{ matrix.os }}

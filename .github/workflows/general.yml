@@ -133,62 +133,62 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
-          file: "./deploy/*.exe"
+          file: "deploy/*.exe"
       - uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
-          file: "./deploy/*.7z"
+          file: "deploy/*.7z"
       - uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
-          file: "./deploy/*.snap"
+          file: "deploy/*.snap"
       - uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
-          file: "./deploy/*.AppImage"
+          file: "deploy/*.AppImage"
       - uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
-          file: "./deploy/*.deb"
+          file: "deploy/*.deb"
       - uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
-          file: "./deploy/*.rpm"
+          file: "deploy/*.rpm"
       - uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
-          file: "./deploy/*.zip"
+          file: "deploy/*.zip"
       - uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
-          file: "./deploy/*.dmg"
+          file: "deploy/*.dmg"
       - uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
-          file: "./deploy/*.blockmap"
+          file: "deploy/*.blockmap"
       - uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
-          file: "./deploy/*.yml"
+          file: "deploy/*.yml"
       - uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
-          file: "./deploy/*.json"
+          file: "deploy/*.json"
       - uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
-          file: "./deploy/*.gz"
+          file: "deploy/*.gz"
 
 
 
