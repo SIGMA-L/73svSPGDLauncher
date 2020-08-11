@@ -134,6 +134,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
           file: "deploy"
+          tags: true
+          draft: false
 
 
 
