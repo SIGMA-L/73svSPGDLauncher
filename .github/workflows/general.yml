@@ -106,8 +106,8 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: FelNullLauncher - version.${{ github.ref }}
           body: |
-            felnullgdlauncher-${{ github.ref }}-x64.nsis.7z is network installer data. Do not download!
-            felnullgdlauncher-${{ github.ref }}-x64.nsis.7zはネットワークインストーラーのデータです。ダウンロードしないでください！
+            felnullgdlauncher-${{ github.event_name	 }}-x64.nsis.7z is network installer data. Do not download!
+            felnullgdlauncher-${{ github.event_name	 }}-x64.nsis.7zはネットワークインストーラーのデータです。ダウンロードしないでください！
 
             Linux : どれでもできればよし！
             Mac OS X : [FelNullGDLauncher-mac-setup.dmg]を実行してアプリをアプリケーションにコピーしてください。
