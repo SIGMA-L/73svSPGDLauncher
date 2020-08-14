@@ -22,7 +22,16 @@ const ChangeLogs = () => {
       title={`Release v${version}`}
     >
       <Container>
-        <Section>
+        <div
+          css={`
+            margin-bottom: 25px;
+          `}
+        >
+          先日からインスタンスに不具合が生じ誠に申し訳ありません。
+          これらの原因はCurseForgeによる問題であることがわかりました。
+          インスタンスを安定して実行できるようにv1.9.0より修正を加えました。
+        </div>
+        {/* <Section>
           <SectionTitle
             css={`
               color: ${props => props.theme.palette.colors.green};
@@ -50,7 +59,7 @@ const ChangeLogs = () => {
               </li>
             </ul>
           </div>
-        </Section>
+        </Section> */}
         <Section>
           <SectionTitle
             css={`
@@ -61,6 +70,8 @@ const ChangeLogs = () => {
           </SectionTitle>
           <div>
             <ul>
+              <li>CurseForgeのインスタンスの破損を修正</li>
+              <li>MODを追加するとインスタンスが表示されなくなる問題を修正</li>
               <li>CurseForgeのリンクを修正</li>
               <li>Minecraft公式ニュースの表示を修正</li>
               <li>DiscordRichPresenceの表示を修正</li>
