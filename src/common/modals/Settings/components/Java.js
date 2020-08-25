@@ -141,7 +141,7 @@ export default function MyAccountPreferences() {
             dispatch(openModal('JavaSetup'));
           }}
         >
-          Run Java Setup again
+          再度Javaをセットアップ
         </a>
       </Title>
       <AutodetectPath>
@@ -308,7 +308,7 @@ export default function MyAccountPreferences() {
           }}
           defaultValue={javaMemory}
           min={1024}
-          max={16384}
+          max={24576}
           step={512}
           marks={marks}
           valueLabelDisplay="auto"

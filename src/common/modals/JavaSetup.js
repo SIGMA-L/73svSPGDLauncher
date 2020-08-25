@@ -77,7 +77,7 @@ const JavaSetup = () => {
                     setChoice(0);
                   }}
                 >
-                  Automatic Setup
+                  AutomaticSetup
                 </Button>
               </div>
               <div>
@@ -91,7 +91,7 @@ const JavaSetup = () => {
                     setChoice(1);
                   }}
                 >
-                  Manual Setup
+                  ManualSetup
                 </Button>
               </div>
             </div>
