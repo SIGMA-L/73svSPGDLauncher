@@ -367,7 +367,7 @@ const ModsBrowser = ({ instanceName, gameVersion }) => {
             <Select.Option value="Featured">新しい</Select.Option>
             <Select.Option value="Popularity">人気</Select.Option>
             <Select.Option value="LastUpdated">最新</Select.Option>
-            <Select.Option value="Name">ModPack名</Select.Option>
+            <Select.Option value="Name">Mod名</Select.Option>
             <Select.Option value="Author">作成者名</Select.Option>
             <Select.Option value="TotalDownloads">
               最多ダウンロード
