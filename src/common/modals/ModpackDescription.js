@@ -99,7 +99,7 @@ const AddInstance = ({ modpack, setStep, setModpack, setVersion }) => {
             `}
           >
             <StyledSelect
-              placeholder={loading ? 'Loading Versions' : 'Select a version'}
+              placeholder={loading ? 'Loading Versions' : 'ModPackバージョンを選択...'}
               onChange={handleChange}
               listItemHeight={50}
               listHeight={400}

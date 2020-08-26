@@ -67,9 +67,9 @@ const ModOverview = ({
     if (loadingFiles) {
       return 'Loading Files';
     } else if (files.length === 0 && !loadingFiles) {
-      return 'Mod Not Available';
+      return 'このModは利用できません';
     } else {
-      return 'Select A Version';
+      return 'Modバージョンを選択...';
     }
   };
 

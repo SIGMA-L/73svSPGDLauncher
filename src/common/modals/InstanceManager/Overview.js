@@ -308,19 +308,19 @@ const Overview = ({ instanceName, background, manifest }) => {
           `}
         >
           <Card
-            title="Mods"
+            title="Mod数"
             color={props => props.theme.palette.colors.maximumRed}
           >
             {config?.mods?.length || '-'}
           </Card>
           <Card
-            title="Played Time"
+            title="プレイ時間"
             color={props => props.theme.palette.colors.liberty}
           >
             {convertMinutesToHumanTime(config?.timePlayed)}
           </Card>
           <Card
-            title="Last Played"
+            title="最終プレイ"
             color={props => props.theme.palette.colors.orange}
           >
             {config?.lastPlayed ? computeLastPlayed(config?.lastPlayed) : '-'}
@@ -328,7 +328,7 @@ const Overview = ({ instanceName, background, manifest }) => {
         </OverviewCard>
         {config?.modloader.slice(3, 5).length === 2 && manifest && (
           <Card
-            title="Curse Modpack"
+            title="CurseForge Modpack"
             color={`linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), ${
               background
                 ? `url(${background})`
@@ -347,7 +347,7 @@ const Overview = ({ instanceName, background, manifest }) => {
         </RenameRow>
         <OverviewCard>
           <JavaManagerRow>
-            <div>Custom Game Resolution</div>
+            <div>カスタムゲーム解像度</div>
             <Switch
               checked={height && width}
               onChange={v => {
@@ -440,7 +440,7 @@ const Overview = ({ instanceName, background, manifest }) => {
             </ResolutionInputContainer>
           )}
           <JavaManagerRow>
-            <div>Custom Java Memory</div>
+            <div>カスタムJava最大メモリ</div>
             <Switch
               checked={JavaMemorySwitch}
               onChange={v => {
@@ -474,7 +474,7 @@ const Overview = ({ instanceName, background, manifest }) => {
             </div>
           )}
           <JavaManagerRow>
-            <div>Custom Java Arguments</div>
+            <div>カスタムJava引数 (高度な設定)</div>
             <Switch
               checked={JavaArgumentsSwitch}
               onChange={v => {

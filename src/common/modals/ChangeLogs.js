@@ -22,16 +22,7 @@ const ChangeLogs = () => {
       title={`Release v${version}`}
     >
       <Container>
-        <div
-          css={`
-            margin-bottom: 25px;
-          `}
-        >
-          先日からインスタンスに不具合が生じ誠に申し訳ありません。
-          これらの原因はCurseForgeによる問題であることがわかりました。
-          インスタンスを安定して実行できるようにv1.9.0より修正を加えました。
-        </div>
-        {/* <Section>
+        <Section>
           <SectionTitle
             css={`
               color: ${props => props.theme.palette.colors.green};
@@ -41,25 +32,13 @@ const ChangeLogs = () => {
           </SectionTitle>
           <div>
             <ul>
-              <li>Modを右クリックでコピーできるようになりました</li>
-              <li>インスタンスのエクスポートへの対応</li>
+              <li>ModPackブラウザのUIを新しくモデルチェンジしました</li>
               <li>
                 複数のModの依存関係のModのインストールをできないようにしました
               </li>
-              <li>
-                Minecraftのバージョン/Modローダーを変更できるようになりました
-              </li>
-              <li>
-                設定に優先するリリースチャンネル(Stable・Beta・Alpha)を追加
-              </li>
-              <li>ModPackのバージョンを表示</li>
-              <li>一部の依存関係を更新しました</li>
-              <li>
-                vcredistを追加したため、FelNullGDLauncherの前提でインストール必要なものをなくしました
-              </li>
             </ul>
           </div>
-        </Section> */}
+        </Section>
         <Section>
           <SectionTitle
             css={`
@@ -70,11 +49,10 @@ const ChangeLogs = () => {
           </SectionTitle>
           <div>
             <ul>
-              <li>CurseForgeのインスタンスの破損を修正</li>
-              <li>MODを追加するとインスタンスが表示されなくなる問題を修正</li>
               <li>CurseForgeのリンクを修正</li>
               <li>Minecraft公式ニュースの表示を修正</li>
-              <li>DiscordRichPresenceの表示を修正</li>
+              <li>セキュリティ修正</li>
+              <li>ログインエラー修正</li>
             </ul>
           </div>
         </Section>

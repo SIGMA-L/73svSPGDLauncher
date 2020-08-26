@@ -575,7 +575,7 @@ const Mods = ({ instanceName }) => {
                 : setSelectedMods([])
             }
           >
-            Select All
+            全選択
           </Checkbox>
           <DeleteSelectedMods
             onClick={async () => {

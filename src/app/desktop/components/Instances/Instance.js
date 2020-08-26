@@ -301,7 +301,7 @@ const Instance = ({ instanceName }) => {
                   margin-right: 10px;
                 `}
               />
-              Kill
+              強制終了...
             </MenuItem>
           )}
           <MenuItem disabled={Boolean(isInQueue)} onClick={manageInstance}>
@@ -311,7 +311,7 @@ const Instance = ({ instanceName }) => {
                 margin-right: 10px;
               `}
             />
-            Manage
+            インスタンス設定
           </MenuItem>
           <MenuItem onClick={openFolder}>
             <FontAwesomeIcon
@@ -320,7 +320,7 @@ const Instance = ({ instanceName }) => {
                 margin-right: 10px;
               `}
             />
-            Open Folder
+            フォルダーを開く
           </MenuItem>
 
           {/* // TODO - Support other export options besides curseforge forge. */}
@@ -342,7 +342,7 @@ const Instance = ({ instanceName }) => {
                 width: 16px !important;
               `}
             />
-            Export Pack
+            Zipエクスポート
           </MenuItem>
           <MenuItem divider />
           <MenuItem
@@ -355,7 +355,7 @@ const Instance = ({ instanceName }) => {
                 margin-right: 10px;
               `}
             />
-            Delete
+            インスタンス削除
           </MenuItem>
         </ContextMenu>
       </Portal>
