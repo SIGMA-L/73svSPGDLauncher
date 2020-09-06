@@ -12,7 +12,7 @@ const AutoUpdatesNotAvailable = () => {
       title="Auto Updates Not Available"
     >
       <Container>
-        <div>Auto updates are not available on this platform.</div>
+        <div>自動アップデートはこのOSではまだ導入されていません</div>
         <div
           css={`
             margin-top: 20px;

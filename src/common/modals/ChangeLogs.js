@@ -36,6 +36,7 @@ const ChangeLogs = () => {
               <li>
                 複数のModの依存関係のModのインストールをできないようにしました
               </li>
+              <li>新UIの導入</li>
             </ul>
           </div>
         </Section>
@@ -52,7 +53,6 @@ const ChangeLogs = () => {
               <li>CurseForgeのリンクを修正</li>
               <li>Minecraft公式ニュースの表示を修正</li>
               <li>セキュリティ修正</li>
-              <li>ログインエラー修正</li>
             </ul>
           </div>
         </Section>
