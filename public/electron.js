@@ -432,8 +432,8 @@ if (process.env.REACT_APP_RELEASE_TYPE === 'setup') {
   autoUpdater.allowDowngrade = false;
   autoUpdater.allowPrerelease = allowUnstableReleases;
   autoUpdater.setFeedURL({
-    owner: 'gorilla-devs',
-    repo: 'GDLauncher',
+    owner: 'TeamFelnull',
+    repo: 'FelNullGDLauncher',
     provider: 'github'
   });
 
