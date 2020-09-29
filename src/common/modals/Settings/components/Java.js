@@ -102,7 +102,8 @@ const marks = {
   2048: '2048 MB',
   4096: '4096 MB',
   8192: '8192 MB',
-  16384: '16384 MB'
+  16384: '16384 MB',
+  32768: '32768 MB'
 };
 
 export default function MyAccountPreferences() {
@@ -297,7 +298,7 @@ export default function MyAccountPreferences() {
             margin: 0;
           `}
         >
-          マイクラに使用する最大メモリ量を選択します。
+          マイクラに使用する最大メモリ量を選択します。※パソコンの利用可能なメモリ量を超えて設定するとメモリの限界まで使用されます。
         </Paragraph>
         <Slider
           css={`
@@ -307,8 +308,8 @@ export default function MyAccountPreferences() {
             dispatch(updateJavaMemory(e));
           }}
           defaultValue={javaMemory}
-          min={1024}
-          max={24576}
+          min={2048}
+          max={32768}
           step={512}
           marks={marks}
           valueLabelDisplay="auto"
