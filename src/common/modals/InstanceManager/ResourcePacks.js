@@ -403,7 +403,7 @@ const ResourcePacks = ({ instanceName }) => {
         fileList={resourcePacks}
       >
         {resourcePacks.length === 0 && (
-          <NotItemsAvailable>No ResourcePacks Available</NotItemsAvailable>
+          <NotItemsAvailable>リソースパックがありません</NotItemsAvailable>
         )}
         <AutoSizer>
           {({ height, width }) => (

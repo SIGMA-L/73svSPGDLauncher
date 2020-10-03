@@ -114,13 +114,13 @@ const Screenshots = ({ instanceName }) => {
       uploadingFileName !== null &&
       selectedItems.includes(uploadingFileName)
     ) {
-      return 'Image copied to clipboard!';
+      return 'コピーしました';
     } else if (
       uploadingFileName != null &&
       selectedItems[0] != uploadingFileName
     ) {
-      return 'Busy! Wait before uploading another image';
-    } else return 'Share the image via url';
+      return '別のジョブが進行中...';
+    } else return '画像をURLにしてコピー';
   };
 
   const containerRef = useRef(null);
@@ -306,7 +306,7 @@ const Screenshots = ({ instanceName }) => {
                               dispatch(
                                 openModal('ActionConfirmation', {
                                   message:
-                                    'Are you sure you want to delete this image?',
+                                    'この画像を削除してもよろしいですか？',
                                   fileName: file.name,
                                   confirmCallback: deleteFile,
                                   title: 'Confirm'
@@ -326,7 +326,7 @@ const Screenshots = ({ instanceName }) => {
                                 dispatch(
                                   openModal('ActionConfirmation', {
                                     message:
-                                      'Are you sure you want to delete this image?',
+                                      'この画像を削除してもよろしいですか？',
                                     fileName: file.name,
                                     confirmCallback: deleteFile,
                                     title: 'Confirm'
@@ -363,7 +363,7 @@ const Screenshots = ({ instanceName }) => {
                               }}
                             >
                               <FontAwesomeIcon icon={faCopy} />
-                              Copy the image
+                              画像をコピー
                             </MenuItem>
                             <ImgurShareMenuItem
                               disabled={
@@ -417,7 +417,7 @@ const Screenshots = ({ instanceName }) => {
                                 dispatch(
                                   openModal('ActionConfirmation', {
                                     message:
-                                      'Are you sure you want to delete this image?',
+                                      'この画像を削除してもよろしいですか？',
                                     fileName: file.name,
                                     confirmCallback: deleteFile,
                                     title: 'Confirm'
@@ -426,7 +426,7 @@ const Screenshots = ({ instanceName }) => {
                               }}
                             >
                               <FontAwesomeIcon icon={faTrash} />
-                              Delete
+                              削除
                             </MenuItem>
                           </>
                         )}
