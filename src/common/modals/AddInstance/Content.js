@@ -79,6 +79,7 @@ const Content = ({
                         width="22px"
                         css={`
                         margin-right: 4px;
+                        cursor: pointer;
                       `}
                     />
                     バニラ
@@ -89,6 +90,7 @@ const Content = ({
                         width="18px"
                         css={`
                         margin-right: 4px;
+                        cursor: pointer;
                       `}
                     />
                     Twitch(CurseForge)
@@ -101,6 +103,7 @@ const Content = ({
                         icon={faArchive}
                         css={`
                         margin-right: 4px;
+                        cursor: pointer;
                       `}
                     />
                     インポートZip・URL

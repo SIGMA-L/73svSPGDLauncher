@@ -13,6 +13,7 @@ const ChangeLogs = () => {
   useEffect(() => {
     ipcRenderer.invoke('getAppVersion').then(setVersion).catch(console.error);
   }, []);
+
   return (
     <Modal
       css={`
@@ -36,6 +37,9 @@ const ChangeLogs = () => {
               <li>
                 複数のModの依存関係のModのインストールをできないようにしました
               </li>
+              <li>TwitchModpackのUXを向上させました</li>
+              <li>インスタンス名が４５文字まで対応できるようにしました</li>
+              <li>インスタンスのタブにResource Packsが追加されました</li>
               <li>新UIの導入</li>
             </ul>
           </div>
@@ -50,6 +54,7 @@ const ChangeLogs = () => {
           </SectionTitle>
           <div>
             <ul>
+              <li>UIの修正をしました</li>
               <li>CurseForgeのリンクを修正</li>
               <li>Minecraft公式ニュースの表示を修正</li>
               <li>セキュリティ修正</li>
