@@ -64,7 +64,7 @@ const BisectHosting = () => {
         {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
         <iframe
           src="https://e.widgetbot.io/channels/600929948529590272/608914022883917824"
-          height="380"
+          height="305"
           width="800"
         />
       </Container>
