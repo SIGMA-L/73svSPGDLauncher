@@ -596,7 +596,15 @@ const General = () => {
           今までのマイクラのデータをすべて削除します。
         </p>
         <Button
-          onClick={clearSharedData}
+          onClick={() => {
+            dispatch(
+              openModal('ActionConfirmation', {
+                message: 'データを削除してもよろしいですか？',
+                confirmCallback: clearSharedData,
+                title: 'Confirm'
+              })
+            );
+          }}
           disabled={disableInstancesActions}
           loading={deletingInstances}
         >
@@ -703,7 +711,7 @@ const General = () => {
           `}
         >
           <HorizontalLogo
-            size={200}
+            size={180}
             onClick={() => dispatch(openModal('ChangeLogs'))}
           />{' '}
           <div
@@ -711,7 +719,7 @@ const General = () => {
               margin-left: 10px;
             `}
           >
-            v {version}
+            v {version} Licensed under GNU General Public License v3.0
           </div>
         </div>
         <p>
@@ -737,7 +745,7 @@ const General = () => {
               `}
               type="primary"
             >
-              アップデート！ &nbsp;
+              アップデートを実行する！ &nbsp;
               <FontAwesomeIcon icon={faDownload} />
             </Button>
           ) : (
@@ -748,7 +756,7 @@ const General = () => {
                 padding: 6px 8px;
               `}
             >
-              最新
+              最新のFelNullGDLauncherを使用しています。
             </div>
           )}
         </div>

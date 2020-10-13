@@ -10,15 +10,15 @@ const BisectHosting = () => {
   return (
     <Modal
       css={`
-        height: 360px;
-        width: 500px;
+        height: 600px;
+        width: 900px;
         font-size: 10px;
         line-height: 1.8;
       `}
       title="TeamFelNull Discord"
     >
       <Container>
-        <BisectHostingLogo size={70} hover />
+        <BisectHostingLogo size={60} hover />
         <h2
           css={`
             margin-top: 20px;
@@ -61,6 +61,12 @@ const BisectHosting = () => {
             <FontAwesomeIcon icon={faExternalLinkAlt} />
           </Button>
         </a>
+        {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
+        <iframe
+          src="https://e.widgetbot.io/channels/600929948529590272/608914022883917824"
+          height="380"
+          width="800"
+        />
       </Container>
     </Modal>
   );

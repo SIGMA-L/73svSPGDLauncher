@@ -55,7 +55,7 @@ const ChangeLogs = () => {
           <div>
             <ul>
               <li>UIの修正をしました</li>
-              <li>CurseForgeのリンクを修正</li>
+              <li>データ削除の確認漏れを修正</li>
               <li>Minecraft公式ニュースの表示を修正</li>
               <li>セキュリティ修正</li>
             </ul>
