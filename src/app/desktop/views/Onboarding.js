@@ -219,12 +219,15 @@ const Home = () => {
             margin: 20%;
           `}
         >
-          [Open Discord App]をクリック！
+          [Connect]をクリック！
           {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
           <iframe
-            src="https://e.widgetbot.io/channels/600929948529590272/608914022883917824"
-            height="410"
-            width="800"
+            src="https://discordapp.com/widget?id=600929948529590272&theme=dark"
+            width="410"
+            height="800"
+            allowTransparency="true"
+            frameBorder="0"
+            sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
           />
         </div>
       </div>

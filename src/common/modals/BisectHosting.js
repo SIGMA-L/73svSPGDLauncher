@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
-import { Button } from 'antd';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+// import { Button } from 'antd';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import Modal from '../components/Modal';
 import BisectHostingLogo from '../../ui/BisectHosting';
 
@@ -50,22 +50,25 @@ const BisectHosting = () => {
           </span>{' '}
           でのみ受け付けております。
         </h2>
-        <a href="https://discord.gg/vsFrsgY">
-          <Button
-            type="primary"
-            css={`
-              margin-top: 25px;
-            `}
-          >
-            FelNullDiscord &nbsp;
-            <FontAwesomeIcon icon={faExternalLinkAlt} />
-          </Button>
-        </a>
+        {/* <a href="https://discord.gg/vsFrsgY"> */}
+        {/*  <Button */}
+        {/*    type="primary" */}
+        {/*    css={` */}
+        {/*      margin-top: 25px; */}
+        {/*    `} */}
+        {/*  > */}
+        {/*    FelNullDiscord &nbsp; */}
+        {/*    <FontAwesomeIcon icon={faExternalLinkAlt} /> */}
+        {/*  </Button> */}
+        {/* </a> */}
         {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
         <iframe
-          src="https://e.widgetbot.io/channels/600929948529590272/608914022883917824"
-          height="305"
+          src="https://discordapp.com/widget?id=600929948529590272&theme=dark"
           width="800"
+          height="545"
+          allowTransparency="true"
+          frameBorder="0"
+          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
         />
       </Container>
     </Modal>

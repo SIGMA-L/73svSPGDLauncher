@@ -756,7 +756,7 @@ const General = () => {
                 padding: 6px 8px;
               `}
             >
-              最新のFelNullGDLauncherを使用しています。
+              Latest
             </div>
           )}
         </div>
