@@ -125,14 +125,12 @@ jobs:
         with:
           name: MacOs Release
           path: deploy
-
       - uses: actions/upload-artifact@v1
         name: Action-Upload-Windows
         if: matrix.os == 'windows-latest'
         with:
           name: Windows Release
           path: deploy
-
       - uses: actions/upload-artifact@v1
         name: Action-Upload-Ubuntu
         if: matrix.os == 'ubuntu-latest'
@@ -141,10 +139,10 @@ jobs:
           path: deploy
 
 
-
+      ##GitHub-Release-Upload
       - uses: xresloader/upload-to-github-release@v1
         name: Upload Release File - MacOS
-        if: matrix.os == 'macos-latest'
+        if: matrix.os != 'windows-latest'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
@@ -162,16 +160,6 @@ jobs:
           tags: true
           draft: false
           overwrite: true
-          tag_name: ${{ steps.get_version.outputs.version }}
-      - uses: xresloader/upload-to-github-release@v1
-        name: Upload Release File - Ubuntu
-        if: matrix.os == 'ubuntu-latest'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
-        with:
-          file: "deploy"
-          tags: true
-          draft: false
           tag_name: ${{ steps.get_version.outputs.version }}
 
 
