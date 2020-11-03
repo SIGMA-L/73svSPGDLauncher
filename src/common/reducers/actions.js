@@ -1504,7 +1504,7 @@ export const startListener = () => {
       if (queueLength > 1) {
         dispatch(
           updateMessage({
-            content: `Syncronizing mods. ${queueLength} left.`,
+            content: `ModをLauncherに同期しています。残り ${queueLength} mod.`,
             duration: 0
           })
         );
@@ -1515,7 +1515,7 @@ export const startListener = () => {
       if (queueLength > 1) {
         dispatch(
           updateMessage({
-            content: `Syncronizing mods. ${queueLength} left.`,
+            content: `ModをLauncherに同期しています。残り ${queueLength} mod.`,
             duration: 0
           })
         );
@@ -1662,7 +1662,9 @@ export const startListener = () => {
             const config = await fse.readJSON(configPath);
 
             if (!config.modloader) {
-              throw new Error(`Config for ${instanceName} could not be parsed`);
+              throw new Error(
+                `${instanceName} のインスタンス設定を読み込めませんでした`
+              );
             }
             console.log('[RTS] ADDING INSTANCE', instanceName);
             dispatch({
@@ -1709,7 +1711,7 @@ export const startListener = () => {
             const config = await fse.readJSON(configPath);
             if (!config.modloader) {
               throw new Error(
-                `Config for ${newInstanceName} could not be parsed`
+                `${newInstanceName} のインスタンス設定を読み込めませんでした`
               );
             }
             console.log(
