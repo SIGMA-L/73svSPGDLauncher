@@ -1,0 +1,172 @@
+name: Launcher Next CI
+
+on:
+  push:
+    tags:
+      - 'v1.*'
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+
+    steps:
+      - name: Context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - name: Use Node.js 14.15.4
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.15.4'
+
+      - name: Set node config to use python2.7
+        run: npm config set python python2.7
+      - name: Set node config to set msvs_version to 2019
+        if: matrix.os == 'windows-latest'
+        run: npm config set msvs_version 2019
+      - name: npm run install
+        run: |
+          npm i
+      - name: npm run lint
+        run: |
+          npm run lint
+
+
+      ##Tag Number input
+      - name: Get latest release version tag number
+        id: get_version
+        uses: battila7/get-version-action@v2
+
+
+
+      ##ReleaseChannel - go!
+      - name: Create Release
+        if: matrix.os == 'macos-latest'
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+        with:
+          tag_name: ${{ steps.get_version.outputs.version }}
+          release_name: FelNullLauncher - ${{ steps.get_version.outputs.version }}
+          body: |
+            felnullgdlauncher-${{ steps.get_version.outputs.version-without-v }}-x64.nsis.7z is network installer data. Do not download!
+            felnullgdlauncher-${{ steps.get_version.outputs.version-without-v }}-x64.nsis.7zはネットワークインストーラーのデータです。ダウンロードしないでください！
+
+            Linux : どれでもできればよし！
+            Mac OS X : [FelNullGDLauncher-mac-setup.dmg]を実行してアプリをアプリケーションにコピーしてください。
+            Windows : [FelNullGDLauncher-win-setup.exe]を実行すると自動的にインストールが開始し、ソフトが起動します。
+
+            ※データフォルダリンク例
+            Linuxわからん
+
+            Mac OS X
+            /Users/ [user] /Library/Application Support/felnullgdlaucher
+            /Users/ [user] /Library/Application Support/felnullgdlaucher_next
+
+            Windows
+            C:\Users\ [user] \AppData\Roaming\felnullgdlauncher
+            C:\Users\ [user] \AppData\Roaming\felnullgdlauncher_next
+
+            Build by ${{ github.actor }}
+          draft: false
+          prerelease: false
+
+
+
+      ##CreateAPP - npm run release
+      - name: npm run release for windows
+        if: matrix.os == 'windows-latest' && github.event_name == 'push'
+        env:
+          CI: ''
+          TRAVIS_TAG: ''
+          APPVEYOR_REPO_TAG_NAME: ''
+          CIRCLE_TAG: ''
+          BITRISE_GIT_TAG: ''
+          CI_BUILD_TAG: ''
+          RELEASE_TESTING: true
+        run: |
+          npm run release-win -o --watch
+      - name: npm run release for mac and linux
+        if: matrix.os != 'windows-latest' || github.event_name != 'push'
+        env:
+          CI: ''
+          TRAVIS_TAG: ''
+          APPVEYOR_REPO_TAG_NAME: ''
+          CIRCLE_TAG: ''
+          BITRISE_GIT_TAG: ''
+          CI_BUILD_TAG: ''
+          RELEASE_TESTING: true
+        run: |
+          npm run release -o --watch
+      - name: upload release to gh releases
+        if: github.event_name == 'push' && github.ref == 'refs/heads/releases'
+        env:
+          GH_ACCESS_TOKEN_RELEASES: ${{ secrets.GH_ACCESS_TOKEN_RELEASES }}
+        run: |
+          npm run upload
+
+
+      ##ActionRelease - zip
+      - uses: actions/upload-artifact@v1
+        name: Action-Upload-MacOS
+        if: matrix.os == 'macos-latest'
+        with:
+          name: MacOs Release
+          path: deploy
+      - uses: actions/upload-artifact@v1
+        name: Action-Upload-Windows
+        if: matrix.os == 'windows-latest'
+        with:
+          name: Windows Release
+          path: deploy
+      - uses: actions/upload-artifact@v1
+        name: Action-Upload-Ubuntu
+        if: matrix.os == 'ubuntu-latest'
+        with:
+          name: Linux Release
+          path: deploy
+
+
+      ##GitHub-Release-Upload
+      - uses: xresloader/upload-to-github-release@v1
+        name: Upload Release File - MacOS
+        if: matrix.os != 'windows-latest'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+        with:
+          file: "deploy"
+          tags: true
+          draft: false
+          tag_name: ${{ steps.get_version.outputs.version }}
+      - uses: xresloader/upload-to-github-release@v1
+        name: Upload Release File - Windows
+        if: matrix.os == 'windows-latest'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+        with:
+          file: "deploy"
+          tags: true
+          draft: false
+          overwrite: true
+          tag_name: ${{ steps.get_version.outputs.version }}
+
+
+
+
+      - uses: actions/setup-ruby@v1
+      - name: Send Webhook Notification
+        if: matrix.os == 'windows-latest'
+        env:
+          JOB_STATUS: ${{ job.status }}
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+        run: |
+          git clone https://github.com/gorilla-devs/github-actions-discord-webhook.git webhook
+          bash webhook/send.sh $JOB_STATUS $WEBHOOK_URL
+        shell: bash

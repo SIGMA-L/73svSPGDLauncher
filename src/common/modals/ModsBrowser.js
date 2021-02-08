@@ -364,18 +364,20 @@ const ModsBrowser = ({ instanceName, gameVersion }) => {
             onChange={setFilterType}
             disabled={areModsLoading}
           >
-            <Select.Option value="Featured">Featured</Select.Option>
-            <Select.Option value="Popularity">Popularity</Select.Option>
-            <Select.Option value="LastUpdated">Last Updated</Select.Option>
-            <Select.Option value="Name">Name</Select.Option>
-            <Select.Option value="Author">Author</Select.Option>
-            <Select.Option value="TotalDownloads">Downloads</Select.Option>
+            <Select.Option value="Featured">注目</Select.Option>
+            <Select.Option value="Popularity">人気</Select.Option>
+            <Select.Option value="LastUpdated">最新</Select.Option>
+            <Select.Option value="Name">Mod名</Select.Option>
+            <Select.Option value="Author">作成者名</Select.Option>
+            <Select.Option value="TotalDownloads">
+              最多ダウンロード
+            </Select.Option>
           </Select>
           <Input
             css={`
               height: 32px;
             `}
-            placeholder="Search for a mod"
+            placeholder="Mod検索..."
             value={searchQuery}
             onChange={e => {
               setSearchQuery(e.target.value);

@@ -112,7 +112,10 @@ try {
   // Do nothing
 }
 
-app.setPath('userData', path.join(app.getPath('appData'), 'gdlauncher_next'));
+app.setPath(
+  'userData',
+  path.join(app.getPath('appData'), 'felnullgdlauncher_next')
+);
 
 let allowUnstableReleases = false;
 const releaseChannelExists = fss.existsSync(
@@ -248,7 +251,7 @@ function createWindow() {
         ...requestHeaders
       } = details.requestHeaders;
       if (xSkipOrigin !== 'skip') {
-        requestHeaders.Origin = 'https://gdevs.io';
+        requestHeaders.Origin = 'https://www.servg.red/';
       }
       callback({ cancel: false, requestHeaders });
     }
@@ -573,8 +576,8 @@ if (process.env.REACT_APP_RELEASE_TYPE === 'setup') {
   autoUpdater.allowDowngrade = !allowUnstableReleases;
   autoUpdater.allowPrerelease = allowUnstableReleases;
   autoUpdater.setFeedURL({
-    owner: 'gorilla-devs',
-    repo: 'GDLauncher',
+    owner: 'TeamFelNull',
+    repo: 'FelNullGDLauncher',
     provider: 'github'
   });
 

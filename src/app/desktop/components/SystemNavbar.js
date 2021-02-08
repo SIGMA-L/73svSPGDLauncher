@@ -170,7 +170,7 @@ const SystemNavbar = () => {
             `}
           >
             <a
-              href="https://gdevs.io/"
+              href="https://www.servg.red/"
               rel="noopener noreferrer"
               css={`
                 margin-top: 5px;
@@ -187,7 +187,7 @@ const SystemNavbar = () => {
               height: 100%;
             `}
           >
-            Partnered with &nbsp;&nbsp;
+            Powered by &nbsp;&nbsp;
             <BisectHosting
               showPointerCursor
               onClick={() => dispatch(openModal('BisectHosting'))}
@@ -285,7 +285,7 @@ const SystemNavbar = () => {
           <div>
             <DevtoolButton />
             <a
-              href="https://gdevs.io/"
+              href="https://www.servg.red/"
               rel="noopener noreferrer"
               css={`
                 margin-top: 5px;

@@ -104,7 +104,7 @@ const AddAccount = ({ username }) => {
             height: 80px;
           `}
         >
-          Choose Login Type
+          ログインに使用するサービスを選んでください
         </h1>
         <FormContainer>
           <StyledAccountButton onClick={() => setAccountType(ACCOUNT_MOJANG)}>

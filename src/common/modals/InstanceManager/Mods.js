@@ -670,7 +670,7 @@ const Mods = ({ instanceName }) => {
         }}
         disabled={!hasModUpdates}
       >
-        Update all mods
+        全てのModをアップデートする
       </Menu.Item>
     </Menu>
   );
@@ -702,7 +702,7 @@ const Mods = ({ instanceName }) => {
                 : setSelectedMods([])
             }
           >
-            Select All
+            全選択
           </Checkbox>
           <DeleteSelectedMods
             onClick={async () => {
@@ -752,7 +752,7 @@ const Mods = ({ instanceName }) => {
             );
           }}
         >
-          Add Mod
+          Mod追加
         </Button>
         <Input
           allowClear
@@ -760,9 +760,9 @@ const Mods = ({ instanceName }) => {
           defaultValue={search}
           onChange={e => setSearch(e.target.value)}
           css={`
-            width: 200px;
+            width: 250px;
           `}
-          placeholder={`Search ${mods.length} mods`}
+          placeholder={`検索 ${mods.length} mod`}
         />
       </Header>
       <div

@@ -144,7 +144,7 @@ const Import = ({
   return (
     <Container>
       <div>
-        Local file or link to a direct download
+        ModPackZipのローカルリンクまたはダウンロードリンク
         <div
           css={`
             display: flex;
@@ -153,7 +153,7 @@ const Import = ({
         >
           <Input
             disabled={loading}
-            placeholder="http://.../file.zip"
+            placeholder="http://...C:/.../usr.../File.zip"
             value={localValue}
             onChange={e => setLocalValue(e.target.value)}
             css={`

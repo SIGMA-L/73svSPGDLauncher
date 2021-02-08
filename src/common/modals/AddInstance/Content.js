@@ -89,7 +89,7 @@ const Content = ({
                         cursor: pointer;
                       `}
                     />
-                    Vanilla
+                    バニラ
                   </Radio.Button>
                   <Radio.Button value={1}>
                     <img
@@ -113,7 +113,7 @@ const Content = ({
                         cursor: pointer;
                       `}
                     />
-                    FTB
+                    FeedTheBeast
                   </Radio.Button>
                   <Radio.Button value={2}>
                     <FontAwesomeIcon
@@ -123,7 +123,7 @@ const Content = ({
                         cursor: pointer;
                       `}
                     />
-                    Import Zip
+                    インポートZip・URL
                   </Radio.Button>
                 </Radio.Group>
               </div>

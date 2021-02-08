@@ -54,9 +54,8 @@ const JavaSetup = () => {
                 text-align: justify;
               `}
             >
-              For an optimal experience, we suggest letting us take care of java
-              for you. Only manually manage java if you know what you&apos;re
-              doing, it may result in GDLauncher not working!
+              MinecraftではJavaを使用してプレイします。もし、あまりJavaのインストールについて知識がないのであれば『AutomaticSetup』をおすすめします。
+              Java64bitをすでに使っていて自分で設定できるのであれば《ManualSetup》でjava.exeを選択してください。
             </div>
             <div
               css={`
@@ -78,7 +77,7 @@ const JavaSetup = () => {
                     setChoice(0);
                   }}
                 >
-                  Automatic Setup
+                  AutomaticSetup
                 </Button>
               </div>
               <div>
@@ -92,7 +91,7 @@ const JavaSetup = () => {
                     setChoice(1);
                   }}
                 >
-                  Manual Setup
+                  ManualSetup
                 </Button>
               </div>
             </div>

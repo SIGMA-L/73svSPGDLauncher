@@ -14,7 +14,7 @@ export const FTB_MODPACK_URL = 'https://feed-the-beast.com/modpack';
 export const FORGESVC_CATEGORIES =
   'https://addons-ecs.forgesvc.net/api/v2/category?gameId=432';
 export const NEWS_URL =
-  'https://www.minecraft.net/en-us/feeds/community-content/rss';
+  'https://www.minecraft.net/ja-jp/feeds/community-content/rss';
 export const FMLLIBS_OUR_BASE_URL = 'https://fmllibs.gdevs.io';
 export const FMLLIBS_FORGE_BASE_URL =
   'https://files.minecraftforge.net/fmllibs';

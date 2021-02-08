@@ -237,7 +237,7 @@ const InstanceManager = ({ instanceName }) => {
           <SideMenu>
             <InstanceBackground onClick={openFileDialog} imagePath={background}>
               <Overlay />
-              <p>Change Icon</p>
+              <p>アイコン変更</p>
               {background && (
                 <FontAwesomeIcon
                   icon={faTimesCircle}

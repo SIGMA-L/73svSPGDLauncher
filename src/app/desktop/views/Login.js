@@ -228,7 +228,7 @@ const Login = () => {
             <Header>
               <HorizontalLogo size={200} />
             </Header>
-            <p>Sign in with your Mojang Account</p>
+            <p>Mojangアカウントログイン</p>
             <Form>
               <div>
                 <Input
@@ -249,7 +249,7 @@ const Login = () => {
                 <LoginFailMessage>{loginFailed?.message}</LoginFailMessage>
               )}
               <LoginButton color="primary" onClick={authenticate}>
-                Sign In
+                サインイン
                 <FontAwesomeIcon
                   css={`
                     margin-left: 6px;
@@ -261,7 +261,7 @@ const Login = () => {
                 color="primary"
                 onClick={authenticateMicrosoft}
               >
-                Sign in with Microsoft
+                Microsoftでサインイン
                 <FontAwesomeIcon
                   css={`
                     margin-left: 6px;
@@ -281,13 +281,13 @@ const Login = () => {
               >
                 <FooterLinks>
                   <div>
-                    <a href="https://my.minecraft.net/en-us/store/minecraft/#register">
-                      CREATE AN ACCOUNT
+                    <a href="https://www.minecraft.net/ja-jp/login">
+                      アカウントを作成
                     </a>
                   </div>
                   <div>
-                    <a href="https://my.minecraft.net/en-us/password/forgot/">
-                      FORGOT PASSWORD
+                    <a href="https://www.minecraft.net/ja-jp/password/forgot/">
+                      パスワードを忘れた
                     </a>
                   </div>
                 </FooterLinks>

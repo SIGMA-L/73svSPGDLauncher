@@ -112,8 +112,6 @@ const commonConfig = {
     appId: 'org.TeamFelNull.FelNullGDLauncher',
     files: [
       '!node_modules/**/*',
-      'node_modules/7zip-bin/linux/x64/7za',
-      'node_modules/7zip-bin/mac/7za',
       'node_modules/7zip-bin/win/x64/7za.exe',
       'build/**/*',
       'package.json',
@@ -159,18 +157,11 @@ const commonConfig = {
       differentialPackage: true,
       include: './public/installer.nsh'
     },
-    mac: {
-      entitlements: './entitlements.mac.plist',
-      entitlementsInherit: './entitlements.mac.plist'
-    },
     /* eslint-disable */
     artifactName: `${'${productName}'}-${'${os}'}-${
       process.argv[2]
     }.${'${ext}'}`,
     /* eslint-enable */
-    linux: {
-      category: 'Game'
-    },
     directories: {
       buildResources: 'public',
       output: 'release'
@@ -183,17 +174,8 @@ const commonConfig = {
       }
     ]
   },
-  ...((!process.env.RELEASE_TESTING || process.platform === 'linux') && {
-    linux:
-      type === 'setup'
-        ? ['appimage:x64', 'zip:x64', 'deb:x64', 'rpm:x64']
-        : ['snap:x64']
-  }),
   ...((!process.env.RELEASE_TESTING || process.platform === 'win32') && {
     win: [type === 'setup' ? 'nsis:x64' : 'zip:x64']
-  }),
-  ...((!process.env.RELEASE_TESTING || process.platform === 'darwin') && {
-    mac: type === 'setup' ? ['dmg:x64'] : []
   })
 };
 
@@ -221,28 +203,14 @@ const main = async () => {
 
   const allFiles = {
     setup: {
-      darwin: [
-        `${productName}-mac-${type}.dmg`,
-        `${productName}-mac-${type}.dmg.blockmap`,
-        'latest-mac.yml'
-      ],
       win32: [
         path.join(`${productName}-win-${type}.exe`),
         path.join(`${productName}-win-${type}.exe.blockmap`),
         path.join('latest.yml')
-      ],
-      linux: [
-        `${productName}-linux-${type}.zip`,
-        `${productName}-linux-${type}.AppImage`,
-        `${productName}-linux-${type}.deb`,
-        `${productName}-linux-${type}.rpm`,
-        'latest-linux.yml'
       ]
     },
     portable: {
-      darwin: [],
-      win32: [`${productName}-win-${type}.zip`],
-      linux: [`${productName}-linux-${type}.snap`]
+      win32: [`${productName}-win-${type}.zip`]
     }
   };
 

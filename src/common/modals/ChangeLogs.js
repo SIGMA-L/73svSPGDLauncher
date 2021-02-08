@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Button } from 'antd';
 import { ipcRenderer } from 'electron';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
 import Modal from '../components/Modal';
 
 const ChangeLogs = () => {
@@ -29,12 +29,12 @@ const ChangeLogs = () => {
               color: ${props => props.theme.palette.colors.green};
             `}
           >
-            <span>New Features</span>
+            <span>新機能</span>
           </SectionTitle>
           <div>
             <ul>
-              <li>Added confirmation modal to delete shared data.</li>
-              <li>Implemented microsoft login.</li>
+              <li>共有データを削除するための確認画面を追加しました。</li>
+              <li>！Microsoftアカウントのログインに対応しました！</li>
             </ul>
           </div>
         </Section>
@@ -44,13 +44,13 @@ const ChangeLogs = () => {
               color: ${props => props.theme.palette.colors.red};
             `}
           >
-            <span>Bug Fixes</span>
+            <span>修正</span>
           </SectionTitle>
           <div>
             <ul>
-              <li>Security fixes.</li>
-              <li>Fixed copy/paste on MacOS.</li>
-              <li>Fixed a crash.</li>
+              <li>UIの修正をしました</li>
+              <li>MacOSのコピー&ペーストを修正</li>
+              <li>セキュリティ修正</li>
             </ul>
           </div>
         </Section>
@@ -60,11 +60,26 @@ const ChangeLogs = () => {
               color: ${props => props.theme.palette.colors.lavander};
             `}
           >
-            <span>Join Our Community</span>
+            <span>Join Discord</span>
           </SectionTitle>
           <p>
-            We love our users, that's why we have a dedicated Discord server
-            just to talk with all of them!
+            FelNullが出してる{' '}
+            <span
+              css={`
+                color: ${props => props.theme.palette.colors.green};
+              `}
+            >
+              ModPack
+            </span>{' '}
+            などの質問は{' '}
+            <span
+              css={`
+                color: ${props => props.theme.palette.colors.green};
+              `}
+            >
+              Discord
+            </span>{' '}
+            でのみ受け付けております。
           </p>
           <Button
             css={`
@@ -72,13 +87,45 @@ const ChangeLogs = () => {
               height: 40px;
               font-size: 20px;
               padding: 4px !important;
-              margin-top: 20px;
+              margin-top: 3px;
+              margin-bottom: 10px;
             `}
             type="primary"
-            href="https://discord.gg/4cGYzen"
+            href="https://discord.gg/vsFrsgY"
           >
             <FontAwesomeIcon icon={faDiscord} />
             &nbsp; Discord
+          </Button>
+        </Section>
+        <Section>
+          <SectionTitle
+            css={`
+              color: ${props => props.theme.palette.colors.jungleGreen};
+            `}
+          >
+            <span>GDLauncher License</span>
+          </SectionTitle>
+          <p>
+            This project is licensed under the GNU GPL V3.0 - see the GitHub
+            LICENSE file for details. A simple way to keep in terms of the
+            license is by forking this repository and leaving it open source
+            under the same license.
+            FelNullGDLauncherはgorilla-devs/GDLauncherをベースに作成されています。
+          </p>
+          <Button
+            css={`
+              width: 200px;
+              height: 40px;
+              font-size: 20px;
+              padding: 4px !important;
+              margin-top: 3px;
+              margin-bottom: 10px;
+            `}
+            type="primary"
+            href="https://github.com/TeamFelnull/FelNullGDLauncher/blob/master/LICENSE"
+          >
+            <FontAwesomeIcon icon={faGithub} />
+            &nbsp; LICENSE
           </Button>
         </Section>
       </Container>

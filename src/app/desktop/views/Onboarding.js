@@ -147,9 +147,11 @@ const Home = () => {
             margin: 20% 10%;
           `}
         >
-          GDlauncher is completely free and open source. <br />
-          If you want to support us, consider renting a server on BisectHosting,
-          our official partner!
+          このLauncherはGDLauncherをもとに製作されています。
+          <br />
+          サポートが必要であれば
+          <br />
+          次のページのDiscordにてお願いします。
           <br />
           <br />
           <div
@@ -185,22 +187,12 @@ const Home = () => {
             margin: 20%;
           `}
         >
-          Or you can also support us through Patreon.
-          <div
-            css={`
-              margin: 40px;
-            `}
-          >
-            <a href="https://www.patreon.com/gorilladevs">
-              <img
-                css={`
-                  cursor: pointer;
-                `}
-                alt="Become a Patron"
-                src="https://gdevs.io/img/become_a_patron_button.png"
-              />
-            </a>
-          </div>
+          Licensed under GNU General Public License, version 3.
+          <br />
+          You are using GDLauncher,an open-source customizable launcher platform
+          that anyone can use.
+          <br />
+          FelNullGDLauncherはGDLauncherをベースに作成されています。
         </div>
       </div>
       <div
@@ -227,13 +219,12 @@ const Home = () => {
             margin: 20%;
           `}
         >
-          Also, don&apos;t forget to join us on Discord! This is where our
-          community is!
+          [Connect]をクリック！
           <iframe
             css={`
               margin-top: 40px;
             `}
-            src="https://discordapp.com/widget?id=398091532881756161&theme=dark"
+            src="https://discordapp.com/widget?id=600929948529590272&theme=dark"
             width="350"
             height="410"
             allowTransparency="true"
