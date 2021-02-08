@@ -64,10 +64,10 @@ const InstanceDeleteConfirmation = ({ instanceName }) => {
             color="primary"
             disabled={loading}
           >
-            No, Abort
+            いいえ
           </Button>
           <Button onClick={deleteInstance} loading={loading}>
-            Yes, Delete
+            完全削除
           </Button>
         </div>
       </div>

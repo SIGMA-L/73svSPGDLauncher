@@ -53,7 +53,7 @@ const InstanceCrashed = ({ code, errorLogs }) => {
         height: 450px;
         width: 500px;
       `}
-      title="The instance could not be launched"
+      title="クラッシュ！？"
     >
       <Container>
         <InnerContainer>

@@ -71,7 +71,7 @@ export default class ErrorBoundary extends React.Component {
               margin-top: 30px;
             `}
           >
-            Restart GDLauncher
+            Restart FelNullGDLauncher
           </Button>
         </div>
       );

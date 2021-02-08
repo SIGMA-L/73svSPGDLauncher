@@ -111,12 +111,12 @@ export default function Settings() {
           onClick={() => dispatch(closeModal())}
         />
         <SideMenu>
-          <SettingsTitle>General</SettingsTitle>
+          <SettingsTitle>設定</SettingsTitle>
           <SettingsButton
             active={page === 'General'}
             onClick={() => setPage('General')}
           >
-            General
+            一般
           </SettingsButton>
           <SettingsButton
             active={page === 'Java'}

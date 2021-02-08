@@ -148,8 +148,7 @@ const ManualSetup = ({ setChoice }) => {
           font-size: 18px;
         `}
       >
-        Select your java executable. We strongly suggest Java8, since any other
-        version won&apos;t completely work with modded Minecraft
+        実行可能なJava.exeを設定してください。 推奨：Java8 64bit
       </div>
       <div
         css={`
@@ -158,7 +157,7 @@ const ManualSetup = ({ setChoice }) => {
         `}
       >
         <Input
-          placeholder="Select your java executable"
+          placeholder=".../java.exe"
           onChange={e => setJavaPath(e.target.value)}
           value={javaPath}
         />

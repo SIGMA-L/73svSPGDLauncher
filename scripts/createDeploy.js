@@ -165,7 +165,7 @@ const commonConfig = {
     },
     /* eslint-disable */
     artifactName: `${'${productName}'}-${'${os}'}-${
-      process.argv[2]
+        process.argv[2]
     }.${'${ext}'}`,
     /* eslint-enable */
     linux: {
