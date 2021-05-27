@@ -32,7 +32,7 @@ const FTBModpacks = ({ setStep, setModpack, setVersion }) => {
       } else {
         ({ data } = await getFTBSearch(searchText));
       }
-      setModpackIds(data.packs);
+      setModpackIds(data.packs || []);
       updateModpacks.callback();
     };
     init();
@@ -79,8 +79,6 @@ const FTBModpacks = ({ setStep, setModpack, setVersion }) => {
       setModpacks(newModpacks);
     }
   };
-
-  console.log(modpacks);
 
   return (
     <Container>
@@ -163,11 +161,6 @@ export default React.memo(FTBModpacks);
 const Container = styled.div`
   width: 100%;
   height: 100%;
-`;
-
-const StyledSelect = styled(Select)`
-  width: 170px;
-  margin-right: 20px;
 `;
 
 const StyledInput = styled(Input.Search)``;
