@@ -1,6 +1,6 @@
 {
   "name": "felnullgdlauncher",
-  "version": "1.1.0-felnull.24",
+  "version": "1.1.11-felnull.1",
   "description": "FelNullGDlauncherはシンプルでありながら、ユーザーエクスペリエンスに重点を置いた強力なMinecraftカスタムランチャーです。",
   "keywords": [
     "minecraft",
@@ -151,7 +151,6 @@
     "webpack-merge": "^5.7.3"
   },
   "dependencies": {
-    "7zip-bin": "^5.0.3",
     "@loadable/babel-plugin": "^5.13.2",
     "7zip-bin": "^5.1.1",
     "antd": "4.16.1",
@@ -165,6 +164,7 @@
     "electron-log": "^4.3.5",
     "electron-store": "^8.0.0",
     "electron-updater": "^4.3.9",
+    "eslint-webpack-plugin": "^2.5.4",
     "fast-xml-parser": "^3.19.0",
     "fs-extra": "^10.0.0",
     "get-stream": "^6.0.1",
