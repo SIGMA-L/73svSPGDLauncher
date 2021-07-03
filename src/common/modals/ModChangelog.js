@@ -73,6 +73,7 @@ const ModChangelog = ({ modpackId, files, type, modpackName }) => {
             loadChangelog(v);
           }}
           placeholder="バージョン選択"
+          virtual={false}
         >
           {(files || []).map(v => (
             <Select.Option

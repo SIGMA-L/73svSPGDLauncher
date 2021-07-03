@@ -68,6 +68,7 @@ const ChangeLogs = () => {
                 FTB
                 modpackを検索するときにクラッシュしてしまう問題を修正しました。
               </li>
+              <li>さまざまな QoL の修正をしました。</li>
             </ul>
           </div>
         </Section>
@@ -100,14 +101,13 @@ const ChangeLogs = () => {
           </p>
           <Button
             css={`
-              width: 200px;
-              height: 40px;
               font-size: 20px;
               padding: 4px !important;
               margin-top: 3px;
               margin-bottom: 10px;
             `}
             type="primary"
+            size="large"
             href="https://discord.gg/vsFrsgY"
           >
             <FontAwesomeIcon icon={faDiscord} />
