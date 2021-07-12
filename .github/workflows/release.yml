@@ -38,8 +38,6 @@ jobs:
         id: get_version
         uses: battila7/get-version-action@v2
 
-
-
       ##ReleaseChannel - go!
       - name: Create Release
         if: matrix.os == 'macos-latest'
@@ -51,12 +49,17 @@ jobs:
           tag_name: ${{ steps.get_version.outputs.version }}
           release_name: FelNullLauncher - ${{ steps.get_version.outputs.version }}
           body: |
+            ダウンロードはこちらから！
+            [Windows](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/FelNullGDLauncher-win-setup.exe)
+            [Mac OS X](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/FelNullGDLauncher-mac-setup.dmg)
+            [Linux](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/FelNullGDLauncher-linux-setup.AppImage)
+            
             felnullgdlauncher-${{ steps.get_version.outputs.version-without-v }}-x64.nsis.7z is network installer data. Do not download!
             felnullgdlauncher-${{ steps.get_version.outputs.version-without-v }}-x64.nsis.7zはネットワークインストーラーのデータです。ダウンロードしないでください！
 
-            Linux : どれでもできればよし！
-            Mac OS X : [FelNullGDLauncher-mac-setup.dmg]を実行してアプリをアプリケーションにコピーしてください。
             Windows : [FelNullGDLauncher-win-setup.exe]を実行すると自動的にインストールが開始し、ソフトが起動します。
+            Mac OS X : [FelNullGDLauncher-mac-setup.dmg]を実行してアプリをアプリケーションにコピーしてください。
+            Linux : どれでもできればよし！
 
             ※データフォルダリンク例
             Linuxわからん
