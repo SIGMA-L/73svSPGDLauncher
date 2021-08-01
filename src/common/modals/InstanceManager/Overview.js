@@ -116,7 +116,6 @@ const ResolutionInputContainer = styled.div`
 `;
 
 const marks = {
-  2048: '2048 MB',
   4096: '4096 MB',
   8192: '8192 MB',
   16384: '16384 MB',
@@ -535,7 +534,7 @@ const Overview = ({ instanceName, background, manifest }) => {
             </JavaManagerRow>
           )}
           <JavaManagerRow>
-            <div>Custom Java Path</div>
+            <div>カスタムJavaパス指定 (高度な設定)</div>
             <Switch
               checked={customJavaPath}
               onChange={v => {

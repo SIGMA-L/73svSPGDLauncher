@@ -211,7 +211,7 @@ const Modpack = ({ modpackId, instanceName, manifest, fileID }) => {
           dispatch(closeModal());
         }}
       >
-        Switch Version
+        バージョンを変更する
       </Button>
     </Container>
   );

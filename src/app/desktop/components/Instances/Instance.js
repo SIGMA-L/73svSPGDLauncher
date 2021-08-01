@@ -279,8 +279,8 @@ const Instance = ({ instanceName }) => {
                     {!isPlaying.initialized && <div className="spinner" />}
                   </div>
                 )}
-                {isInQueue && 'In Queue'}
-                {!isInQueue && !isPlaying && 'PLAY'}
+                {isInQueue && '待機中...'}
+                {!isInQueue && !isPlaying && 'PLAY!'}
               </>
             )}
           </HoverContainer>

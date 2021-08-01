@@ -191,12 +191,19 @@ const SystemNavbar = () => {
                 white-space: nowrap;
               `}
             >
-              Partnered with &nbsp;&nbsp;
+              Customized &nbsp;&nbsp;
             </div>
             <BisectHosting
               showPointerCursor
               onClick={() => dispatch(openModal('BisectHosting'))}
             />
+            <div
+              css={`
+                white-space: nowrap;
+              `}
+            >
+              &nbsp;&nbsp; Japanese Version &nbsp;&nbsp;
+            </div>
             {/* <PulsatingCircle /> */}
           </div>
         </>

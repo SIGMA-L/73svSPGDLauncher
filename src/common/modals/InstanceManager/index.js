@@ -141,14 +141,14 @@ const InstanceBackground = styled.div`
 `;
 
 const menuEntries = {
-  overview: { name: 'Overview', component: Overview },
+  overview: { name: '概要 / 設定', component: Overview },
   mods: { name: 'Mods', component: Mods },
   modpack: { name: 'Modpack', component: Modpack },
-  notes: { name: 'Notes', component: Notes },
-  resourcePacks: { name: 'Resource Packs', component: ResourcePacks },
+  notes: { name: 'メモ', component: Notes },
+  resourcePacks: { name: 'リソースパック', component: ResourcePacks },
   // resourcePacks: { name: "Resource Packs", component: Overview },
   // worlds: { name: "Worlds", component: Overview },
-  screenshots: { name: 'Screenshots', component: Screenshots }
+  screenshots: { name: 'スクリーンショット', component: Screenshots }
   // settings: { name: "Settings", component: Overview },
   // servers: { name: "Servers", component: Overview }
 };
