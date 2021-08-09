@@ -57,7 +57,7 @@ const McVersionChanger = ({ instanceName, defaultValue }) => {
 
   return (
     <Modal
-      title="Minecraft Version Changer"
+      title="Minecraft バージョン変更ツール"
       css={`
         height: 380px;
         width: 600px;

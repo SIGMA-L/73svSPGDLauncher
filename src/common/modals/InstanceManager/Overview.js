@@ -119,7 +119,7 @@ const marks = {
   4096: '4096 MB',
   8192: '8192 MB',
   16384: '16384 MB',
-  32768: '32768 MB'
+  24576: '24576 MB'
 };
 
 const Card = memo(
@@ -270,9 +270,9 @@ const Overview = ({ instanceName, background, manifest }) => {
     const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
     switch (diffDays) {
       case 0:
-        return 'Today';
+        return '今日';
       case -1:
-        return 'Yesterday';
+        return '昨日';
       default:
         return lastPlayed.toLocaleDateString(undefined, {
           year: 'numeric',

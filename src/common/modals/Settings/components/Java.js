@@ -102,7 +102,7 @@ const marks = {
   4096: '4096 MB',
   8192: '8192 MB',
   16384: '16384 MB',
-  32768: '32768 MB'
+  24576: '24576 MB'
 };
 
 export default function MyAccountPreferences() {
@@ -310,7 +310,8 @@ export default function MyAccountPreferences() {
           }}
           defaultValue={javaMemory}
           min={1024}
-          max={process.getSystemMemoryInfo().total / 1024}
+          // max={process.getSystemMemoryInfo().total / 1024}
+          max={32768}
           step={512}
           marks={marks}
           valueLabelDisplay="auto"

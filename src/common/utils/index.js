@@ -106,26 +106,26 @@ export const convertMinutesToHumanTime = minutes => {
   // values to display: d, h, m, minutes, days, weeks, months
 
   switch (true) {
-    case months >= 2:
-      return `${months} months`;
-    case months === 1:
-      return `1 month`;
-    case weeks >= 2:
-      return `${weeks} weeks`;
-    case weeks === 1:
-      return `1 week`;
+    case months >= 1:
+      return `${months}ヶ月, ${weeks}週間, ${days}日`;
+    // case months === 1:
+    //   return `1ヶ月, ${weeks}週間, ${days}日`;
+    case weeks >= 1:
+      return `${weeks}週間, ${days}日, ${hours}時間`;
+    // case weeks === 1:
+    //   return `1週間, ${days}日, ${hours}時間`;
     case days >= 1:
-      return `${days} d, ${hours} h, ${min} m`;
+      return `${days}日, ${hours}時間, ${min}分`;
     case hours >= 2:
-      return `${hours} h, ${min} m`;
+      return `${hours}時間, ${min}分`;
     case hours === 1:
-      return `1 hour`;
+      return `1時間`;
     case minutes >= 2:
-      return `${min} minutes`;
+      return `${min}分`;
     case minutes === 1:
-      return `1 minute`;
+      return `1分`;
     case minutes === 0:
-      return '0 minutes';
+      return '0分';
     default:
       return '';
   }

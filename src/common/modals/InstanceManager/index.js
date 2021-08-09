@@ -1,20 +1,17 @@
 /* eslint-disable */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy } from 'react';
 import styled from 'styled-components';
 import { Button } from 'antd';
 import fse from 'fs-extra';
 import { promises as fs } from 'fs';
 import path from 'path';
-import Modal from '../../components/Modal';
-import Overview from './Overview';
 import { ipcRenderer } from 'electron';
-import Screenshots from './Screenshots';
-import ResourcePacks from './ResourcePacks';
-import Notes from './Notes';
-import Mods from './Mods';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import omit from 'lodash/omit';
 import { useSelector, useDispatch } from 'react-redux';
+import Modal from '../../components/Modal';
+import AsyncComponent from '../../components/AsyncComponent';
 import { _getInstance, _getInstancesPath } from '../../utils/selectors';
 import { FORGE, FABRIC, CURSEFORGE, FTB } from '../../utils/constants';
 import Modpack from './Modpack';
@@ -24,7 +21,6 @@ import {
   updateInstanceConfig
 } from '../../reducers/actions';
 import instanceDefaultBackground from '../../../common/assets/instance_default.png';
-import omit from 'lodash/omit';
 
 const SideMenu = styled.div`
   display: flex;
@@ -141,14 +137,32 @@ const InstanceBackground = styled.div`
 `;
 
 const menuEntries = {
-  overview: { name: '概要 / 設定', component: Overview },
-  mods: { name: 'Mods', component: Mods },
-  modpack: { name: 'Modpack', component: Modpack },
-  notes: { name: 'メモ', component: Notes },
-  resourcePacks: { name: 'リソースパック', component: ResourcePacks },
+  overview: {
+    name: '概要 / 設定',
+    component: AsyncComponent(lazy(() => import('./Overview')))
+  },
+  mods: {
+    name: 'Mods',
+    component: AsyncComponent(lazy(() => import('./Mods')))
+  },
+  modpack: {
+    name: 'Modpack',
+    component: AsyncComponent(lazy(() => import('./Modpack')))
+  },
+  notes: {
+    name: 'メモ',
+    component: AsyncComponent(lazy(() => import('./Notes')))
+  },
+  resourcePacks: {
+    name: 'リソースパック',
+    component: AsyncComponent(lazy(() => import('./ResourcePacks')))
+  },
   // resourcePacks: { name: "Resource Packs", component: Overview },
   // worlds: { name: "Worlds", component: Overview },
-  screenshots: { name: 'スクリーンショット', component: Screenshots }
+  screenshots: {
+    name: 'スクリーンショット',
+    component: AsyncComponent(lazy(() => import('./Screenshots')))
+  }
   // settings: { name: "Settings", component: Overview },
   // servers: { name: "Servers", component: Overview }
 };
@@ -222,8 +236,6 @@ const InstanceManager = ({ instanceName }) => {
     }
   }, [instance?.mods]);
 
-
-
   return (
     <Modal
       css={`
@@ -231,7 +243,7 @@ const InstanceManager = ({ instanceName }) => {
         width: 85%;
         max-width: 1500px;
       `}
-      title={`Instance Manager - ${instanceName}`}
+      title={`インスタンス設定 - ${instanceName}`}
       removePadding
     >
       <Container>

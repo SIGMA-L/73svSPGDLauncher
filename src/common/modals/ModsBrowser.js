@@ -439,7 +439,7 @@ const ModsBrowser = ({ instanceName, gameVersion }) => {
         width: 90%;
         max-width: 1500px;
       `}
-      title="Instance Manager"
+      title="インスタンス設定"
     >
       <Container>
         <Header>

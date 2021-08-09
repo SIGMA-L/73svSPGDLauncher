@@ -33,14 +33,7 @@ const ChangeLogs = () => {
           </SectionTitle>
           <div>
             <ul>
-              <li>共有データを削除するための確認画面を追加しました。</li>
-              <li>！Microsoftアカウントのログインに対応しました！</li>
-              <li>
-                FTBModpackの推奨／最低メモリを自動的に設定し、ユーザーのスペックが足りない場合は確認画面が出るようにしました。
-              </li>
-              <li>
-                インスタンスをエクスポートするときにmodlist.htmlを出力できるようにしました。
-              </li>
+              <li>なし</li>
             </ul>
           </div>
         </Section>
@@ -50,25 +43,13 @@ const ChangeLogs = () => {
               color: ${props => props.theme.palette.colors.red};
             `}
           >
-            <span>Bug Fixes</span>
+            <span>修正</span>
           </SectionTitle>
           <div>
             <ul>
-              <li>UIの修正をしました</li>
-              <li>MacOSのコピー&ペーストを修正</li>
+              <li>UIの修正をしました。</li>
               <li>セキュリティ修正</li>
-              <li>
-                前提Modの自動ダウンロードがされない問題を一部修正しました。
-              </li>
-              <li>
-                FTB fabric
-                modpackが正しくダウンロードされない問題を修正しました。
-              </li>
-              <li>
-                FTB
-                modpackを検索するときにクラッシュしてしまう問題を修正しました。
-              </li>
-              <li>さまざまな QoL の修正をしました。</li>
+              <li>さらに少しだけ日本語化しました。</li>
             </ul>
           </div>
         </Section>
