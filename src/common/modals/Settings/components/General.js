@@ -390,7 +390,7 @@ const General = () => {
               setReleaseChannel(e);
               await fsa.writeFile(
                 path.join(appData, 'felnullgdlauncher_next', 'rChannel'),
-                e
+                e.toString()
               );
             }}
             value={releaseChannel}

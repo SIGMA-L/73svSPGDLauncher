@@ -154,7 +154,7 @@ export default function Settings() {
               width: 200px;
               position: absolute;
               bottom: 0;
-              margin-bottom: 50px;
+              margin-bottom: 30px;
             `}
           >
             <div
@@ -255,6 +255,7 @@ export default function Settings() {
                 max-width: 600px;
                 overflow-y: hidden;
                 overflow-x: hidden;
+                padding-bottom: 20px;
               `}
             >
               <ContentComponent />

@@ -15,7 +15,7 @@ const BisectHosting = () => {
         font-size: 10px;
         line-height: 1.8;
       `}
-      title="We teamed up with BisectHosting"
+      title="FelNull Discord"
     >
       <Container>
         <BisectHostingLogo size={60} hover />

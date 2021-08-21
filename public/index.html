@@ -53,14 +53,15 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <script>
       (function () {
-        if (process.env.NODE_ENV !== 'development') {
+        if (process.env.NODE_ENV !== 'development' && process.env.GA_ID) {
+          window.gaInitialized = true;
           window.ga =
             window.ga ||
             function () {
               (ga.q = ga.q || []).push(arguments);
             };
           ga.l = +new Date();
-          ga('create', 'UA-111739584-5', 'none');
+          ga('create', process.env.GA_ID, 'none');
           ga('set', 'transport', 'xhr');
           ga('set', 'appName', 'FelNullGDLauncher');
           ga('set', 'checkProtocolTask', null);
@@ -99,7 +100,6 @@
         <div class="loader">
           <svg
             version="1.1"
-            id="Livello_1"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
             x="0px"

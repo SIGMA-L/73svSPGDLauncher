@@ -156,8 +156,6 @@ jobs:
           tag_name: ${{ steps.get_version.outputs.version }}
 
 
-
-
       - uses: actions/setup-ruby@v1
       - name: Send Webhook Notification
         if: matrix.os == 'windows-latest'

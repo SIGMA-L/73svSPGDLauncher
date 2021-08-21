@@ -222,7 +222,7 @@ const ModsListWrapper = ({
                   );
                 }}
               >
-                Explore
+                詳細
               </Button>
               <Button
                 type="primary"
@@ -286,7 +286,7 @@ const ModsListWrapper = ({
                 }}
                 loading={loading}
               >
-                Install
+                インストール
               </Button>
             </div>
           )
@@ -305,7 +305,7 @@ const ModsListWrapper = ({
               );
             }}
           >
-            Change version / explore
+            詳細 / その他バージョン
           </Button>
         )}
       </RowContainer>
@@ -409,7 +409,8 @@ const ModsBrowser = ({ instanceName, gameVersion }) => {
         filterType,
         filterType !== 'Author' && filterType !== 'Name',
         gameVersion,
-        getPatchedInstanceType(instance) === FABRIC ? 4780 : null
+        0,
+        getPatchedInstanceType(instance)
       ));
     } catch (err) {
       setError(err);
@@ -445,8 +446,8 @@ const ModsBrowser = ({ instanceName, gameVersion }) => {
         <Header>
           <Select
             css={`
-              width: 160px;
-              margin: 0 10px;
+              width: 160px !important;
+              margin: 0 10px !important;
             `}
             defaultValue={filterType}
             onChange={setFilterType}
@@ -464,7 +465,7 @@ const ModsBrowser = ({ instanceName, gameVersion }) => {
           </Select>
           <Input
             css={`
-              height: 32px;
+              height: 32px !important;
             `}
             placeholder="Mod検索..."
             value={searchQuery}
@@ -494,7 +495,7 @@ const ModsBrowser = ({ instanceName, gameVersion }) => {
                   margin-top: 70px;
                 `}
               >
-                No mods has been found with the current filters.
+                Modが見つかりませんでした。
               </div>
             </div>
           ) : (
@@ -533,7 +534,7 @@ const ModsBrowser = ({ instanceName, gameVersion }) => {
                 margin-top: 70px;
               `}
             >
-              An error occurred while loading the mods list...
+              Modsリストの読み込み中にエラーが発生しました...
             </div>
           </div>
         )}
