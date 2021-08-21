@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBug, faStar, faWrench } from '@fortawesome/free-solid-svg-icons';
 import { useInView } from 'react-intersection-observer';
 import { faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { Button } from 'antd';
 import Modal from '../components/Modal';
 import SocialButtons from '../components/SocialButtons';
 // import KoFiButton from '../assets/ko-fi.png';
@@ -301,6 +302,37 @@ const ChangeLogs = () => {
               ))}
             </ul>
           </div>
+        </Section>
+        <Section>
+          <SectionTitle
+            css={`
+              color: ${props => props.theme.palette.colors.jungleGreen};
+            `}
+          >
+            <span>GDLauncher License</span>
+          </SectionTitle>
+          <p>
+            This project is licensed under the GNU GPL V3.0 - see the GitHub
+            LICENSE file for details. A simple way to keep in terms of the
+            license is by forking this repository and leaving it open source
+            under the same license.
+            FelNullGDLauncherはgorilla-devs/GDLauncherをベースに作成されています。
+          </p>
+          <Button
+            css={`
+              width: 200px;
+              height: 40px;
+              font-size: 20px;
+              padding: 4px !important;
+              margin-top: 3px;
+              margin-bottom: 10px;
+            `}
+            type="primary"
+            href="https://github.com/TeamFelnull/FelNullGDLauncher/blob/master/LICENSE"
+          >
+            <FontAwesomeIcon icon={faGithub} />
+            &nbsp; LICENSE
+          </Button>
         </Section>
       </Container>
       <div
