@@ -32,14 +32,32 @@ import {
   updateShowNews,
   updateCurseReleaseChannel
 } from '../../../reducers/settings/actions';
-import HorizontalLogo from '../../../../ui/HorizontalLogo';
 import { updateConcurrentDownloads } from '../../../reducers/actions';
 import { openModal } from '../../../reducers/modals/actions';
+import HorizontalLogo from '../../../../ui/HorizontalLogo';
 import { extractFace } from '../../../../app/desktop/utils';
 
-const MyAccountPrf = styled.div`
+const Title = styled.div`
+  margin-top: 30px;
+  margin-bottom: 5px;
+  font-size: 15px;
+  font-weight: 700;
+  color: ${props => props.theme.palette.text.primary};
+  z-index: 1;
+  text-align: left;
+  -webkit-backface-visibility: hidden;
+`;
+
+const Content = styled.div`
   width: 100%;
-  height: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  *:first-child {
+    margin-right: 15px;
+  }
 `;
 
 const PersonalData = styled.div`
@@ -50,16 +68,6 @@ const PersonalData = styled.div`
 const MainTitle = styled.h1`
   color: ${props => props.theme.palette.text.primary};
   margin: 0 500px 20px 0;
-  margin-bottom: 20px;
-`;
-
-const Title = styled.div`
-  font-size: 15px;
-  font-weight: 700;
-  color: ${props => props.theme.palette.text.primary};
-  z-index: 1;
-  text-align: left;
-  -webkit-backface-visibility: hidden;
 `;
 
 const ProfileImage = styled.img`
@@ -69,23 +77,6 @@ const ProfileImage = styled.img`
   background: #212b36;
   width: 50px;
   height: 50px;
-`;
-
-const ImagePlaceHolder = styled.div`
-  position: relative;
-  top: 20px;
-  left: 20px;
-  background: #212b36;
-  width: 50px;
-  height: 50px;
-`;
-
-const UsernameContainer = styled.div`
-  text-align: left;
-`;
-
-const UuidContainer = styled.div`
-  text-align: left;
 `;
 
 const Uuid = styled.div`
@@ -110,58 +101,6 @@ const PersonalDataContainer = styled.div`
   border-radius: ${props => props.theme.shape.borderRadius};
 `;
 
-const Hr = styled.div`
-  height: 25px;
-`;
-
-const ReleaseChannel = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  width: 100%;
-  height: 90px;
-  color: ${props => props.theme.palette.text.third};
-  p {
-    margin-bottom: 7px;
-    color: ${props => props.theme.palette.text.secondary};
-  }
-  div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-  select {
-    margin-left: auto;
-    self-align: end;
-  }
-`;
-
-const ParallelDownload = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 60px;
-  p {
-    text-align: left;
-    color: ${props => props.theme.palette.text.third};
-  }
-`;
-
-const DiscordRpc = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  height: 40px;
-  p {
-    text-align: left;
-    color: ${props => props.theme.palette.text.third};
-  }
-`;
-
 const LauncherVersion = styled.div`
   margin: 30px 0;
   p {
@@ -174,11 +113,11 @@ const LauncherVersion = styled.div`
     color: ${props => props.theme.palette.text.primary};
   }
 `;
+
 const CustomDataPathContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 140px;
   border-radius: ${props => props.theme.shape.borderRadius};
 
   h1 {
@@ -211,34 +150,31 @@ function dashUuid(UUID) {
 }
 
 const General = () => {
-  const [version, setVersion] = useState(null);
-  const [releaseChannel, setReleaseChannel] = useState(null);
-  const currentAccount = useSelector(_getCurrentAccount);
-  const hideWindowOnGameLaunch = useSelector(
-    state => state.settings.hideWindowOnGameLaunch
-  );
-  const DiscordRPC = useSelector(state => state.settings.discordRPC);
-  const potatoPcMode = useSelector(state => state.settings.potatoPcMode);
-  const concurrentDownloads = useSelector(
-    state => state.settings.concurrentDownloads
-  );
-  const updateAvailable = useSelector(state => state.updateAvailable);
+  /* eslint-disable prettier/prettier */
+  const tempPath = useSelector(_getTempPath);
   const dataStorePath = useSelector(_getDataStorePath);
   const instancesPath = useSelector(_getInstancesPath);
+  const currentAccount = useSelector(_getCurrentAccount);
+  const userData = useSelector(state => state.userData);
   const isPlaying = useSelector(state => state.startedInstances);
   const queuedInstances = useSelector(state => state.downloadQueue);
-  const tempPath = useSelector(_getTempPath);
-  const [copiedUuid, setCopiedUuid] = useState(false);
-  const [profileImage, setProfileImage] = useState(null);
-  const [deletingInstances, setDeletingInstances] = useState(false);
-  const userData = useSelector(state => state.userData);
-  const [dataPath, setDataPath] = useState(userData);
-  const [moveUserData, setMoveUserData] = useState(false);
+  const updateAvailable = useSelector(state => state.updateAvailable);
   const showNews = useSelector(state => state.settings.showNews);
+  const DiscordRPC = useSelector(state => state.settings.discordRPC);
+  const potatoPcMode = useSelector(state => state.settings.potatoPcMode);
+  const concurrentDownloads = useSelector(state => state.settings.concurrentDownloads);
+  const curseReleaseChannel = useSelector(state => state.settings.curseReleaseChannel);
+  const hideWindowOnGameLaunch = useSelector(state => state.settings.hideWindowOnGameLaunch);
+  /* eslint-enable */
+
+  const [dataPath, setDataPath] = useState(userData);
+  const [copiedUuid, setCopiedUuid] = useState(false);
+  const [moveUserData, setMoveUserData] = useState(false);
+  const [deletingInstances, setDeletingInstances] = useState(false);
   const [loadingMoveUserData, setLoadingMoveUserData] = useState(false);
-  const curseReleaseChannel = useSelector(
-    state => state.settings.curseReleaseChannel
-  );
+  const [version, setVersion] = useState(null);
+  const [profileImage, setProfileImage] = useState(null);
+  const [releaseChannel, setReleaseChannel] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -308,7 +244,7 @@ const General = () => {
       }
     }
     setLoadingMoveUserData(false);
-    ipcRenderer.invoke('appRestart');
+    await ipcRenderer.invoke('appRestart');
   };
 
   const openFolder = async () => {
@@ -321,26 +257,27 @@ const General = () => {
   };
 
   return (
-    <MyAccountPrf>
+    <>
       <PersonalData>
         <MainTitle>General</MainTitle>
         <PersonalDataContainer>
-          {profileImage ? (
-            <ProfileImage src={`data:image/jpeg;base64,${profileImage}`} />
-          ) : (
-            <ImagePlaceHolder />
-          )}
+          <ProfileImage
+            src={profileImage ? `data:image/jpeg;base64,${profileImage}` : null}
+          />
           <div
             css={`
               margin: 20px 20px 20px 40px;
               width: 330px;
+              * {
+                text-align: left;
+              }
             `}
           >
-            <UsernameContainer>
+            <div>
               Username <br />
               <Username>{currentAccount.selectedProfile.name}</Username>
-            </UsernameContainer>
-            <UuidContainer>
+            </div>
+            <div>
               UUID
               <br />
               <Uuid>
@@ -350,8 +287,7 @@ const General = () => {
                     css={`
                       width: 13px;
                       height: 14px;
-                      margin: 0;
-                      margin-left: 10px;
+                      margin: 0 0 0 10px;
                     `}
                   >
                     <FontAwesomeIcon
@@ -366,55 +302,39 @@ const General = () => {
                   </div>
                 </Tooltip>
               </Uuid>
-            </UuidContainer>
+            </div>
           </div>
         </PersonalDataContainer>
       </PersonalData>
-      <Hr />
-      <ReleaseChannel>
-        <Title>Release Channel</Title>
-        <div>
-          <div
-            css={`
-              width: 400px;
-            `}
-          >
-            FelNullGDLauncherの更新するときに使用するリリースを設定します。
-          </div>
-          <Select
-            css={`
-              width: 100px;
-            `}
-            onChange={async e => {
-              const appData = await ipcRenderer.invoke('getAppdataPath');
-              setReleaseChannel(e);
-              await fsa.writeFile(
-                path.join(appData, 'felnullgdlauncher_next', 'rChannel'),
-                e.toString()
-              );
-            }}
-            value={releaseChannel}
-            virtual={false}
-          >
-            <Select.Option value={0}>Stable</Select.Option>
-            <Select.Option value={1}>Beta</Select.Option>
-          </Select>
-        </div>
-      </ReleaseChannel>
-      <Hr />
+      <Title>Release Channel</Title>
+      <Content>
+        <p>FelNullGDLauncherの更新するときに使用するリリースを設定します。</p>
+        <Select
+          css={`
+            width: 400px;
+          `}
+          onChange={async e => {
+            const appData = await ipcRenderer.invoke('getAppdataPath');
+            setReleaseChannel(e);
+            await fsa.writeFile(
+              path.join(appData, 'felnullgdlauncher_next', 'rChannel'),
+              e.toString()
+            );
+          }}
+          value={releaseChannel}
+          virtual={false}
+        >
+          <Select.Option value={0}>Stable</Select.Option>
+          <Select.Option value={1}>Beta</Select.Option>
+        </Select>
+      </Content>
       <Title>
         Concurrent Downloads &nbsp; <FontAwesomeIcon icon={faTachometerAlt} />
       </Title>
-      <ParallelDownload>
-        <p
-          css={`
-            margin: 0;
-            width: 400px;
-          `}
-        >
+      <Content>
+        <p>
           同時にダウンロードやインストールをできる最大値を設定します。「推奨：３」
         </p>
-
         <Select
           onChange={v => dispatch(updateConcurrentDownloads(v))}
           value={concurrentDownloads}
@@ -432,18 +352,12 @@ const General = () => {
               </Select.Option>
             ))}
         </Select>
-      </ParallelDownload>
-      <Hr />
+      </Content>
       <Title>
         Preferred Curse Release Channel &nbsp; <FontAwesomeIcon icon={faFire} />
       </Title>
-      <ParallelDownload>
-        <p
-          css={`
-            margin: 0;
-            width: 400px;
-          `}
-        >
+      <Content>
+        <p>
           Twitch・Curseのプロジェクトをダウンロードするときに優先するリリースを設定します。これはModPackの更新にも適用されます。
         </p>
         <Select
@@ -459,23 +373,12 @@ const General = () => {
           <Select.Option value={2}>Beta</Select.Option>
           <Select.Option value={3}>Alpha</Select.Option>
         </Select>
-      </ParallelDownload>
-      <Hr />
-      <Title
-        css={`
-          margin-top: 0px;
-        `}
-      >
+      </Content>
+      <Title>
         Discord Integration &nbsp; <FontAwesomeIcon icon={faDiscord} />
       </Title>
-      <DiscordRpc>
-        <p
-          css={`
-            width: 350px;
-          `}
-        >
-          有効にするとDiscordで～～～プレイ中の表示をすることができます。
-        </p>
+      <Content>
+        <p>有効にするとDiscordで～～～プレイ中の表示をすることができます。</p>
         <Switch
           onChange={e => {
             dispatch(updateDiscordRPC(e));
@@ -487,21 +390,12 @@ const General = () => {
           }}
           checked={DiscordRPC}
         />
-      </DiscordRpc>
-      <Hr />
-      <Title
-        css={`
-          margin-top: 0px;
-        `}
-      >
+      </Content>
+      <Title>
         Minecraft News &nbsp; <FontAwesomeIcon icon={faNewspaper} />
       </Title>
-      <DiscordRpc>
-        <p
-          css={`
-            width: 350px;
-          `}
-        >
+      <Content>
+        <p>
           有効にするとMinecraft公式の最新のニュースをホームに表示します。(英字ニュースがほとんどだけど)
         </p>
         <Switch
@@ -510,25 +404,12 @@ const General = () => {
           }}
           checked={showNews}
         />
-      </DiscordRpc>
-      <Hr />
-      <Title
-        css={`
-          margin-top: 0px;
-        `}
-      >
+      </Content>
+      <Title>
         Hide Launcher While Playing &nbsp; <FontAwesomeIcon icon={faPlay} />
       </Title>
-      <DiscordRpc
-        css={`
-          margin-bottom: 30px;
-        `}
-      >
-        <p
-          css={`
-            width: 500px;
-          `}
-        >
+      <Content>
+        <p>
           有効にしてマインクラフトを起動するとランチャーを自動的に非表示にします。タスクバーのトレイから再度開くことができます。
         </p>
         <Switch
@@ -537,25 +418,12 @@ const General = () => {
           }}
           checked={hideWindowOnGameLaunch}
         />
-      </DiscordRpc>
-      <Hr />
-      <Title
-        css={`
-          margin-top: 0px;
-        `}
-      >
+      </Content>
+      <Title>
         Potato PC Mode &nbsp; <FontAwesomeIcon icon={faToilet} />
       </Title>
-      <DiscordRpc
-        css={`
-          margin-bottom: 30px;
-        `}
-      >
-        <p
-          css={`
-            width: 500px;
-          `}
-        >
+      <Content>
+        <p>
           あなたのパソコンはそんなに性能が低いのですか？これを有効にするとすべてのアニメーションと特殊効果が無効になり少し快適になるかもしれません！
         </p>
         <Switch
@@ -564,37 +432,12 @@ const General = () => {
           }}
           checked={potatoPcMode}
         />
-      </DiscordRpc>
-      <Hr />
-      <Title
-        css={`
-          width: 300px;
-          float: left;
-        `}
-      >
+      </Content>
+      <Title>
         Clear Shared Data&nbsp; <FontAwesomeIcon icon={faTrash} />
       </Title>
-      <div
-        css={`
-          display: flex;
-          justify-content: space-between;
-          text-align: left;
-          width: 100%;
-          margin-bottom: 30px;
-          p {
-            text-align: left;
-            color: ${props => props.theme.palette.text.third};
-          }
-        `}
-      >
-        <p
-          css={`
-            margin: 0;
-            width: 500px;
-          `}
-        >
-          今までのマイクラのデータをすべて削除します。
-        </p>
+      <Content>
+        <p>今までのマイクラのデータをすべて削除します。</p>
         <Button
           onClick={() => {
             dispatch(
@@ -610,30 +453,23 @@ const General = () => {
         >
           Clear
         </Button>
-      </div>
-      <Hr />
-      {/* {process.env.REACT_APP_RELEASE_TYPE === 'setup' && ( */}
-      <CustomDataPathContainer>
-        <Title
+      </Content>
+      <Title>
+        User Data Path&nbsp; <FontAwesomeIcon icon={faFolder} />
+        <a
           css={`
-            width: 400px;
-            float: left;
+            margin-left: 30px;
           `}
+          onClick={async () => {
+            const appData = await ipcRenderer.invoke('getAppdataPath');
+            const appDataPath = path.join(appData, 'gdlauncher_next');
+            setDataPath(appDataPath);
+          }}
         >
-          User Data Path&nbsp; <FontAwesomeIcon icon={faFolder} />
-          <a
-            css={`
-              margin-left: 30px;
-            `}
-            onClick={async () => {
-              const appData = await ipcRenderer.invoke('getAppdataPath');
-              const appDataPath = path.join(appData, 'felnullgdlauncher_next');
-              setDataPath(appDataPath);
-            }}
-          >
-            パスをリセットする
-          </a>
-        </Title>
+          パスをリセットする
+        </a>
+      </Title>
+      <CustomDataPathContainer>
         <div
           css={`
             display: flex;
@@ -641,7 +477,7 @@ const General = () => {
             text-align: left;
             width: 100%;
             height: 30px;
-            margin: 20px 0 10px 0;
+            margin-bottom: 10px;
             p {
               text-align: left;
               color: ${props => props.theme.palette.text.third};
@@ -699,8 +535,6 @@ const General = () => {
           </Checkbox>
         </div>
       </CustomDataPathContainer>
-      {/* )} */}
-      <Hr />
       <LauncherVersion>
         <div
           css={`
@@ -761,7 +595,7 @@ const General = () => {
           )}
         </div>
       </LauncherVersion>
-    </MyAccountPrf>
+    </>
   );
 };
 

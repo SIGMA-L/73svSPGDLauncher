@@ -101,10 +101,18 @@ const ChangeLogs = () => {
     });
 
   useEffect(() => {
-    ipcRenderer.invoke('getAppVersion').then(setVersion).catch(console.error);
-    setTimeout(() => {
-      setSkipIObserver(false);
-    }, 300);
+    ipcRenderer
+      .invoke('getAppVersion')
+      .then(v => {
+        setVersion(v);
+        if (!v.includes('beta')) {
+          setTimeout(() => {
+            setSkipIObserver(false);
+          }, 300);
+        }
+        return v;
+      })
+      .catch(console.error);
     ga.sendCustomEvent('changelogModalOpen');
   }, []);
 
@@ -382,10 +390,12 @@ const Section = styled.div`
     width: 100%;
     margin: 20px 0;
     border-radius: 5px;
+
     ul {
       padding: 0px;
       list-style-position: inside;
     }
+
     li {
       text-align: start;
       list-style-type: none;

@@ -4,9 +4,10 @@ const log = require('electron-log');
 let client;
 let activity;
 
+const initialAppStartup = Math.floor(Date.now() / 1000);
+
 const defaultValue = {
   details: 'Playing FelNullGDLauncher',
-  state: 'Idle',
   startTimestamp: Math.floor(Date.now() / 1000),
   largeImageKey: 'general',
   largeImageText: 'FelNullGDLauncher - TeamFelNull Minecraft Launcher',
@@ -32,18 +33,18 @@ exports.initRPC = () => {
   });
 };
 
-exports.update = ({ details, state }) => {
+exports.update = details => {
   activity = {
     ...activity,
     startTimestamp: Math.floor(Date.now() / 1000),
-    details,
-    state
+    details: `Playing ${details}`
   };
   client.setActivity(activity);
 };
 
 exports.reset = () => {
   activity = defaultValue;
+  activity.startTimestamp = initialAppStartup;
   client.setActivity(activity);
 };
 
