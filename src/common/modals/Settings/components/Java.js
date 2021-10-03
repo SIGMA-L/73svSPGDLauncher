@@ -114,6 +114,7 @@ function resetJavaArguments(dispatch) {
 }
 
 const marks = {
+  2048: '2048 MB',
   4096: '4096 MB',
   8192: '8192 MB',
   16384: '16384 MB',

@@ -118,7 +118,7 @@
     "concurrently": "^6.2.1",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
-    "electron": "^14.0.1",
+    "electron": "^15.1.0",
     "electron-builder": "^22.11.7",
     "electron-rebuild": "^2.3.4",
     "eslint": "^7.32.0",
@@ -147,8 +147,8 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "7zip-bin": "^5.1.1",
     "@loadable/babel-plugin": "^5.13.2",
+    "7zip-bin": "^5.1.1",
     "antd": "4.16.11",
     "axios": "^0.21.1",
     "base64-stream": "^1.0.0",
