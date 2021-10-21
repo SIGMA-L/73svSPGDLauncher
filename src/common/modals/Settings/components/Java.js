@@ -459,8 +459,8 @@ export default function MyAccountPreferences() {
               text-align: left;
             `}
           >
-            Select the preferred Minecraft startup method. Only change this if
-            you&apos;re experiencing issues with the default one.
+            希望するMinecraftの起動方法を設定します。
+            Defaultで問題が発生する場合は、Symlinkに変更してみてください。
           </Paragraph>
           <Select
             value={mcStartupMethod}
