@@ -374,7 +374,7 @@ const General = () => {
             width: 400px;
           `}
         >
-          Select the method in which instances should be sorted.
+          インスタンスの並び順を設定します。
         </p>
 
         <Select
@@ -385,9 +385,9 @@ const General = () => {
             text-align: start;
           `}
         >
-          <Select.Option value={0}>Alphabetical</Select.Option>
-          <Select.Option value={1}>Last Played</Select.Option>
-          <Select.Option value={2}>Most Played</Select.Option>
+          <Select.Option value={0}>アルファベット順</Select.Option>
+          <Select.Option value={1}>最後にプレイした順</Select.Option>
+          <Select.Option value={2}>最もプレイした順</Select.Option>
         </Select>
       </Content>
       <Title>
