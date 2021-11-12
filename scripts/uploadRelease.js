@@ -57,11 +57,11 @@ const main = async () => {
             if (!e?.advanced?.cm || !e?.header || !e?.content) {
               continue;
             }
-            const prSplit = (e?.advanced?.pr || '').split('/');
+            const prSplit = e?.advanced?.pr && e?.advanced?.pr.split('/');
             const advanced =
               ` ([${e?.advanced?.cm}](https://github.com/TeamFelnull/FelNullGDLauncher/commit/${e?.advanced?.cm})` +
               `${
-                prSplit.length
+                prSplit
                   ? ` | [#${e?.advanced.pr}](https://github.com/TeamFelnull/FelNullGDLauncher/pull/${prSplit[0]}` +
                     `${prSplit?.[1] ? `/commits/${prSplit[1]}` : ''})`
                   : ''

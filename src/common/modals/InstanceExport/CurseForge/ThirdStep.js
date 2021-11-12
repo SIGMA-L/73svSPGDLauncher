@@ -297,7 +297,7 @@ export default function ThirdStep({
                             margin-top: 20px;
                           `}
                         >
-                          Open Export Location
+                          エクスポート先のフォルダを開く
                         </Button>
                       </div>
                       <div>

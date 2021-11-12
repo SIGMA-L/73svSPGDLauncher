@@ -1,56 +1,82 @@
 module.exports = {
   new: [
     {
-      header: 'Java16に対応しました！',
-      content:
-        'これによりMC1.17以上でも問題なく実行できます！設定から両方のバージョンを手動設定することもできるようにしました！'
+      header: 'CurseForge custom API の導入',
+      content: 'CurseForgeはAPIを閉じるみたい。',
+      advanced: { cm: '2b37e27a', ms: 'Noo CurseForge, why?' }
     },
     {
-      header: 'インスタンスを簡単に複製できるようになりました！',
-      content: 'インスタンスを右クリックして「複製する」をクリックするだけ！'
+      header: 'インスタンスを並べ替えるオプションを追加しました！',
+      content: '設定で並び順を選択してみて！',
+      advanced: { cm: 'dda24322', pr: '887' }
     },
     {
-      header:
-        'Microsoftログインに関する プライバシーポリシー、ToS、利用規定 を追加しました。',
-      content:
-        '法的なことに興味がある場合は、設定ページから読むことができます。'
+      header: 'エクスポート先のフォルダを開くオプションを追加しました！',
+      content: 'インスタンスをエクスポートした後にあるよ！',
+      advanced: { cm: 'e15d6548', pr: '1082' }
     }
   ],
   improvements: [
     {
-      header: 'ChangeLogを見やすくしました！',
-      content: 'この画面です 😃。'
+      header: '「更新の確認」ボタンを追加しました！',
+      content: 'CurseForgeのです。',
+      advanced: { cm: 'f12465f2' }
     },
     {
-      header: 'パフォーマンスが大幅に向上しました！',
-      content: ''
+      header: 'Electronをアップデートしました！',
+      content: 'あとmurmur2の最新バージョンへの対応も',
+      advanced: { cm: 'f03d81b5', ms: 'Upgraded Electron to v15.1.0' }
     },
     {
-      header: '依存関係の更新を行いました。',
-      content: 'セキュリティとパフォーマンスの向上のために更新しました。'
+      header:
+        'CurseForgeのリクエストを複数スレッドで処理できるようになりました！',
+      content: 'パフォーマンス向上に期待。',
+      advanced: { cm: '422f9caf' }
     }
   ],
   bugfixes: [
     {
-      header: 'アカウントが非表示になる問題を修正しました。',
-      content: '追加された数が多すぎると見えなくなる問題が発生していました。'
+      header: 'ダウンロードした7zipが解凍されない問題を修正。',
+      content: '',
+      advanced: {
+        cm: '2240004d'
+      }
     },
     {
-      header: '同時ダウンロード設定を修正しました。',
-      content: 'FTBmodpackのダウンロード時には使用されません。'
+      header: 'MacOS .DS_Store に関する修正。',
+      content: '',
+      advanced: { cm: '7528e587', pr: '1045/511af67' }
     },
     {
-      header: 'Fabric modがロードされない問題を修正しました',
-      content: 'CurseForgeが構造を変更したため問題が発生していました。'
+      header: 'CSSコードを修正しました。',
+      content: '',
+      advanced: { cm: '7528e587', pr: '1045' }
     },
     {
-      header: 'CurseForgeModLoaderを正しく検出しなかったバグを修正しました。',
-      content: ''
+      header: 'MacOSのナビゲーションバーのアイコンを修正。',
+      content: 'being a bit to far on the right',
+      advanced: { cm: '5a245c99', pr: '1074' }
     },
     {
-      header: '外部からのインスタンスのインポートを修正しました。',
-      content:
-        'ローカルzipとリモートURLの両方が正しく機能するようになりました。'
+      header: 'ポータブル版のエラーを修正。',
+      content: 'not downloading.',
+      advanced: { cm: 'e32ee91f' }
+    },
+    {
+      header: 'FTBのダウンロードに関する修正。',
+      content: 'ハッシュの違いによる失敗が多発していました。',
+      advanced: {
+        cm: '77988a42'
+      }
+    },
+    {
+      header: 'Modファイルのハッシュチェックに関する修正。',
+      advanced: { cm: '5fd0deb4' }
+    },
+    {
+      header: 'Linux .debでのアイコンを修正。',
+      content: '',
+      advanced: { cm: 'a7f1cb35', pr: '1039' }
     }
   ]
 };

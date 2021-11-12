@@ -1,6 +1,6 @@
 {
   "name": "felnullgdlauncher",
-  "version": "1.1.15-felnull.8",
+  "version": "1.1.15-felnull.9",
   "description": "FelNullGDlauncherはシンプルでありながら、ユーザーエクスペリエンスに重点を置いた強力なMinecraftカスタムランチャーです。",
   "keywords": [
     "minecraft",
@@ -118,9 +118,9 @@
     "concurrently": "^6.2.1",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
-    "electron": "^15.1.0",
-    "electron-builder": "^22.11.7",
-    "electron-rebuild": "^2.3.4",
+    "electron": "^16.0.0-beta.9",
+    "electron-builder": "^22.13.1",
+    "electron-rebuild": "^3.2.5",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",

@@ -6,7 +6,7 @@ import { ipcRenderer } from 'electron';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBug, faStar, faWrench } from '@fortawesome/free-solid-svg-icons';
 import { useInView } from 'react-intersection-observer';
-import { faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { Button } from 'antd';
 import Modal from '../../components/Modal';
 import SocialButtons from '../../components/SocialButtons';
@@ -17,7 +17,8 @@ import { openModal } from '../../reducers/modals/actions';
 import ga from '../../utils/analytics';
 import changelog from './changeLog';
 
-const UpdateRow = ({ header, content }) => {
+const UpdateRow = ({ header, content, advanced }) => {
+  const prSplit = advanced?.pr?.split('/');
   return (
     <li>
       &bull; {header}{' '}
@@ -28,6 +29,42 @@ const UpdateRow = ({ header, content }) => {
       >
         {content}
       </span>
+      {advanced && (
+        <>
+          <div
+            css={`
+              color: ${props => props.theme.palette.text.third};
+              font-size: 12px;
+              a {
+                color: ${props => props.theme.palette.primary.light};
+              }
+              a:hover {
+                color: ${props => props.theme.palette.primary.main};
+              }
+            `}
+          >
+            <a
+              href={`https://github.com/gorilla-devs/GDLauncher/commit/${advanced.cm}`}
+            >
+              {advanced.cm}
+            </a>
+            {prSplit && (
+              <>
+                {' | '}
+                {/* Yes, this was the best (and shortest) version to do this I could come up with */}
+                <a
+                  href={`https://github.com/gorilla-devs/GDLauncher/pull/${
+                    prSplit[0]
+                  }${prSplit.length > 1 ? `/commits/${prSplit[1]}` : ''}`}
+                >
+                  #{advanced.pr}
+                </a>
+              </>
+            )}
+            {advanced.ms && <> | {advanced.ms}</>}
+          </div>
+        </>
+      )}
     </li>
   );
 };
@@ -35,6 +72,7 @@ const UpdateRow = ({ header, content }) => {
 const ChangeLogs = () => {
   const [version, setVersion] = useState(null);
   const [skipIObserver, setSkipIObserver] = useState(true);
+  const [showAdvanced, setShowAdvanced] = useState(false);
   const dispatch = useDispatch();
   const { ref: intersectionObserverRef, inView: insectionObserverInView } =
     useInView({
@@ -75,9 +113,9 @@ const ChangeLogs = () => {
     <Modal
       css={`
         height: 550px;
-        width: 650px;
+        width: 900px;
       `}
-      title={`What's new in ${version}`}
+      title={`${version} のアップデート内容！`}
       removePadding
     >
       <Container>
@@ -117,40 +155,22 @@ const ChangeLogs = () => {
               Discord
             </span>{' '}
             で受け付けております。「
-            <span onClick={openBisectModal}>FelNullGDLauncher</span>」
+            <span onClick={openBisectModal}>
+              ここをクリック！FelNullGDLauncher
+            </span>
+            」
           </div>
-          <div
+          <a
             css={`
-              display: flex;
-              align-items: center;
-              justify-content: start;
-              margin-bottom: 20px;
-              margin-top: 30px;
-              a:nth-child(1) {
-                margin-right: 20px;
-              }
-              img {
-                border-radius: 30px;
-                height: 40px;
-                cursor: pointer;
-                transition: transform 0.2s ease-in-out;
-                &:hover {
-                  transform: scale(1.05);
-                }
-              }
+              margin-top: 20px;
+              color: ${props => props.theme.palette.primary.light};
             `}
+            onClick={() => setShowAdvanced(!showAdvanced)}
           >
-            <a href="https://discord.gg/X9BUF9A">
-              <div>
-                <FontAwesomeIcon icon={faDiscord} size="lg" />
-              </div>
-            </a>
-            <a href="https://github.com/TeamFelnull/FelNullGDLauncher">
-              <div>
-                <FontAwesomeIcon icon={faGithub} size="lg" />
-              </div>
-            </a>
-          </div>
+            {showAdvanced
+              ? 'Hide extended information'
+              : 'Show extended information'}
+          </a>
         </Header>
         <Section>
           <SectionTitle
@@ -162,7 +182,7 @@ const ChangeLogs = () => {
               css={`
                 display: flex;
                 align-items: center;
-                padding-top: 90px;
+                padding-top: 50px;
               `}
             >
               <FontAwesomeIcon
@@ -175,18 +195,17 @@ const ChangeLogs = () => {
               新機能
             </span>
           </SectionTitle>
-          <div>
-            <ul>
-              {changelog.new.map((item, index) => (
-                <UpdateRow
-                  /* eslint-disable-next-line react/no-array-index-key */
-                  key={index}
-                  header={item.header}
-                  content={item.content}
-                />
-              ))}
-            </ul>
-          </div>
+          <ul>
+            {changelog.new.map((item, index) => (
+              <UpdateRow
+                /* eslint-disable-next-line react/no-array-index-key */
+                key={index}
+                header={item.header}
+                content={item.content}
+                advanced={showAdvanced && item.advanced}
+              />
+            ))}
+          </ul>
         </Section>
         <Section>
           <SectionTitle
@@ -210,18 +229,17 @@ const ChangeLogs = () => {
               改善
             </span>
           </SectionTitle>
-          <div>
-            <ul>
-              {changelog.improvements.map((item, index) => (
-                <UpdateRow
-                  /* eslint-disable-next-line react/no-array-index-key */
-                  key={index}
-                  header={item.header}
-                  content={item.content}
-                />
-              ))}
-            </ul>
-          </div>
+          <ul>
+            {changelog.improvements.map((item, index) => (
+              <UpdateRow
+                /* eslint-disable-next-line react/no-array-index-key */
+                key={index}
+                header={item.header}
+                content={item.content}
+                advanced={showAdvanced && item.advanced}
+              />
+            ))}
+          </ul>
         </Section>
         <Section>
           <SectionTitle
@@ -245,18 +263,17 @@ const ChangeLogs = () => {
               修正
             </span>
           </SectionTitle>
-          <div>
-            <ul ref={intersectionObserverRef}>
-              {changelog.bugfixes.map((item, index) => (
-                <UpdateRow
-                  /* eslint-disable-next-line react/no-array-index-key */
-                  key={index}
-                  header={item.header}
-                  content={item.content}
-                />
-              ))}
-            </ul>
-          </div>
+          <ul ref={intersectionObserverRef}>
+            {changelog.bugfixes.map((item, index) => (
+              <UpdateRow
+                /* eslint-disable-next-line react/no-array-index-key */
+                key={index}
+                header={item.header}
+                content={item.content}
+                advanced={showAdvanced && item.advanced}
+              />
+            ))}
+          </ul>
         </Section>
         <Section>
           <SectionTitle
@@ -268,9 +285,7 @@ const ChangeLogs = () => {
           </SectionTitle>
           <p>
             This project is licensed under the GNU GPL V3.0 - see the GitHub
-            LICENSE file for details. A simple way to keep in terms of the
-            license is by forking this repository and leaving it open source
-            under the same license.
+            LICENSE file for details. The parent project is "GDLauncher".
             FelNullGDLauncherはgorilla-devs/GDLauncherをベースに作成されています。
           </p>
           <Button
@@ -341,25 +356,21 @@ const Section = styled.div`
   p {
     margin: 20px 0 !important;
   }
-  div {
+  ul {
+    padding: 0px;
+    list-style-position: inside;
     width: 100%;
     margin: 20px 0;
     border-radius: 5px;
+  }
 
-    ul {
-      padding: 0px;
-      list-style-position: inside;
-    }
-
-    li {
-      text-align: start;
-      list-style-type: none;
-      margin: 10px 0;
-    }
+  li {
+    text-align: start;
+    list-style-type: none;
+    margin: 10px 0;
   }
 `;
 
 const Header = styled.div`
-  height: 150px;
-  margin-bottom: 200px;
+  margin-bottom: 20px;
 `;
