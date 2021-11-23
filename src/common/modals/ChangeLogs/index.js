@@ -173,28 +173,30 @@ const ChangeLogs = () => {
           </a>
         </Header>
         <Section>
-          <SectionTitle
-            css={`
-              color: ${props => props.theme.palette.colors.green};
-            `}
-          >
-            <span
+          {changelog.new.length ? (
+            <SectionTitle
               css={`
-                display: flex;
-                align-items: center;
-                padding-top: 50px;
+                color: ${props => props.theme.palette.colors.green};
               `}
             >
-              <FontAwesomeIcon
-                icon={faStar}
+              <span
                 css={`
-                  margin-right: 10px;
-                  font-size: 20px;
+                  display: flex;
+                  align-items: center;
+                  padding-top: 50px;
                 `}
-              />
-              新機能
-            </span>
-          </SectionTitle>
+              >
+                <FontAwesomeIcon
+                  icon={faStar}
+                  css={`
+                    margin-right: 10px;
+                    font-size: 20px;
+                  `}
+                />
+                新機能
+              </span>
+            </SectionTitle>
+          ) : null}
           <ul>
             {changelog.new.map((item, index) => (
               <UpdateRow
@@ -208,27 +210,29 @@ const ChangeLogs = () => {
           </ul>
         </Section>
         <Section>
-          <SectionTitle
-            css={`
-              color: ${props => props.theme.palette.colors.yellow};
-            `}
-          >
-            <span
+          {changelog.improvements.length ? (
+            <SectionTitle
               css={`
-                display: flex;
-                align-items: center;
+                color: ${props => props.theme.palette.colors.yellow};
               `}
             >
-              <FontAwesomeIcon
-                icon={faWrench}
+              <span
                 css={`
-                  margin-right: 10px;
-                  font-size: 20px;
+                  display: flex;
+                  align-items: center;
                 `}
-              />
-              改善
-            </span>
-          </SectionTitle>
+              >
+                <FontAwesomeIcon
+                  icon={faWrench}
+                  css={`
+                    margin-right: 10px;
+                    font-size: 20px;
+                  `}
+                />
+                改善
+              </span>
+            </SectionTitle>
+          ) : null}
           <ul>
             {changelog.improvements.map((item, index) => (
               <UpdateRow
@@ -242,27 +246,29 @@ const ChangeLogs = () => {
           </ul>
         </Section>
         <Section>
-          <SectionTitle
-            css={`
-              color: ${props => props.theme.palette.colors.red};
-            `}
-          >
-            <span
+          {changelog.bugfixes.length ? (
+            <SectionTitle
               css={`
-                display: flex;
-                align-items: center;
+                color: ${props => props.theme.palette.colors.red};
               `}
             >
-              <FontAwesomeIcon
-                icon={faBug}
+              <span
                 css={`
-                  margin-right: 10px;
-                  font-size: 20px;
+                  display: flex;
+                  align-items: center;
                 `}
-              />
-              修正
-            </span>
-          </SectionTitle>
+              >
+                <FontAwesomeIcon
+                  icon={faBug}
+                  css={`
+                    margin-right: 10px;
+                    font-size: 20px;
+                  `}
+                />
+                修正
+              </span>
+            </SectionTitle>
+          ) : null}
           <ul ref={intersectionObserverRef}>
             {changelog.bugfixes.map((item, index) => (
               <UpdateRow

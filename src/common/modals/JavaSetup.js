@@ -20,21 +20,25 @@ import {
 } from '../../app/desktop/utils';
 import { _getTempPath } from '../utils/selectors';
 import { closeModal } from '../reducers/modals/actions';
-import { updateJava16Path, updateJavaPath } from '../reducers/settings/actions';
+import {
+  updateJavaLatestPath,
+  updateJavaPath
+} from '../reducers/settings/actions';
 import { UPDATE_MODAL } from '../reducers/modals/actionTypes';
+import { LATEST_JAVA_VERSION } from '../utils/constants';
 
 const JavaSetup = () => {
   const [step, setStep] = useState(0);
   const [choice, setChoice] = useState(null);
   const [isJava8Downloaded, setIsJava8Downloaded] = useState(null);
-  const [isJava16Downloaded, setIsJava16Downloaded] = useState(null);
+  const [isJavaLatestDownloaded, setIsJavaLatestDownloaded] = useState(null);
   const [java8Log, setJava8Log] = useState(null);
-  const [java16Log, setJava16Log] = useState(null);
+  const [javaLatestLog, setJavaLatestLog] = useState(null);
   const javaManifest = useSelector(state => state.app.javaManifest);
-  const java16Manifest = useSelector(state => state.app.java16Manifest);
+  const javaLatestManifest = useSelector(state => state.app.javaLatestManifest);
   const userData = useSelector(state => state.userData);
   const manifests = {
-    java16: java16Manifest,
+    javaLatest: javaLatestManifest,
     java: javaManifest
   };
 
@@ -45,10 +49,10 @@ const JavaSetup = () => {
         return setJava8Log(e?.log);
       })
       .catch(err => console.error(err));
-    isLatestJavaDownloaded(manifests, userData, true, 16)
+    isLatestJavaDownloaded(manifests, userData, true, LATEST_JAVA_VERSION)
       .then(e => {
-        setIsJava16Downloaded(e?.isValid);
-        return setJava16Log(e?.log);
+        setIsJavaLatestDownloaded(e?.isValid);
+        return setJavaLatestLog(e?.log);
       })
       .catch(err => console.error(err));
   }, []);
@@ -98,8 +102,8 @@ const JavaSetup = () => {
                 margin-bottom: 40px;
                 opacity: 0;
                 opacity: ${isJava8Downloaded !== null &&
-                isJava16Downloaded !== null &&
-                (!isJava8Downloaded || !isJava16Downloaded) &&
+                isJavaLatestDownloaded !== null &&
+                (!isJava8Downloaded || !isJavaLatestDownloaded) &&
                 '1'};
                 * > h3 {
                   border-radius: 5px;
@@ -133,8 +137,8 @@ const JavaSetup = () => {
                     Java 8
                   </h3>
                 )}
-                {!isJava16Downloaded && isJava16Downloaded !== null && (
-                  <h3>Java 16</h3>
+                {!isJavaLatestDownloaded && isJavaLatestDownloaded !== null && (
+                  <h3>Java {LATEST_JAVA_VERSION}</h3>
                 )}
               </div>
             </div>
@@ -195,9 +199,9 @@ const JavaSetup = () => {
             {choice === 0 ? (
               <AutomaticSetup
                 isJava8Downloaded={isJava8Downloaded}
-                isJava16Downloaded={isJava16Downloaded}
+                isJavaLatestDownloaded={isJavaLatestDownloaded}
                 java8Log={java8Log}
-                java16Log={java16Log}
+                javaLatestLog={javaLatestLog}
               />
             ) : (
               <ManualSetup setStep={setStep} />
@@ -211,14 +215,14 @@ const JavaSetup = () => {
 
 const ManualSetup = ({ setStep }) => {
   const [javaPath, setJavaPath] = useState('');
-  const [java16Path, setJava16Path] = useState('');
+  const [javaLatestPath, setJavaLatestPath] = useState('');
   const dispatch = useDispatch();
 
   const selectFolder = async version => {
     const { filePaths, canceled } = await ipcRenderer.invoke('openFileDialog');
     if (!canceled) {
-      if (version === 16) {
-        setJava16Path(filePaths[0]);
+      if (version === LATEST_JAVA_VERSION) {
+        setJavaLatestPath(filePaths[0]);
       } else setJavaPath(filePaths[0]);
     }
   };
@@ -238,8 +242,9 @@ const ManualSetup = ({ setStep }) => {
           font-size: 18px;
         `}
       >
-        実行可能なJava.exeを設定してください。
-        Java8はMC1.16.5以下で使用され、Java16はMC1.17以上で使用されます。
+        実行可能なJava.exeを設定してください。 Java 8
+        はMC1.16.5以下で使用され、Java {LATEST_JAVA_VERSION}{' '}
+        はMC1.17以上で使用されます。
       </div>
 
       <div
@@ -250,7 +255,7 @@ const ManualSetup = ({ setStep }) => {
         `}
       >
         <Input
-          placeholder="jdk8,jre8.../java.exe (MC =< 1.16.5)"
+          placeholder="jdk 8 ,jre 8 .../java.exe (MC =< 1.16.5)"
           onChange={e => setJavaPath(e.target.value)}
           value={javaPath}
         />
@@ -272,13 +277,13 @@ const ManualSetup = ({ setStep }) => {
         `}
       >
         <Input
-          placeholder="jdk16,jre16.../java.exe (MC >= 1.17)"
-          onChange={e => setJava16Path(e.target.value)}
-          value={java16Path}
+          placeholder={`jdk ${LATEST_JAVA_VERSION} ,jre ${LATEST_JAVA_VERSION} .../java.exe (MC >= 1.17)`}
+          onChange={e => setJavaLatestPath(e.target.value)}
+          value={javaLatestPath}
         />
         <Button
           type="primary"
-          onClick={() => selectFolder(16)}
+          onClick={() => selectFolder(LATEST_JAVA_VERSION)}
           css={`
             margin-left: 10px;
           `}
@@ -302,10 +307,10 @@ const ManualSetup = ({ setStep }) => {
         </Button>
         <Button
           type="danger"
-          disabled={javaPath === '' || java16Path === ''}
+          disabled={javaPath === '' || javaLatestPath === ''}
           onClick={() => {
             dispatch(updateJavaPath(javaPath));
-            dispatch(updateJava16Path(java16Path));
+            dispatch(updateJavaLatestPath(javaLatestPath));
             dispatch(closeModal());
           }}
         >
@@ -318,15 +323,15 @@ const ManualSetup = ({ setStep }) => {
 
 const AutomaticSetup = ({
   isJava8Downloaded,
-  isJava16Downloaded,
+  isJavaLatestDownloaded,
   java8Log,
-  java16Log
+  javaLatestLog
 }) => {
   const [downloadPercentage, setDownloadPercentage] = useState(0);
   const [currentSubStep, setCurrentSubStep] = useState('Downloading Java');
   const [currentStepPercentage, setCurrentStepPercentage] = useState(0);
   const javaManifest = useSelector(state => state.app.javaManifest);
-  const java16Manifest = useSelector(state => state.app.java16Manifest);
+  const javaLatestManifest = useSelector(state => state.app.javaLatestManifest);
   const userData = useSelector(state => state.userData);
   const tempFolder = useSelector(_getTempPath);
   const modals = useSelector(state => state.modals);
@@ -356,12 +361,17 @@ const AutomaticSetup = ({
 
   if (!isJava8Downloaded) javaToInstall.push(8);
 
-  if (!isJava16Downloaded) javaToInstall.push(16);
+  if (!isJavaLatestDownloaded) javaToInstall.push(LATEST_JAVA_VERSION);
 
   const installJava = async () => {
     const javaOs = convertOSToJavaFormat(process.platform);
     const java8Meta = javaManifest.find(v => v.os === javaOs);
-    const java16Meta = java16Manifest.find(v => v.os === javaOs);
+    const javaLatestMeta = javaLatestManifest.find(
+      v =>
+        v.os === javaOs &&
+        v.architecture === 'x64' &&
+        (v.binary_type === 'jre' || v.binary_type === 'jdk')
+    );
 
     const totalExtractionSteps = process.platform !== 'win32' ? 2 : 1;
     const totalSteps = (totalExtractionSteps + 1) * javaToInstall.length;
@@ -376,9 +386,8 @@ const AutomaticSetup = ({
     for (const javaVersion of javaToInstall) {
       const {
         version_data: { openjdk_version: version },
-        binary_link: url,
-        release_name: releaseName
-      } = javaVersion === 8 ? java8Meta : java16Meta;
+        binary_link: url
+      } = javaVersion === 8 ? java8Meta : javaLatestMeta;
       const javaBaseFolder = path.join(userData, 'java');
 
       await fse.remove(path.join(javaBaseFolder, version));
@@ -400,7 +409,7 @@ const AutomaticSetup = ({
       setCurrentSubStep(
         `Java ${javaVersion} - Extracting 1 / ${totalExtractionSteps}`
       );
-      await extractAll(
+      let { extractedParentDir } = await extractAll(
         downloadLocation,
         tempFolder,
         {
@@ -434,7 +443,7 @@ const AutomaticSetup = ({
           path.basename(url).replace('.tar.gz', '.tar')
         );
 
-        await extractAll(
+        ({ extractedParentDir } = await extractAll(
           tempTarName,
           tempFolder,
           {
@@ -447,7 +456,7 @@ const AutomaticSetup = ({
               setStepPercentage(index, percent);
             }
           }
-        );
+        ));
         await fse.remove(tempTarName);
         index += 1;
         setDownloadPercentage(0);
@@ -456,11 +465,11 @@ const AutomaticSetup = ({
 
       const directoryToMove =
         process.platform === 'darwin'
-          ? path.join(tempFolder, `${releaseName}-jre`, 'Contents', 'Home')
-          : path.join(tempFolder, `${releaseName}-jre`);
+          ? path.join(tempFolder, extractedParentDir, 'Contents', 'Home')
+          : path.join(tempFolder, extractedParentDir);
       await fse.move(directoryToMove, path.join(javaBaseFolder, version));
 
-      await fse.remove(path.join(tempFolder, `${releaseName}-jre`));
+      await fse.remove(path.join(tempFolder, extractedParentDir));
 
       const ext = process.platform === 'win32' ? '.exe' : '';
 
@@ -478,13 +487,13 @@ const AutomaticSetup = ({
     }
 
     dispatch(updateJavaPath(null));
-    dispatch(updateJava16Path(null));
+    dispatch(updateJavaLatestPath(null));
     setCurrentSubStep(`Java is ready!`);
     ipcRenderer.invoke('update-progress-bar', -1);
     setDownloadPercentage(100);
     setCurrentStepPercentage(100);
     await new Promise(resolve => setTimeout(resolve, 2000));
-    if (!java16Log || !java8Log) dispatch(closeModal());
+    if (!javaLatestLog || !java8Log) dispatch(closeModal());
   };
 
   useEffect(() => {
@@ -560,12 +569,12 @@ const AutomaticSetup = ({
             <code>{java8Log}</code>
           </div>
           <div>
-            <h3>Java 16 の詳細:</h3>
-            <code>{java16Log}</code>
+            <h3>Java {LATEST_JAVA_VERSION} の詳細:</h3>
+            <code>{javaLatestLog}</code>
           </div>
         </div>
       )}
-      {java16Log && java8Log && (
+      {javaLatestLog && java8Log && (
         <Button
           css={`
             position: absolute;
