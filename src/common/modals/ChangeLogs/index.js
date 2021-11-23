@@ -291,7 +291,9 @@ const ChangeLogs = () => {
           </SectionTitle>
           <p>
             This project is licensed under the GNU GPL V3.0 - see the GitHub
+            <br />
             LICENSE file for details. The parent project is "GDLauncher".
+            <br />
             FelNullGDLauncherはgorilla-devs/GDLauncherをベースに作成されています。
           </p>
           <Button

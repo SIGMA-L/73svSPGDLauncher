@@ -188,12 +188,11 @@ const Home = () => {
             margin: 20%;
           `}
         >
-          Licensed under GNU General Public License, version 3.
+          This project is licensed under the GNU GPL V3.0 - see the GitHub
           <br />
-          You are using GDLauncher,an open-source customizable launcher platform
-          that anyone can use.
+          LICENSE file for details. The parent project is GDLauncher.
           <br />
-          FelNullGDLauncherはGDLauncherをベースに作成されています。
+          FelNullGDLauncherはgorilla-devs/GDLauncherをベースに作成されています。
         </div>
       </div>
 
