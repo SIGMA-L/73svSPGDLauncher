@@ -16,6 +16,7 @@ import {
   faStop,
   faBoxOpen,
   faCopy
+  // faServer
 } from '@fortawesome/free-solid-svg-icons';
 import psTree from 'ps-tree';
 import { ContextMenuTrigger, ContextMenu, MenuItem } from 'react-contextmenu';
@@ -213,7 +214,9 @@ const Instance = ({ instanceName }) => {
     psTree(isPlaying.pid, (err, children) => {
       if (children.length) {
         children.forEach(el => {
-          process.kill(el.PID);
+          if (el) {
+            process.kill(el.PID);
+          }
         });
       } else {
         process.kill(isPlaying.pid);
@@ -413,6 +416,23 @@ const Instance = ({ instanceName }) => {
             />
             インスタンス削除
           </MenuItem>
+          {/* <MenuItem divider /> */}
+          {/* <MenuItem */}
+          {/*  onClick={openBisectModal} */}
+          {/*  preventClose */}
+          {/*  css={` */}
+          {/*    border: 2px solid #04cbeb; */}
+          {/*    border-radius: 5px; */}
+          {/*  `} */}
+          {/* > */}
+          {/*  <FontAwesomeIcon */}
+          {/*    icon={faServer} */}
+          {/*    css={` */}
+          {/*      margin-right: 10px; */}
+          {/*    `} */}
+          {/*  /> */}
+          {/*  Create Server */}
+          {/* </MenuItem> */}
         </ContextMenu>
       </Portal>
     </>
