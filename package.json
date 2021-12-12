@@ -1,6 +1,6 @@
 {
   "name": "felnullgdlauncher",
-  "version": "1.1.18-felnull.1",
+  "version": "1.1.18-felnull.2",
   "description": "FelNullGDlauncherはシンプルでありながら、ユーザーエクスペリエンスに重点を置いた強力なMinecraftカスタムランチャーです。",
   "keywords": [
     "minecraft",
@@ -214,6 +214,10 @@
     "symlink-dir": "^5.0.1",
     "typeface-roboto": "^1.1.13",
     "use-debounce": "^7.0.0",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "tar": ">=6.1.9",
+    "immer": ">=9.0.6",
+    "tmpl": ">=1.0.5",
+    "nth-check": ">=2.0.1"
   }
 }
