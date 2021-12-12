@@ -118,7 +118,7 @@ import { UPDATE_CONCURRENT_DOWNLOADS } from './settings/actionTypes';
 import { UPDATE_MODAL } from './modals/actionTypes';
 import PromiseQueue from '../../app/desktop/utils/PromiseQueue';
 import fmlLibsMapping from '../../app/desktop/utils/fmllibs';
-import { openModal } from './modals/actions';
+import { openModal, closeModal } from './modals/actions';
 import forgePatcher from '../utils/forgePatcher';
 
 export function initManifests() {
@@ -1895,6 +1895,23 @@ export function downloadInstance(instanceName) {
       })
     );
 
+    if (mcJson.logging) {
+      const {
+        sha1: loggingHash,
+        id: loggingId,
+        url: loggingUrl
+      } = mcJson.logging.client.file;
+      downloadFile(
+        path.join(
+          _getAssetsPath(state),
+          'objects',
+          loggingHash.substring(0, 2),
+          loggingId
+        ),
+        loggingUrl
+      );
+    }
+
     const libraries = librariesMapper(
       mcJson.libraries,
       _getLibrariesPath(state)
@@ -2615,6 +2632,26 @@ export function launchInstance(instanceName) {
     const mcJson = await fse.readJson(
       path.join(_getMinecraftVersionsPath(state), `${loader?.mcVersion}.json`)
     );
+
+    if (mcJson.logging) {
+      const {
+        sha1: loggingHash,
+        id: loggingId,
+        url: loggingUrl
+      } = mcJson.logging.client.file;
+      const loggingPath = path.join(
+        _getAssetsPath(state),
+        'objects',
+        loggingHash.substring(0, 2),
+        loggingId
+      );
+      try {
+        await fs.access(loggingPath);
+      } catch {
+        await downloadFile(loggingPath, loggingUrl);
+      }
+    }
+
     let libraries = [];
     let mcMainFile = {
       url: mcJson.downloads.client.url,
@@ -2719,6 +2756,25 @@ export function launchInstance(instanceName) {
       'url'
     );
 
+    const missingLibraries = [];
+    // Check all libraries
+    for (const lib of libraries) {
+      try {
+        await fs.access(lib.path);
+      } catch {
+        missingLibraries.push(lib);
+      }
+    }
+
+    if (missingLibraries.length) {
+      console.log('Found missing libraries', missingLibraries);
+      try {
+        await downloadInstanceFiles(missingLibraries);
+      } catch {
+        // Swallow error, the instance will probably crash
+      }
+    }
+
     const getJvmArguments =
       mcJson.assets !== 'legacy' && gte(coerce(mcJson.assets), coerce('1.13'))
         ? getJVMArguments113
@@ -2776,6 +2832,8 @@ export function launchInstance(instanceName) {
       await ipcRenderer.invoke('hide-window');
     }
 
+    let closed = false;
+
     const ps = spawn(
       `"${javaPath}"`,
       jvmArguments.map(v => v.toString().replace(...replaceRegex)),
@@ -2808,6 +2866,13 @@ export function launchInstance(instanceName) {
         data.toString().includes('Setting user:') ||
         data.toString().includes('Initializing LWJGL OpenAL')
       ) {
+        if (
+          !closed &&
+          getState().modals.find(v => v.modalType === 'InstanceStartupAd')
+        ) {
+          closed = true;
+          dispatch(closeModal());
+        }
         dispatch(updateStartedInstance({ instanceName, initialized: true }));
       }
     });
@@ -2836,13 +2901,22 @@ export function launchInstance(instanceName) {
         fse.remove(symLinkDirPath);
       }
 
+      if (
+        !closed &&
+        getState().modals.find(v => v.modalType === 'InstanceStartupAd')
+      ) {
+        dispatch(closeModal());
+      }
+
       if (code !== 0 && errorLogs) {
-        dispatch(
-          openModal('InstanceCrashed', {
-            code,
-            errorLogs: errorLogs?.toString('utf8')
-          })
-        );
+        setTimeout(() => {
+          dispatch(
+            openModal('InstanceCrashed', {
+              code,
+              errorLogs: errorLogs?.toString('utf8')
+            })
+          );
+        }, 225);
         console.warn(`Process exited with code ${code}. Not too good..`);
       }
     });

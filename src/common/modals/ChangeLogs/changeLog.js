@@ -2,14 +2,18 @@ module.exports = {
   new: [
     {
       header: 'Java 17に対応しました！',
-      content: 'Minecraft 1.18 が起動できるはず...',
+      content: 'Minecraft 1.18 が起動できるよ！',
       advanced: { cm: '214ac68' }
     },
     {
-      header: 'Added an automatic error reporting system.',
-      content:
-        'This way we will be able to fix issues even before they are reported!',
+      header: '自動エラー報告システムを追加しました。by Original(GD)',
+      content: 'これで修正しやすくなるらしい。公式側なので知らない...',
       advanced: { cm: '09c8873' }
+    },
+    {
+      header: 'Minecraft Forge 1.18',
+      content: 'サポート開始！',
+      advanced: { cm: 'a0b8bec' }
     }
   ],
   improvements: [],
@@ -18,6 +22,16 @@ module.exports = {
       header: 'Microsoftログインについて修正。',
       content: 'オフライン状態になると機能しなくなる問題を修正。',
       advanced: { cm: '14346e2' }
+    },
+    {
+      header: '重大なセキュリティバグを対策しました。',
+      content: 'Log4j2に関する報告を受けたので対策しました。',
+      advanced: { cm: 'e2cfde4' }
+    },
+    {
+      header: '「全てのModをアップデート」のボタンを修正しました。',
+      content: '',
+      advanced: { cm: 'd58a46d' }
     }
   ]
 };
