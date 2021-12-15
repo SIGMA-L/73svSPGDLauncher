@@ -301,7 +301,7 @@ function createWindow() {
         ...requestHeaders
       } = details.requestHeaders;
       if (xSkipOrigin !== 'skip') {
-        requestHeaders.Origin = 'https://www.servg.red/';
+        requestHeaders.Origin = 'https://felnull.dev/';
       }
       callback({ cancel: false, requestHeaders });
     }

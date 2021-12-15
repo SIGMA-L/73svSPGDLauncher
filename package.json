@@ -1,6 +1,6 @@
 {
   "name": "felnullgdlauncher",
-  "version": "1.1.18-felnull.2",
+  "version": "1.1.18-felnull.3",
   "description": "FelNullGDlauncherはシンプルでありながら、ユーザーエクスペリエンスに重点を置いた強力なMinecraftカスタムランチャーです。",
   "keywords": [
     "minecraft",
@@ -26,7 +26,7 @@
   "author": {
     "name": "MG8853",
     "email": "qq3082499405@icloud.com",
-    "url": "https://www.servg.red"
+    "url": "https://felnull.dev"
   },
   "private": false,
   "homepage": "./",

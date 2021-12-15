@@ -64,7 +64,7 @@ const SocialButtons = () => {
       {/*    <FontAwesomeIcon icon={faInstagram} size="lg" /> */}
       {/*  </div> */}
       {/* </a> */}
-      <a href="https://servg.red/">
+      <a href="https://felnull.dev/">
         <div>
           <FontAwesomeIcon icon={faGlobe} size="lg" />
         </div>
