@@ -2,6 +2,7 @@
   "name": "felnullgdlauncher",
   "version": "1.1.21-felnull.2",
   "description": "FelNullGDlauncherはシンプルでありながら、ユーザーエクスペリエンスに重点を置いた強力なMinecraftカスタムランチャーです。",
+  "postinstall": "electron-builder install-app-deps",
   "keywords": [
     "minecraft",
     "launcher",
@@ -147,16 +148,17 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "7zip-bin": "^5.1.1",
     "@loadable/babel-plugin": "^5.13.2",
     "@sentry/integrations": "^6.16.1",
     "@sentry/react": "^6.16.1",
     "@sentry/tracing": "^6.16.1",
     "@sentry/utils": "^6.16.1",
-    "7zip-bin": "^5.1.1",
     "antd": "4.16.11",
     "axios": "^0.21.1",
     "base64-stream": "^1.0.0",
     "base64url": "^3.0.1",
+    "cli-truncate": "^3.1.0",
     "connected-react-router": "^6.9.2",
     "craco-antd": "^1.19.0",
     "directory-tree": "^2.3.1",
