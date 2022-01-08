@@ -1,3 +1,6 @@
+# FelNullGDLauncher
+FelNullGDLauncherはGDLauncherを日本語訳して独自カスタマイズした新しいMinecraftランチャーです。Modpackのマルチスレッドダウンロードへの対応やCPUへの負担が低くかなり使いやすくなっています。
+
 # GDLauncher
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity) 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) 
