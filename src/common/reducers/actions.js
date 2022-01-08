@@ -109,6 +109,7 @@ import {
   patchForge113,
   reflect
 } from '../../app/desktop/utils';
+import ga from '../utils/analytics';
 import {
   downloadFile,
   downloadInstanceFiles
@@ -1005,7 +1006,7 @@ export function updateInstanceConfig(
       const writeFileToDisk = async (content, tempP, p) => {
         await new Promise((resolve, reject) => {
           fss.open(tempP, 'w', async (err, fd) => {
-            if (err) reject(err);
+            if (err || !fd) reject(err);
 
             const buffer = Buffer.from(content);
             fss.write(
@@ -1661,7 +1662,7 @@ export function processFTBManifest(instanceName) {
 export function processForgeManifest(instanceName) {
   return async (dispatch, getState) => {
     const state = getState();
-    const { manifest } = _getCurrentDownloadItem(state);
+    const { manifest, loader } = _getCurrentDownloadItem(state);
     const concurrency = state.settings.concurrentDownloads;
 
     dispatch(updateDownloadStatus(instanceName, 'Downloading mods...'));
@@ -1700,6 +1701,7 @@ export function processForgeManifest(instanceName) {
     await pMap(
       manifest.files,
       async item => {
+        if (!addonsHashmap[item.projectID]) return;
         let ok = false;
         let tries = 0;
         /* eslint-disable no-await-in-loop */
@@ -1738,82 +1740,118 @@ export function processForgeManifest(instanceName) {
       { concurrency }
     );
 
-    dispatch(updateDownloadStatus(instanceName, 'Copying overrides...'));
+    let validAddon = false;
     const addonPathZip = path.join(
       _getTempPath(state),
       instanceName,
       'addon.zip'
     );
-    let progress = 0;
-    await extractAll(
-      addonPathZip,
-      path.join(_getTempPath(state), instanceName),
-      {
-        recursive: true,
-        $cherryPick: 'overrides',
-        $progress: true
-      },
-      {
-        progress: percent => {
-          if (percent !== progress) {
-            progress = percent;
-            dispatch(updateDownloadProgress(percent));
-          }
+
+    try {
+      await fs.stat(addonPathZip);
+      validAddon = true;
+    } catch {
+      // If project and file id are provided, we download it on the spot
+      if (loader.projectID && loader.fileID) {
+        const { data } = await getAddonFile(loader.projectID, loader.fileID);
+        try {
+          await downloadFile(addonPathZip, data.downloadUrl);
+          validAddon = true;
+        } catch {
+          // NO-OP
         }
       }
-    );
+    }
 
-    dispatch(updateDownloadStatus(instanceName, 'Finalizing overrides...'));
-
-    const overrideFiles = await getFilesRecursive(
-      path.join(_getTempPath(state), instanceName, 'overrides')
-    );
-    await dispatch(
-      updateInstanceConfig(instanceName, config => {
-        return {
-          ...config,
-          mods: [...(config.mods || []), ...modManifests],
-          overrides: overrideFiles.map(v =>
-            path.relative(
-              path.join(_getTempPath(state), instanceName, 'overrides'),
-              v
-            )
-          )
-        };
-      })
-    );
-
-    await new Promise(resolve => {
-      // Force premature unlock to let our listener catch mods from override
-      lockfile.unlock(
-        path.join(
-          _getInstancesPath(getState()),
-          instanceName,
-          'installing.lock'
-        ),
-        err => {
-          if (err) console.error(err);
-          resolve();
+    if (validAddon) {
+      dispatch(updateDownloadStatus(instanceName, 'Copying overrides...'));
+      let progress = 0;
+      await extractAll(
+        addonPathZip,
+        path.join(_getTempPath(state), instanceName),
+        {
+          recursive: true,
+          $cherryPick: 'overrides',
+          $progress: true
+        },
+        {
+          progress: percent => {
+            if (percent !== progress) {
+              progress = percent;
+              dispatch(updateDownloadProgress(percent));
+            }
+          }
         }
       );
-    });
 
-    await Promise.all(
-      overrideFiles.map(v => {
-        const relativePath = path.relative(
-          path.join(_getTempPath(state), instanceName, 'overrides'),
-          v
-        );
-        const newPath = path.join(
-          _getInstancesPath(state),
-          instanceName,
-          relativePath
-        );
-        return fse.copy(v, newPath, { overwrite: true });
-      })
-    );
+      dispatch(updateDownloadStatus(instanceName, 'Finalizing overrides...'));
 
-    await fse.remove(addonPathZip);
+      const overrideFiles = await getFilesRecursive(
+        path.join(_getTempPath(state), instanceName, 'overrides')
+      );
+      await dispatch(
+        updateInstanceConfig(instanceName, config => {
+          return {
+            ...config,
+            mods: [...(config.mods || []), ...modManifests],
+            overrides: overrideFiles.map(v =>
+              path.relative(
+                path.join(_getTempPath(state), instanceName, 'overrides'),
+                v
+              )
+            )
+          };
+        })
+      );
+
+      await new Promise(resolve => {
+        // Force premature unlock to let our listener catch mods from override
+        lockfile.unlock(
+          path.join(
+            _getInstancesPath(getState()),
+            instanceName,
+            'installing.lock'
+          ),
+          err => {
+            if (err) console.error(err);
+            resolve();
+          }
+        );
+      });
+
+      await Promise.all(
+        overrideFiles.map(v => {
+          const relativePath = path.relative(
+            path.join(_getTempPath(state), instanceName, 'overrides'),
+            v
+          );
+          const newPath = path.join(
+            _getInstancesPath(state),
+            instanceName,
+            relativePath
+          );
+          return fse.copy(v, newPath, { overwrite: true });
+        })
+      );
+
+      await fse.remove(addonPathZip);
+    } else {
+      await new Promise(resolve => {
+        // Force premature unlock to let our listener catch mods from override
+        lockfile.unlock(
+          path.join(
+            _getInstancesPath(getState()),
+            instanceName,
+            'installing.lock'
+          ),
+          err => {
+            if (err) console.error(err);
+            resolve();
+          }
+        );
+      });
+    }
+
     await fse.remove(path.join(_getTempPath(state), instanceName));
   };
 }
@@ -2255,7 +2293,7 @@ export const startListener = () => {
       const processChange = async () => {
         const newState = getState();
         const instances = newState.instances.list;
-        const modData = instances[oldInstanceName].mods.find(
+        const modData = (instances[oldInstanceName].mods || []).find(
           m => m.fileName === path.basename(fileName)
         );
         if (modData) {
@@ -2582,7 +2620,7 @@ export function getJavaVersionForMCVersion(mcVersion) {
   };
 }
 
-export function launchInstance(instanceName) {
+export function launchInstance(instanceName, forceQuit = false) {
   return async (dispatch, getState) => {
     const state = getState();
 
@@ -2622,6 +2660,7 @@ export function launchInstance(instanceName) {
     let missingResource = false;
 
     const verifyResource = async resourcePath => {
+      if (forceQuit) return true;
       try {
         await fs.access(resourcePath);
         return true;
@@ -2674,14 +2713,16 @@ export function launchInstance(instanceName) {
     if (mcJson.logging) {
       // Verify logging xml
       const { sha1: loggingHash, id: loggingId } = mcJson.logging.client.file;
-      const loggingPath = path.join(
-        _getAssetsPath(state),
-        'objects',
-        loggingHash.substring(0, 2),
-        loggingId
-      );
-      verified = await verifyResource(loggingPath);
-      if (!verified) return;
+      if (loggingHash && loggingId) {
+        const loggingPath = path.join(
+          _getAssetsPath(state),
+          'objects',
+          loggingHash.substring(0, 2),
+          loggingId
+        );
+        verified = await verifyResource(loggingPath);
+        if (!verified) return;
+      }
     }
 
     // Verify assets
@@ -2865,10 +2906,10 @@ export function launchInstance(instanceName) {
         });
       });
 
-      dispatch(launchInstance(instanceName));
+      dispatch(launchInstance(instanceName, true));
       return;
     }
-
+    ga.sendCustomEvent('launchedInstance');
     dispatch(openModal('InstanceStartupAd', { instanceName }));
 
     const getJvmArguments =

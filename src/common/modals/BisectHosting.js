@@ -5,6 +5,7 @@ import styled from 'styled-components';
 // import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import Modal from '../components/Modal';
 import BisectHostingLogo from '../../ui/BisectHosting';
+// import ga from '../utils/analytics';
 
 const BisectHosting = () => {
   return (
@@ -52,10 +53,13 @@ const BisectHosting = () => {
         </h2>
         {/* <a href="https://bisecthosting.com/gdl"> */}
         {/*  <Button */}
-        {/*    type="primary" */}
-        {/*    css={` */}
+        {/*      type="primary" */}
+        {/*      css={` */}
         {/*      margin-top: 25px; */}
         {/*    `} */}
+        {/*      onClick={() => { */}
+        {/*        ga.sendCustomEvent('BHClickAdLink'); */}
+        {/*      }} */}
         {/*  > */}
         {/*    Go to BisectHosting.com &nbsp; */}
         {/*    <FontAwesomeIcon icon={faExternalLinkAlt} /> */}
@@ -70,6 +74,20 @@ const BisectHosting = () => {
           frameBorder="0"
           sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
         />
+        {/* <a href="https://bisecthosting.com/gdl"> */}
+        {/*  <Button */}
+        {/*    type="primary" */}
+        {/*    css={` */}
+        {/*      margin-top: 25px; */}
+        {/*    `} */}
+        {/*    onClick={() => { */}
+        {/*      ga.sendCustomEvent('BHClickAdLink'); */}
+        {/*    }} */}
+        {/*  > */}
+        {/*    Go to BisectHosting.com &nbsp; */}
+        {/*    <FontAwesomeIcon icon={faExternalLinkAlt} /> */}
+        {/*  </Button> */}
+        {/* </a> */}
       </Container>
     </Modal>
   );

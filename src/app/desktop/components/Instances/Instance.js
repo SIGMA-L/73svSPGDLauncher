@@ -15,8 +15,9 @@ import {
   faTrash,
   faStop,
   faBoxOpen,
-  faCopy
-  // faServer
+  faCopy,
+  // faServer,
+  faHammer
 } from '@fortawesome/free-solid-svg-icons';
 import psTree from 'ps-tree';
 import { ContextMenuTrigger, ContextMenu, MenuItem } from 'react-contextmenu';
@@ -28,12 +29,13 @@ import {
 } from '../../../../common/utils/selectors';
 import {
   addStartedInstance,
+  addToQueue,
   launchInstance
 } from '../../../../common/reducers/actions';
 import { openModal } from '../../../../common/reducers/modals/actions';
 import instanceDefaultBackground from '../../../../common/assets/instance_default.png';
 import { convertMinutesToHumanTime } from '../../../../common/utils';
-import BisectHostingLogo from '../../../../ui/BisectHosting';
+// import BisectHostingLogo from '../../../../ui/BisectHosting';
 import { FABRIC, FORGE, VANILLA } from '../../../../common/utils/constants';
 
 const Container = styled.div`
@@ -199,9 +201,9 @@ const Instance = ({ instanceName }) => {
   const manageInstance = () => {
     dispatch(openModal('InstanceManager', { instanceName }));
   };
-  const openBisectModal = () => {
-    dispatch(openModal('BisectHosting'));
-  };
+  // const openBisectModal = () => {
+  //   dispatch(openModal('BisectHosting'));
+  // };
   const instanceExportCurseForge = () => {
     dispatch(openModal('InstanceExportCurseForge', { instanceName }));
   };
@@ -211,7 +213,7 @@ const Instance = ({ instanceName }) => {
   const killProcess = () => {
     console.log(isPlaying.pid);
     psTree(isPlaying.pid, (err, children) => {
-      if (children.length) {
+      if (children?.length) {
         children.forEach(el => {
           if (el) {
             process.kill(el.PID);
@@ -308,31 +310,32 @@ const Instance = ({ instanceName }) => {
           onHide={() => setIsHovered(false)}
         >
           <MenuInstanceName>{instanceName}</MenuInstanceName>
-          <MenuItem
-            onClick={openBisectModal}
-            preventClose
-            css={`
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              text-align: center;
-              height: 60px;
-              font-size: 18px;
-              // font-weight: bold;
-              border: 2px solid #04cbeb;
-              border-radius: 5px;
-            `}
-          >
-            <BisectHostingLogo hover showPointerCursor />
-            {/* Create Server */}
-          </MenuItem>
+          {/* <MenuItem */}
+          {/*  onClick={openBisectModal} */}
+          {/*  preventClose */}
+          {/*  css={` */}
+          {/*    display: flex; */}
+          {/*    flex-direction: column; */}
+          {/*    align-items: center; */}
+          {/*    justify-content: center; */}
+          {/*    text-align: center; */}
+          {/*    height: 60px; */}
+          {/*    font-size: 18px; */}
+          {/*    // font-weight: bold; */}
+          {/*    border: 2px solid #04cbeb; */}
+          {/*    border-radius: 5px; */}
+          {/*  `} */}
+          {/* > */}
+          {/*  <BisectHostingLogo hover showPointerCursor /> */}
+          {/*  /!* Create Server *!/ */}
+          {/* </MenuItem> */}
           {isPlaying && (
             <MenuItem onClick={killProcess}>
               <FontAwesomeIcon
                 icon={faStop}
                 css={`
                   margin-right: 10px;
+                  width: 25px !important;
                 `}
               />
               強制終了
@@ -343,6 +346,7 @@ const Instance = ({ instanceName }) => {
               icon={faWrench}
               css={`
                 margin-right: 10px;
+                width: 25px !important;
               `}
             />
             インスタンス設定
@@ -352,6 +356,7 @@ const Instance = ({ instanceName }) => {
               icon={faFolder}
               css={`
                 margin-right: 10px;
+                width: 25px !important;
               `}
             />
             フォルダを開く
@@ -373,7 +378,7 @@ const Instance = ({ instanceName }) => {
               icon={faBoxOpen}
               css={`
                 margin-right: 10px;
-                width: 16px !important;
+                width: 25px !important;
               `}
             />
             Zipエクスポート
@@ -386,11 +391,46 @@ const Instance = ({ instanceName }) => {
               icon={faCopy}
               css={`
                 margin-right: 10px;
+                width: 25px !important;
               `}
             />
             複製する
           </MenuItem>
           <MenuItem divider />
+          <MenuItem
+            disabled={Boolean(isInQueue) || Boolean(isPlaying)}
+            onClick={async () => {
+              let manifest = null;
+              try {
+                manifest = JSON.parse(
+                  await fs.readFile(
+                    path.join(instancesPath, instanceName, 'manifest.json')
+                  )
+                );
+              } catch {
+                // NO-OP
+              }
+
+              dispatch(
+                addToQueue(
+                  instanceName,
+                  instance.loader,
+                  manifest,
+                  instance.background,
+                  instance.timePlayed
+                )
+              );
+            }}
+          >
+            <FontAwesomeIcon
+              icon={faHammer}
+              css={`
+                margin-right: 10px;
+                width: 25px !important;
+              `}
+            />
+            インスタンス修復
+          </MenuItem>
           <MenuItem
             disabled={Boolean(isInQueue) || Boolean(isPlaying)}
             onClick={openConfirmationDeleteModal}
@@ -399,11 +439,12 @@ const Instance = ({ instanceName }) => {
               icon={faTrash}
               css={`
                 margin-right: 10px;
+                width: 25px !important;
               `}
             />
             インスタンス削除
           </MenuItem>
-          {/* <MenuItem divider /> */}
+          <MenuItem divider />
           {/* <MenuItem */}
           {/*  onClick={openBisectModal} */}
           {/*  preventClose */}
@@ -416,6 +457,7 @@ const Instance = ({ instanceName }) => {
           {/*    icon={faServer} */}
           {/*    css={` */}
           {/*      margin-right: 10px; */}
+          {/*      width: 25px !important; */}
           {/*    `} */}
           {/*  /> */}
           {/*  Create Server */}
