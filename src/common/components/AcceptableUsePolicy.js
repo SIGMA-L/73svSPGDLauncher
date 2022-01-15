@@ -8,7 +8,7 @@ const AcceptableUsePolicy = () => {
         <h2>利用規定について</h2>
         <div>
           <p>
-            FelNullGDLauncherは、Fork元「GDLauncher」のAcceptable use
+            NumaGDLauncherは、Fork元「GDLauncher」のAcceptable use
             policyを使用します。{' '}
             <a
               target="_blank"

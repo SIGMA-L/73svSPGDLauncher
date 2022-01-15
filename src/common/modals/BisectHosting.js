@@ -16,7 +16,7 @@ const BisectHosting = () => {
         font-size: 10px;
         line-height: 1.8;
       `}
-      title="FelNull Discord"
+      title="Numa-Lab Discord"
     >
       <Container>
         <BisectHostingLogo size={60} hover />
@@ -25,31 +25,43 @@ const BisectHosting = () => {
             margin-top: 20px;
           `}
         >
-          季節ごとの特別なModサーバー{' '}
+          沼勢による{' '}
           <span
             css={`
               font-weight: 800;
             `}
           >
-            『Season Mod Server』
+            『Minecraftプラグイン開発コミュニティ』
           </span>{' '}
-          <span>を立てたりして楽しく遊んでいます。</span> FelNullが出してる{' '}
+          <span>
+            です。
+            <br />
+          </span>{' '}
+          主に{' '}
           <span
             css={`
               color: ${props => props.theme.palette.colors.green};
             `}
           >
-            ModPack
+            プラグイン開発
           </span>{' '}
-          などの質問は{' '}
+          や{' '}
           <span
             css={`
               color: ${props => props.theme.palette.colors.green};
             `}
           >
-            Discord
+            配信
           </span>{' '}
-          でのみ受け付けております。
+          、{' '}
+          <span
+            css={`
+              color: ${props => props.theme.palette.colors.green};
+            `}
+          >
+            テストプレイ
+          </span>{' '}
+          などをしています。
         </h2>
         {/* <a href="https://bisecthosting.com/gdl"> */}
         {/*  <Button */}

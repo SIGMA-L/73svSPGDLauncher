@@ -7,10 +7,10 @@ let activity;
 const initialAppStartup = Math.floor(Date.now() / 1000);
 
 const defaultValue = {
-  details: 'Playing FelNullGDLauncher',
+  details: 'Playing NumaGDLauncher',
   startTimestamp: Math.floor(Date.now() / 1000),
-  largeImageKey: 'general',
-  largeImageText: 'FelNullGDLauncher - TeamFelNull Minecraft Launcher',
+  largeImageKey: 'general-numa',
+  largeImageText: 'NumaGDLauncher - Minecraft Launcher',
   instance: false
 };
 
@@ -24,7 +24,7 @@ exports.initRPC = () => {
     client.setActivity(activity);
   });
 
-  client.login({ clientId: '709790494020075551' }).catch(error => {
+  client.login({ clientId: '931890214782259261' }).catch(error => {
     if (error.message.includes('ENOENT')) {
       log.error('Unable to initialize Discord RPC, no client detected.');
     } else {

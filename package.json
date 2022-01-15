@@ -1,7 +1,7 @@
 {
-  "name": "felnullgdlauncher",
-  "version": "1.1.21-felnull.3",
-  "description": "FelNullGDlauncherはシンプルでありながら、ユーザーエクスペリエンスに重点を置いた強力なMinecraftカスタムランチャーです。",
+  "name": "numagdlauncher",
+  "version": "1.1.21-numa.1",
+  "description": "NumaGDlauncherはシンプルでありながら、ユーザーエクスペリエンスに重点を置いた強力なMinecraftカスタムランチャーです。",
   "postinstall": "electron-builder install-app-deps",
   "keywords": [
     "minecraft",
@@ -14,14 +14,15 @@
     "sass",
     "webpack",
     "felnull",
+    "numa",
     "japanese"
   ],
   "bugs": {
-    "url": "https://github.com/TeamFelnull/FelNullGDLauncher/issues"
+    "url": "https://github.com/Numa-Lab/NumaGDLauncher/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TeamFelnull/FelNullGDLauncher.git"
+    "url": "git+https://github.com/Numa-Lab/NumaGDLauncher.git"
   },
   "license": "GPL-3.0",
   "author": {

@@ -72,7 +72,7 @@ const InstanceStartupAd = ({ instanceName }) => {
               font-size: 14px;
             `}
           >
-            FelNullGDLauncher <br /> を使ってくれてありがとう！
+            NumaGDLauncher <br /> を使ってくれてありがとう！
           </span>
           <div
             css={`

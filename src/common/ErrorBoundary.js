@@ -51,7 +51,7 @@ export default class ErrorBoundary extends React.Component {
               color: ${props => props.theme.palette.text.primary};
             `}
           >
-            WE’RE SSSSSSORRY. FelNullGDLauncher ran into a creeper and blew up..
+            NumaGDLauncherがクリーパーにぶつかって爆発しちゃった？...
           </h1>
           <div
             css={`
@@ -73,7 +73,7 @@ export default class ErrorBoundary extends React.Component {
               margin-top: 30px;
             `}
           >
-            Restart FelNullGDLauncher
+            Restart NumaGDLauncher
           </Button>
         </div>
       );

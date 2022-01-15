@@ -19,7 +19,7 @@ const AutoUpdatesNotAvailable = () => {
           `}
         >
           ランチャーを更新してください
-          <a href="https://github.com/TeamFelnull/FelNullGDLauncher/releases">
+          <a href="https://github.com/Numa-Lab/NumaGDLauncher/releases">
             ここをクリック！
           </a>
         </div>

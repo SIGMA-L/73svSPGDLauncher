@@ -163,7 +163,7 @@ try {
 
 app.setPath(
   'userData',
-  path.join(app.getPath('appData'), 'felnullgdlauncher_next')
+  path.join(app.getPath('appData'), 'numagdlauncher_next')
 );
 
 let allowUnstableReleases = false;
@@ -649,8 +649,8 @@ if (process.env.REACT_APP_RELEASE_TYPE === 'setup') {
     !allowUnstableReleases && app.getVersion().includes('beta');
   autoUpdater.allowPrerelease = allowUnstableReleases;
   autoUpdater.setFeedURL({
-    owner: 'TeamFelNull',
-    repo: 'FelNullGDLauncher',
+    owner: 'Numa-Lab',
+    repo: 'NumaGDLauncher',
     provider: 'github'
   });
 

@@ -200,7 +200,7 @@ const General = () => {
       .invoke('getAppdataPath')
       .then(appData =>
         fsa
-          .readFile(path.join(appData, 'felnullgdlauncher_next', 'rChannel'))
+          .readFile(path.join(appData, 'numagdlauncher_next', 'rChannel'))
           .then(v => setReleaseChannel(parseInt(v.toString(), 10)))
           .catch(() => setReleaseChannel(0))
       )
@@ -222,7 +222,7 @@ const General = () => {
   const changeDataPath = async () => {
     setLoadingMoveUserData(true);
     const appData = await ipcRenderer.invoke('getAppdataPath');
-    const appDataPath = path.join(appData, 'felnullgdlauncher_next');
+    const appDataPath = path.join(appData, 'numagdlauncher_next');
 
     const notCopiedFiles = [
       'Cache',
@@ -319,7 +319,7 @@ const General = () => {
       </PersonalData>
       <Title>Release Channel</Title>
       <Content>
-        <p>FelNullGDLauncherの更新するときに使用するリリースを設定します。</p>
+        <p>NumaGDLauncherの更新するときに使用するリリースを設定します。</p>
         <Select
           css={`
             width: 400px;
@@ -328,7 +328,7 @@ const General = () => {
             const appData = await ipcRenderer.invoke('getAppdataPath');
             setReleaseChannel(e);
             await fsa.writeFile(
-              path.join(appData, 'felnullgdlauncher_next', 'rChannel'),
+              path.join(appData, 'numagdlauncher_next', 'rChannel'),
               e.toString()
             );
           }}

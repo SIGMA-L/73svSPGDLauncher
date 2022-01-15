@@ -124,8 +124,8 @@ const commonConfig = {
   config: {
     generateUpdatesFilesForAllChannels: true,
     npmRebuild: false,
-    productName: 'FelNullGDLauncher',
-    appId: 'org.TeamFelNull.FelNullGDLauncher',
+    productName: 'NumaGDLauncher',
+    appId: 'io.github.numa-lab.NumaGDLauncher',
     files: [
       '!node_modules/**/*',
       'build/**/*',

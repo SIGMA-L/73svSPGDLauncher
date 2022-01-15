@@ -47,25 +47,25 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
           tag_name: ${{ steps.get_version.outputs.version }}
-          release_name: FelNullLauncher - ${{ steps.get_version.outputs.version }}
+          release_name: NumaGDLauncher - ${{ steps.get_version.outputs.version }}
           body: |
             ダウンロードはこちらから！
-            [Windows](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/FelNullGDLauncher-win-setup.exe)
-            [Mac OS X](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/FelNullGDLauncher-mac-setup.dmg)
-            [Linux](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/FelNullGDLauncher-linux-setup.AppImage)
+            [Windows](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/NumaGDLauncher-win-setup.exe)
+            [Mac OS X](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/NumaGDLauncher-mac-setup.dmg)
+            [Linux](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/NumaGDLauncher-linux-setup.AppImage)
 
-            Windows : [FelNullGDLauncher-win-setup.exe]を実行すると自動的にインストールが開始し、ソフトが起動します。
-            Mac OS X : [FelNullGDLauncher-mac-setup.dmg]を実行してアプリをアプリケーションにコピーしてください。
+            Windows : [NumaGDLauncher-win-setup.exe]を実行すると自動的にインストールが開始し、ソフトが起動します。
+            Mac OS X : [NumaGDLauncher-mac-setup.dmg]を実行してアプリをアプリケーションにコピーしてください。
             Linux : どれでもできればよし！
 
             ※データフォルダリンク例
             Mac OS X
-            /Users/ [user] /Library/Application Support/felnullgdlaucher
-            /Users/ [user] /Library/Application Support/felnullgdlaucher_next
+            /Users/ [user] /Library/Application Support/numagdlaucher
+            /Users/ [user] /Library/Application Support/numagdlaucher_next
 
             Windows
-            C:\Users\ [user] \AppData\Roaming\felnullgdlauncher
-            C:\Users\ [user] \AppData\Roaming\felnullgdlauncher_next
+            C:\Users\ [user] \AppData\Roaming\numagdlauncher
+            C:\Users\ [user] \AppData\Roaming\numagdlauncher_next
             
             Linuxわからん
 

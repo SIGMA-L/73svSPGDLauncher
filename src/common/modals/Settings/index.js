@@ -155,7 +155,7 @@ export default function Settings() {
                 font-size: 16px;
               `}
             >
-              FelNullGDLauncher
+              NumaGDLauncher
             </span>
             <div
               css={`

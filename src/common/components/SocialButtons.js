@@ -6,7 +6,7 @@
 //   faTwitter
 // } from '@fortawesome/free-brands-svg-icons';
 import { faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+// import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { memo } from 'react';
 
@@ -39,12 +39,12 @@ const SocialButtons = () => {
         }
       `}
     >
-      <a href="https://discord.gg/X9BUF9A">
+      <a href="https://discord.gg/vyDsT6QKgU">
         <div>
           <FontAwesomeIcon icon={faDiscord} size="lg" />
         </div>
       </a>
-      <a href="https://github.com/TeamFelnull/FelNullGDLauncher">
+      <a href="https://github.com/Numa-Lab/NumaGDLauncher">
         <div>
           <FontAwesomeIcon icon={faGithub} size="lg" />
         </div>
@@ -64,11 +64,11 @@ const SocialButtons = () => {
       {/*    <FontAwesomeIcon icon={faInstagram} size="lg" /> */}
       {/*  </div> */}
       {/* </a> */}
-      <a href="https://felnull.dev/">
-        <div>
-          <FontAwesomeIcon icon={faGlobe} size="lg" />
-        </div>
-      </a>
+      {/* <a href="https://felnull.dev/"> */}
+      {/*   <div> */}
+      {/*     <FontAwesomeIcon icon={faGlobe} size="lg" /> */}
+      {/*   </div> */}
+      {/* </a> */}
     </div>
   );
 };

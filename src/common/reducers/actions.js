@@ -3278,7 +3278,7 @@ export const initLatestMods = instanceName => {
 
 export const isNewVersionAvailable = async () => {
   const { data: latestReleases } = await axios.get(
-    'https://api.github.com/repos/TeamFelnull/FelNullGDLauncher/releases?per_page=10'
+    'https://api.github.com/repos/Numa-Lab/NumaGDLauncher/releases?per_page=10'
   );
 
   const latestPrerelease = latestReleases.find(v => v.prerelease);
@@ -3334,7 +3334,7 @@ export const checkForPortableUpdates = () => {
 
     // Latest version has a value only if the user is not using the latest
     if (newVersion) {
-      const baseAssetUrl = `https://github.com/TeamFelnull/FelNullGDLauncher/releases/download/${newVersion?.tag_name}`;
+      const baseAssetUrl = `https://github.com/Numa-Lab/NumaGDLauncher/releases/download/${newVersion?.tag_name}`;
       const { data: latestManifest } = await axios.get(
         `${baseAssetUrl}/${process.platform}_latest.json`
       );

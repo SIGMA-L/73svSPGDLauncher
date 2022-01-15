@@ -13,7 +13,7 @@ import Modal from '../../components/Modal';
 import SocialButtons from '../../components/SocialButtons';
 // import KoFiButton from '../../assets/ko-fi.png';
 // import PatreonButton from '../../assets/patreon.png';
-import UpdateIllustration from '../../assets/update_illustration.png';
+import UpdateIllustration from '../../assets/update_illustration_numa.png';
 import UpdateIllustrationChristmas from '../../assets/update_illustration_christmas.png';
 import { openModal } from '../../reducers/modals/actions';
 import ga from '../../utils/analytics';
@@ -205,7 +205,7 @@ const ChangeLogs = () => {
               }
             `}
           >
-            FelNullが出してる{' '}
+            沼勢の開発した{' '}
             <span
               css={`
                 color: ${props => props.theme.palette.colors.green};
@@ -223,7 +223,7 @@ const ChangeLogs = () => {
             </span>{' '}
             で受け付けております。「
             <span onClick={openBisectModal}>
-              ここをクリック！FelNullGDLauncher
+              ここをクリック！Numa-Lab-Discord
             </span>
             」
           </div>
@@ -361,6 +361,8 @@ const ChangeLogs = () => {
             <br />
             LICENSE file for details. The parent project is "GDLauncher".
             <br />
+            NumaGDLauncherはTeamFelnull/FelNullGDLauncherをベースにし、
+            <br />
             FelNullGDLauncherはgorilla-devs/GDLauncherをベースに作成されています。
           </p>
           <Button
@@ -373,7 +375,7 @@ const ChangeLogs = () => {
               margin-bottom: 10px;
             `}
             type="primary"
-            href="https://github.com/TeamFelnull/FelNullGDLauncher/blob/master/LICENSE"
+            href="https://github.com/Numa-Lab/NumaGDLauncher/blob/master/LICENSE"
           >
             <FontAwesomeIcon icon={faGithub} />
             &nbsp; LICENSE

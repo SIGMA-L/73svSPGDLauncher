@@ -192,6 +192,8 @@ const Home = () => {
           <br />
           LICENSE file for details. The parent project is GDLauncher.
           <br />
+          NumaGDLauncherはTeamFelnull/FelNullGDLauncherをベースにし、
+          <br />
           FelNullGDLauncherはgorilla-devs/GDLauncherをベースに作成されています。
         </div>
       </div>

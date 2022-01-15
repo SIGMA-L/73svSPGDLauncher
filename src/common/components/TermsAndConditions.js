@@ -8,7 +8,7 @@ const TermsAndConditions = () => {
         <h2>規約と条件について</h2>
         <div>
           <p>
-            FelNullGDLauncherは、Fork元「GDLauncher」のTerms and
+            NumaGDLauncherは、Fork元「GDLauncher」のTerms and
             Conditionsを使用します。{' '}
             <a
               target="_blank"

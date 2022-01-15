@@ -8,8 +8,7 @@ const PrivacyPolicy = () => {
         <h2>プライバシーポリシーについて</h2>
         <div>
           <p>
-            FelNullGDLauncherは、Fork元「GDLauncher」のPrivacy
-            Policyを使用します。{' '}
+            NumaGDLauncherは、Fork元「GDLauncher」のPrivacy Policyを使用します。{' '}
             <a
               target="_blank"
               rel="nofollow noreferrer"
