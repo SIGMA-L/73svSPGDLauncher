@@ -79,7 +79,7 @@ const BisectHosting = () => {
         {/* </a> */}
         {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
         <iframe
-          src="https://discordapp.com/widget?id=600929948529590272&theme=dark"
+          src="https://discord.com/widget?id=930083398691733565&theme=dark"
           width="800"
           height="380"
           allowTransparency="true"
