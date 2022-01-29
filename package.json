@@ -1,6 +1,6 @@
 {
   "name": "numagdlauncher",
-  "version": "1.1.21-numa.2",
+  "version": "1.1.21-numa.3",
   "description": "NumaGDlauncherはシンプルでありながら、ユーザーエクスペリエンスに重点を置いた強力なMinecraftカスタムランチャーです。",
   "postinstall": "electron-builder install-app-deps",
   "keywords": [
@@ -121,7 +121,7 @@
     "concurrently": "^6.2.1",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
-    "electron": "^16.0.4",
+    "electron": "^16.0.7",
     "electron-builder": "^22.14.5",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
