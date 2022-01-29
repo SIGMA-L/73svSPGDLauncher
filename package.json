@@ -1,6 +1,6 @@
 {
   "name": "felnullgdlauncher",
-  "version": "1.1.21-felnull.3",
+  "version": "1.1.21-felnull.4",
   "description": "FelNullGDlauncherはシンプルでありながら、ユーザーエクスペリエンスに重点を置いた強力なMinecraftカスタムランチャーです。",
   "postinstall": "electron-builder install-app-deps",
   "keywords": [
