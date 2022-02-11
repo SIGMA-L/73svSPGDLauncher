@@ -1,23 +1,33 @@
 module.exports = {
   new: [
     {
-      header: '「インスタンス修復」ボタンを追加しました。',
-      content: 'ModPackなどを再度ダウンロードして上書きします。',
-      advanced: { cm: '4317ced' }
+      header: 'インスタンスマネージャーにPlayボタンを追加しました。',
+      content: '',
+      advanced: { cm: '' }
+    },
+    {
+      header: 'modsにカテゴリ選択を追加しました。',
+      content: '',
+      advanced: { cm: '' }
     }
   ],
   improvements: [
     {
-      header: 'インスタンスの起動時にModなどを検査するようにしました。',
-      content: 'Modなどに問題があった場合再度ダウンロードされます。',
-      advanced: { cm: 'd970328' }
+      header: 'CurseForge APIが新しいAPIに移行されました。',
+      content: 'まだうまく動作しない可能性があります。',
+      advanced: { cm: '' }
+    },
+    {
+      header: 'RAMメモリスライダーに選択したMBを表示するようにしました。',
+      content: '使いやすくなるはず...',
+      advanced: { cm: '' }
     }
   ],
   bugfixes: [
     {
-      header: '古いCDNを変更しました。',
-      content: '代わりにもっと高速なCDNに変更しました',
-      advanced: { cm: 'dbc658f' }
+      header: '古いインスタンスが開始しない問題を修正しました。',
+      content: '',
+      advanced: { cm: '' }
     }
   ]
 };

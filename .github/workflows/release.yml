@@ -1,6 +1,7 @@
 name: Launcher Next CI
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - 'v1.1.*'
