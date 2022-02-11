@@ -5,7 +5,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Button } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { ipcRenderer } from 'electron';
-import axios from 'axios';
+// import axios from 'axios';
 // import { promises as fs } from 'fs';
 // import path from 'path';
 import Instances from '../components/Instances';
@@ -48,7 +48,7 @@ const Home = () => {
   };
 
   const [profileImage, setProfileImage] = useState(null);
-  const [annoucement, setAnnoucement] = useState(null);
+  // const [annoucement, setAnnoucement] = useState(null);
 
   useEffect(() => {
     const init = async () => {
@@ -57,10 +57,10 @@ const Home = () => {
         dispatch(updateLastUpdateVersion(appVersion));
         dispatch(openModal('ChangeLogs'));
       }
-      const { data } = await axios.get(
-        'https://api.gdlauncher.com/announcement'
-      );
-      setAnnoucement(data || null);
+      // const { data } = await axios.get(
+      //   'https://api.gdlauncher.com/announcement'
+      // );
+      // setAnnoucement(data || null);
     };
 
     init();
@@ -73,19 +73,19 @@ const Home = () => {
   return (
     <div>
       <News news={news} />
-      {annoucement ? (
-        <div
-          css={`
-            margin-top: 10px;
-            padding: 30px;
-            font-size: 18px;
-            font-weight: bold;
-            color: ${props => props.theme.palette.colors.yellow};
-          `}
-        >
-          {annoucement}
-        </div>
-      ) : null}
+      {/* {annoucement ? ( */}
+      {/*   <div */}
+      {/*     css={` */}
+      {/*       margin-top: 10px; */}
+      {/*       padding: 30px; */}
+      {/*       font-size: 18px; */}
+      {/*       font-weight: bold; */}
+      {/*       color: ${props => props.theme.palette.colors.yellow}; */}
+      {/*     `} */}
+      {/*   > */}
+      {/*     {annoucement} */}
+      {/*   </div> */}
+      {/* ) : null} */}
       <Instances />
       <AddInstanceIcon type="primary" onClick={() => openAddInstanceModal(0)}>
         <FontAwesomeIcon icon={faPlus} />
