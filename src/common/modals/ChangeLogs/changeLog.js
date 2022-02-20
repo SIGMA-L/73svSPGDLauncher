@@ -1,31 +1,26 @@
 module.exports = {
   new: [
     {
-      header: 'インスタンスマネージャーにPlayボタンを追加しました。',
-      content: '',
+      header: 'ランチャーを再構成しました。',
+      content: '[NumaGD → NumaLabGD]',
       advanced: { cm: '' }
     },
     {
-      header: 'modsにカテゴリ選択を追加しました。',
+      header: 'インスタンスを移動する方法はサイトを参照してください。',
       content: '',
       advanced: { cm: '' }
     }
   ],
   improvements: [
     {
-      header: 'CurseForge APIが新しいAPIに移行されました。',
-      content: 'まだうまく動作しない可能性があります。',
-      advanced: { cm: '' }
-    },
-    {
-      header: 'RAMメモリスライダーに選択したMBを表示するようにしました。',
-      content: '使いやすくなるはず...',
+      header: 'DependencieUpdate',
+      content: '',
       advanced: { cm: '' }
     }
   ],
   bugfixes: [
     {
-      header: '古いインスタンスが開始しない問題を修正しました。',
+      header: 'なし',
       content: '',
       advanced: { cm: '' }
     }

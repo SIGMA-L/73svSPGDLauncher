@@ -72,7 +72,7 @@ const InstanceStartupAd = ({ instanceName }) => {
               font-size: 14px;
             `}
           >
-            NumaGDLauncher <br /> を使ってくれてありがとう！
+            NumaLabGDLauncher <br /> を使ってくれてありがとう！
           </span>
           <div
             css={`

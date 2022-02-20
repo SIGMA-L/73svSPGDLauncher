@@ -48,15 +48,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
           tag_name: ${{ steps.get_version.outputs.version }}
-          release_name: NumaGDLauncher - ${{ steps.get_version.outputs.version }}
+          release_name: NumaLabGDLauncher - ${{ steps.get_version.outputs.version }}
           body: |
             ダウンロードはこちらから！
-            [Windows](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/NumaGDLauncher-win-setup.exe)
-            [Mac OS X](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/NumaGDLauncher-mac-setup.dmg)
-            [Linux](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/NumaGDLauncher-linux-setup.AppImage)
+            [Windows](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/NumaLabGDLauncher-win-setup.exe)
+            [Mac OS X](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/NumaLabGDLauncher-mac-setup.dmg)
+            [Linux](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/NumaLabGDLauncher-linux-setup.AppImage)
 
-            Windows : [NumaGDLauncher-win-setup.exe]を実行すると自動的にインストールが開始し、ソフトが起動します。
-            Mac OS X : [NumaGDLauncher-mac-setup.dmg]を実行してアプリをアプリケーションにコピーしてください。
+            Windows : [NumaLabGDLauncher-win-setup.exe]を実行すると自動的にインストールが開始し、ソフトが起動します。
+            Mac OS X : [NumaLabGDLauncher-mac-setup.dmg]を実行してアプリをアプリケーションにコピーしてください。
             Linux : どれでもできればよし！
 
             ※データフォルダリンク例
@@ -65,8 +65,8 @@ jobs:
             /Users/ [user] /Library/Application Support/numagdlaucher_next
 
             Windows
-            C:\Users\ [user] \AppData\Roaming\numagdlauncher
-            C:\Users\ [user] \AppData\Roaming\numagdlauncher_next
+            C:\Users\ [user] \AppData\Roaming\numalabgdlauncher
+            C:\Users\ [user] \AppData\Roaming\numalabgdlauncher_next
             
             Linuxわからん
 

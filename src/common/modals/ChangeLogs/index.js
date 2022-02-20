@@ -273,6 +273,22 @@ const ChangeLogs = () => {
               />
             ))}
           </ul>
+          {/* 緊急対応 */}
+          <Button
+            css={`
+              width: 250px;
+              height: 40px;
+              font-size: 20px;
+              padding: 4px !important;
+              margin-top: 3px;
+              margin-bottom: 10px;
+            `}
+            type="primary"
+            href="https://docs.gd.servg.net/numa-numalab-gdlauncher/karaheinsutansu"
+          >
+            {/* <FontAwesomeIcon icon={faGithub} /> */}
+            &nbsp; インスタンス移行方法
+          </Button>
         </Section>
         <Section>
           {changelog.improvements.length ? (
@@ -359,7 +375,7 @@ const ChangeLogs = () => {
             <br />
             LICENSE file for details. The parent project is "GDLauncher".
             <br />
-            NumaGDLauncherはTeamFelnull/FelNullGDLauncherをベースにし、
+            NumaLabGDLauncherはTeamFelnull/FelNullGDLauncherをベースにし、
             <br />
             FelNullGDLauncherはgorilla-devs/GDLauncherをベースに作成されています。
           </p>
@@ -373,7 +389,7 @@ const ChangeLogs = () => {
               margin-bottom: 10px;
             `}
             type="primary"
-            href="https://github.com/Numa-Lab/NumaGDLauncher/blob/master/LICENSE"
+            href="https://github.com/Numa-Lab/NumaLabGDLauncher/blob/master/LICENSE"
           >
             <FontAwesomeIcon icon={faGithub} />
             &nbsp; LICENSE

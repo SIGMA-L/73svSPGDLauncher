@@ -1,5 +1,5 @@
-# NumaGDLauncher
-NumaGDLauncherはFelNullGDLauncherをForkしたMinecraftランチャーです。
+# NumaLabGDLauncher
+NumaLabGDLauncherはFelNullGDLauncherをForkしたMinecraftランチャーです。
 
 # FelNullGDLauncher
 FelNullGDLauncherはGDLauncherを日本語訳して独自カスタマイズした新しいMinecraftランチャーです。Modpackのマルチスレッドダウンロードへの対応やCPUへの負担が低くかなり使いやすくなっています。

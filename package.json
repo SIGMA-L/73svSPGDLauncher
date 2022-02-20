@@ -1,7 +1,7 @@
 {
   "name": "numaladgdlauncher",
   "version": "1.1.22-numa.2",
-  "description": "NumaGDlauncherはシンプルでありながら、ユーザーエクスペリエンスに重点を置いた強力なMinecraftカスタムランチャーです。",
+  "description": "NumaLabGDLauncherはシンプルでありながら、ユーザーエクスペリエンスに重点を置いた強力なMinecraftカスタムランチャーです。",
   "keywords": [
     "minecraft",
     "launcher",
@@ -17,11 +17,11 @@
     "japanese"
   ],
   "bugs": {
-    "url": "https://github.com/Numa-Lab/NumaGDLauncher/issues"
+    "url": "https://github.com/Numa-Lab/NumaLabGDLauncher/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Numa-Lab/NumaGDLauncher.git"
+    "url": "git+https://github.com/Numa-Lab/NumaLabGDLauncher.git"
   },
   "license": "GPL-3.0",
   "author": {

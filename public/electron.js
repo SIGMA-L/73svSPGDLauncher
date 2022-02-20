@@ -163,7 +163,7 @@ try {
 
 app.setPath(
   'userData',
-  path.join(app.getPath('appData'), 'numagdlauncher_next')
+  path.join(app.getPath('appData'), 'numalabgdlauncher_next')
 );
 
 let allowUnstableReleases = false;
@@ -650,7 +650,7 @@ if (process.env.REACT_APP_RELEASE_TYPE === 'setup') {
   autoUpdater.allowPrerelease = allowUnstableReleases;
   autoUpdater.setFeedURL({
     owner: 'Numa-Lab',
-    repo: 'NumaGDLauncher',
+    repo: 'NumaLabGDLauncher',
     provider: 'github'
   });
 

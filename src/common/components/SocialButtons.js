@@ -44,7 +44,7 @@ const SocialButtons = () => {
           <FontAwesomeIcon icon={faDiscord} size="lg" />
         </div>
       </a>
-      <a href="https://github.com/Numa-Lab/NumaGDLauncher">
+      <a href="https://github.com/Numa-Lab/NumaLabGDLauncher">
         <div>
           <FontAwesomeIcon icon={faGithub} size="lg" />
         </div>
