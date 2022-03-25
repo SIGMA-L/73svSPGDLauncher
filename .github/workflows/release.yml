@@ -51,22 +51,22 @@ jobs:
           release_name: 73svSPGDLauncher - ${{ steps.get_version.outputs.version }}
           body: |
             ダウンロードはこちらから！
-            [Windows](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/NumaLabGDLauncher-win-setup.exe)
-            [Mac OS X](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/NumaLabGDLauncher-mac-setup.dmg)
-            [Linux](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/NumaLabGDLauncher-linux-setup.AppImage)
+            [Windows](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/73svSPGDLauncher-win-setup.exe)
+            [Mac OS X](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/73svSPbGDLauncher-mac-setup.dmg)
+            [Linux](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/73svSPGDLauncher-linux-setup.AppImage)
 
-            Windows : [NumaLabGDLauncher-win-setup.exe]を実行すると自動的にインストールが開始し、ソフトが起動します。
-            Mac OS X : [NumaLabGDLauncher-mac-setup.dmg]を実行してアプリをアプリケーションにコピーしてください。
+            Windows : [73svSPGDLauncher-win-setup.exe]を実行すると自動的にインストールが開始し、ソフトが起動します。
+            Mac OS X : [73svSPGDLauncher-mac-setup.dmg]を実行してアプリをアプリケーションにコピーしてください。
             Linux : どれでもできればよし！
 
             ※データフォルダリンク例
             Mac OS X
-            /Users/ [user] /Library/Application Support/numagdlaucher
-            /Users/ [user] /Library/Application Support/numagdlaucher_next
+            /Users/ [user] /Library/Application Support/73svspgdLauncher
+            /Users/ [user] /Library/Application Support/73svspgdLauncher_next
 
             Windows
-            C:\Users\ [user] \AppData\Roaming\numalabgdlauncher
-            C:\Users\ [user] \AppData\Roaming\numalabgdlauncher_next
+            C:\Users\ [user] \AppData\Roaming\73svspgdLauncher
+            C:\Users\ [user] \AppData\Roaming\73svspgdLauncher_next
             
             Linuxわからん
 
