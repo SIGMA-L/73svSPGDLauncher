@@ -153,14 +153,3 @@ jobs:
           overwrite: true
           tag_name: ${{ steps.get_version.outputs.version }}
 
-
-      - uses: actions/setup-ruby@v1
-      - name: Send Webhook Notification
-        if: matrix.os == 'windows-latest'
-        env:
-          JOB_STATUS: ${{ job.status }}
-          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
-        run: |
-          git clone https://github.com/gorilla-devs/github-actions-discord-webhook.git webhook
-          bash webhook/send.sh $JOB_STATUS $WEBHOOK_URL
-        shell: bash
