@@ -48,7 +48,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
           tag_name: ${{ steps.get_version.outputs.version }}
-          release_name: NumaLabGDLauncher - ${{ steps.get_version.outputs.version }}
+          release_name: 73svSPGDLauncher - ${{ steps.get_version.outputs.version }}
           body: |
             ダウンロードはこちらから！
             [Windows](https://github.com/${{ github.repository }}/releases/download/${{ steps.get_version.outputs.version }}/NumaLabGDLauncher-win-setup.exe)
