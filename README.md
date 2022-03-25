@@ -1,5 +1,6 @@
 # 73svSPGDLauncher
 73svSPGDLauncherはNumaLabGDLauncherをForkしたMinecraftランチャーです。
+変更点はほぼありません。
 
 # NumaLabGDLauncher
 NumaLabGDLauncherはFelNullGDLauncherをForkしたMinecraftランチャーです。
