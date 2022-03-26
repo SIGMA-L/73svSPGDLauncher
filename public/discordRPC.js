@@ -7,10 +7,10 @@ let activity;
 const initialAppStartup = Math.floor(Date.now() / 1000);
 
 const defaultValue = {
-  details: 'Playing NumaLabGDLauncher',
+  details: 'Playing 73svSPGDLauncher',
   startTimestamp: Math.floor(Date.now() / 1000),
-  largeImageKey: 'general-numa',
-  largeImageText: 'numalabgdlauncher - Minecraft Launcher',
+  largeImageKey: 'general-sp',
+  largeImageText: '73svspgdlauncher - Minecraft Launcher',
   instance: false
 };
 
