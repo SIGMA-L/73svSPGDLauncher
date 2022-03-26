@@ -192,6 +192,8 @@ const Home = () => {
           <br />
           LICENSE file for details. The parent project is GDLauncher.
           <br />
+          73svSPGDLauncherはNuma-Lab/NumaLabGDLauncherをベースにし、
+          <br />
           NumaLabGDLauncherはTeamFelnull/FelNullGDLauncherをベースにし、
           <br />
           FelNullGDLauncherはgorilla-devs/GDLauncherをベースに作成されています。
@@ -227,7 +229,7 @@ const Home = () => {
             css={`
               margin-top: 40px;
             `}
-            src="https://discord.com/widget?id=930083398691733565&theme=dark"
+            src="https://discord.com/widget?id=810725404545515561&theme=dark"
             width="350"
             height="410"
             allowTransparency="true"
