@@ -124,8 +124,8 @@ const commonConfig = {
   config: {
     generateUpdatesFilesForAllChannels: true,
     npmRebuild: false,
-    productName: 'NumaLabGDLauncher',
-    appId: 'io.github.numa-lab.NumaLabGDLauncher',
+    productName: '73svSPGDLauncher',
+    appId: 'io.github.SIGMA-L.73svSPGDLauncher',
     files: [
       '!node_modules/**/*',
       'build/**/*',
