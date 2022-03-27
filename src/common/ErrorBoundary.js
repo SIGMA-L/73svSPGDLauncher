@@ -51,7 +51,7 @@ export default class ErrorBoundary extends React.Component {
               color: ${props => props.theme.palette.text.primary};
             `}
           >
-            NumaLabGDLauncherがクリーパーにぶつかって爆発しちゃった？...
+            73svSPGDLauncherがななみちゃんの手によって破壊されちゃった？...
           </h1>
           <div
             css={`
