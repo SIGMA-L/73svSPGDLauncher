@@ -19,7 +19,7 @@ const AutoUpdatesNotAvailable = () => {
           `}
         >
           ランチャーを更新してください
-          <a href="https://github.com/Numa-Lab/NumaLabGDLauncher/releases">
+          <a href="https://github.com/SIGMA-L/73svSPGDLauncher/releases">
             ここをクリック！
           </a>
         </div>
