@@ -8,7 +8,7 @@ const TermsAndConditions = () => {
         <h2>規約と条件について</h2>
         <div>
           <p>
-            NumaLabGDLauncherは、Fork元「GDLauncher」のTerms and
+            73evSPGDLauncherは、Fork元「GDLauncher」のTerms and
             Conditionsを使用します。{' '}
             <a
               target="_blank"
