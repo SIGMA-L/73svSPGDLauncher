@@ -8,7 +8,7 @@ const PrivacyPolicy = () => {
         <h2>プライバシーポリシーについて</h2>
         <div>
           <p>
-            NumaLabGDLauncherは、Fork元「GDLauncher」のPrivacy
+            73evSPGDLauncherは、Fork元「GDLauncher」のPrivacy
             Policyを使用します。{' '}
             <a
               target="_blank"
