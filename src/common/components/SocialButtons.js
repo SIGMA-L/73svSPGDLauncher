@@ -39,12 +39,12 @@ const SocialButtons = () => {
         }
       `}
     >
-      <a href="https://discord.gg/vyDsT6QKgU">
+      <a href="https://discord.gg/MEYEPgN3T6">
         <div>
           <FontAwesomeIcon icon={faDiscord} size="lg" />
         </div>
       </a>
-      <a href="https://github.com/Numa-Lab/NumaLabGDLauncher">
+      <a href="https://github.com/SIGMA-L/73svSPGDLauncher">
         <div>
           <FontAwesomeIcon icon={faGithub} size="lg" />
         </div>
