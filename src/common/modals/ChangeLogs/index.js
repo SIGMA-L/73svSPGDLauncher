@@ -375,6 +375,8 @@ const ChangeLogs = () => {
             <br />
             LICENSE file for details. The parent project is "GDLauncher".
             <br />
+            73svSPGDLauncherはNumaLab/NumaLabGDLauncherをベースにし、
+            <br />
             NumaLabGDLauncherはTeamFelnull/FelNullGDLauncherをベースにし、
             <br />
             FelNullGDLauncherはgorilla-devs/GDLauncherをベースに作成されています。
